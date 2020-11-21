@@ -1,8 +1,8 @@
 <?php
 
-require('../vendor/autoload.php');
+require_once('../vendor/autoload.php');
 
-$app = new Silex\Application();
+/*$app = new Silex\Application(); #https://silex.symfony.com/
 $app['debug'] = true;
 
 // Register the monolog logging service
@@ -22,4 +22,12 @@ $app->get('/', function() use($app) {
   return $app['twig']->render('index.html');
 });
 
-$app->run();
+$app->run();*/
+require_once('Router/Router.php');
+
+$router =  new \App\Router\Router($_GET['url']);
+$router->get('/', function(){echo 'Home pagel';});
+
+$router->get('/posts', function(){echo "Lol";});
+$router->get('/posts/:id', function ($id){echo 'article '.$id;});
+$router->run();
