@@ -29,6 +29,24 @@ class Route
     }
 
     public function call(){
-        return call_user_func_array($this->callable, $this->matches);
+        if (is_string($this->callable)){#si $this->callable est un str
+            $params = explode("#", $this->callable);
+            $controller = "App\\Controller\\".$params[0]."Controller";
+            $controller = new $controller(); #Merci PHP d'être un langage de haut niveau
+            return call_user_func_array([$controller, $params[1]], $this->matches);
+            $action= $params[1];
+            return $controller->$action(); #Note : on ne peut pas directement remplacer $action par son expression
+        } else {
+            return call_user_func_array($this->callable, $this->matches);
+        }
+    }
+
+    public function getUrl($params){
+        $path=$this->path;
+
+        foreach ($params as $k=>$v) {
+            $path = str_replace(":$k", $v, $path);
+        }
+        return $path;
     }
 }

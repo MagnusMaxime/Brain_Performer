@@ -5,20 +5,32 @@ require_once('RouterException.php');
 class Router{
     private  $url;
     private $routes=[];
+    private $namedRoutes=[];
     public function __construct($url){
 
         $this->url = $url;
 
     }
 
-    public function get($path, $callable){
+    private function add ($path, $callable, $name, $method){
         $route = new Route($path,$callable);
-        $this->routes['GET'][]=$route;
+        $this->routes[$method][]=$route;
+        if (is_string($callable) && $name===null){
+            $name=$callable;#On appelle la route par le nom du controller
+        }
+        if ($name){
+            $this->namedRoutes[$name]=$route;
+        }
+        return $route;
     }
-    public function post($path, $callable){
-        $route = new Route($path,$callable);
-        $this->routes['POST'][]=$route;
+
+    public function get($path, $callable, $name=null){
+        return $this->add($path, $callable, $name, "GET");
     }
+    public function post($path, $callable, $name=null){
+        return $this->add($path, $callable, $name, "POST");
+    }
+
     public function run(){
         #echo("<pre>".print_r($this->routes)."</pre>");
         if (!isset($this->routes[$_SERVER['REQUEST_METHOD']])){
@@ -31,5 +43,13 @@ class Router{
             }
         }
         throw new RouterException('No matching routes');
+    }
+
+    public function url ($name, $params=[]){
+        if (!isset($this->namedRoutes[$name])){
+            throw new RouterException("No route matches this name");
+
+        }
+        return $this->namedRoutes[$name]->getUrl($params);
     }
 }
