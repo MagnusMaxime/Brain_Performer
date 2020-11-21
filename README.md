@@ -64,3 +64,5 @@ composer install
 </br>[exemples](https://getbootstrap.com/docs/4.0/components/buttons/)
 * **[flemme de lire, je préfère ytb](https://www.youtube.com/user/grafikarttv)**
 
+## Hébergement gratos
+Tkt je gère! pour le moment..
