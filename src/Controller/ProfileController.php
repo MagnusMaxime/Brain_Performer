@@ -20,13 +20,15 @@ class ProfilController
         echo "La liste des profils est ici";
     }
 
-    public function render($view, $variables = []) {
-        ob_start();
-        extract($variables);
-        require($this->viewPath . $view);
-        $content = ob_get_clean();
-        /* require($this->viewPath . 'templates/' . $this->template . '.php'); */
-        ob_end_clean();
-        echo $content;
+    public function render($id) {
+        /* ob_start(); */
+        /* extract($variables); */
+        /* require($this->viewPath . $view); */
+        /* $content = ob_get_clean(); */
+        /* /1* require($this->viewPath . 'templates/' . $this->template . '.php'); *1/ */
+        /* ob_end_clean(); */
+        /* echo $content; */
+        /* echo 'vive le render'; */
+        echo $twig->render('profile.php', compact($id));
     }
 }
