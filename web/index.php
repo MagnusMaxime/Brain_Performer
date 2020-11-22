@@ -25,7 +25,7 @@ $app->get('/', function() use($app) {
 $app->run();*/
 require_once('Router/Router.php');
 require_once ('Controller/HomeController.php');
-require_once ('Controller/ProfilController.php');
+require_once ('Controller/ProfileController.php');
 
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 $router =  new \App\Router\Router($_GET['url']);
@@ -33,7 +33,7 @@ $router =  new \App\Router\Router($_GET['url']);
 
 #Toujours mettre les routes les plus précises en premier
 $router->get('/', function(){echo 'Vous êtes à la racine';});
-$router->get('/home', "Home#show");#Pour appeler le controller HomeController et appeler la méthode show
+$router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profil', function(){echo "Ici les listes des profils";});
 $router->get('/profil/:id', "Profil#show");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
