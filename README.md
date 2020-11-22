@@ -22,7 +22,7 @@ aller voir des tutoriels complets. **_Hopopop au travail!_**
  * Installer [github desktop](https://desktop.github.com/)  
  * Installer un éditeur de code comme [Visual Studio Code](https://code.visualstudio.com/) ou [IntelliJ Pro](https://www.jetbrains.com/fr-fr/idea/download/) (La version Pro est gratuite en utilisant ton mail isep lors de l'inscription)
  * Si nécessaire installer [git](https://git-scm.com/download/)  
- * Installer [mamp/wamp/lamp](https://www.mamp.info/en/windows/)  
+ * Installer [mamp ou wamp ou lamp](https://www.mamp.info/en/windows/)  
  * Installer [Cmder](https://cmder.net/) 
   #### Connaître les bases des bases pour comprendre le projet
   On met ici le strict minimum
