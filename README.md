@@ -79,3 +79,7 @@ composer install
   
 ## Hébergement gratos  
 Tkt je gère! pour le moment..
+
+
+## Structure du projet
+...

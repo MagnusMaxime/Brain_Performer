@@ -1,6 +1,9 @@
 <?php
+$PATH_TEMPLATES = __DIR__ . "/views";
+$PATH_CACHE = __DIR__ . "/cache";
 
 require_once('../vendor/autoload.php');
+
 
 /*$app = new Silex\Application(); #https://silex.symfony.com/
 $app['debug'] = true;
@@ -23,9 +26,20 @@ $app->get('/', function() use($app) {
 });
 
 $app->run();*/
-require_once('Router/Router.php');
-require_once ('Controller/HomeController.php');
-require_once ('Controller/ProfileController.php');
+require_once('./Router/Router.php');
+require_once ('./Controller/HomeController.php');
+require_once ('./Controller/ProfileController.php');
+
+/* Documentation de Twig: https://twig.symfony.com/doc/3.x/intro.html */
+$loader = new \Twig\Loader\FilesystemLoader($PATH_TEMPLATES);
+$twig = new \Twig\Environment($loader, [
+    'cache' => $PATH_CACHE,
+]);
+
+
+# Test
+echo $twig->render('profile.php', ['profil' => 'Marc']);
+
 
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 $router =  new \App\Router\Router($_GET['url']);
