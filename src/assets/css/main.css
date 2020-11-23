@@ -2,9 +2,13 @@ body{
   background-color: #E0E4CC;
   margin: 0%;
   font : 15px Rockwell, sans-serif;
-
+  padding: 20px;
 }
 
+.logoBP{
+  height: 100px;
+
+}
 .jumbotron {
   background: #532F8C;
   color: white;
@@ -49,4 +53,5 @@ body{
   width: 100%;
   text-align: center;
   margin-top: 10%;
+  padding: 0px;
 }

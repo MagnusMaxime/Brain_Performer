@@ -44,7 +44,7 @@ $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
 $router->get('/', function() use ($twig) {
-    echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu"));
+    echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
     });
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profil#index");
