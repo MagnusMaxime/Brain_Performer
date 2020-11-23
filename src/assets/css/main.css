@@ -47,8 +47,7 @@ body{
 }
 
 #footer{
-  border-top: 1px solid #999;
-  border-bottom: 1px solid #999;
+  border: 1px solid #999;
   background-color: #69D2E7;
   width: 100%;
   text-align: center;
