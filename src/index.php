@@ -39,7 +39,8 @@ $twig = new \Twig\Environment($loader, [
 ]);
 
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
-$router =  new \App\Router\Router($_GET['url']);
+$url = isset($_GET['url']) ? $_GET['url'] : "";
+$router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
 $router->get('/', function() use ($twig) {
