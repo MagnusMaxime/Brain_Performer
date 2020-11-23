@@ -1,3 +1,14 @@
+body{
+  background-color: #E0E4CC;
+  margin: 0%;
+  font : 15px Rockwell, sans-serif;
+  padding: 20px;
+}
+
+.logoBP{
+  height: 100px;
+
+}
 .jumbotron {
   background: #532F8C;
   color: white;
@@ -33,4 +44,14 @@
 }
 .jumbotron .lang-logo img {
   max-width: 100%;
+}
+
+#footer{
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  background-color: #69D2E7;
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+  padding: 0px;
 }
