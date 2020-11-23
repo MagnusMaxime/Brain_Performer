@@ -36,18 +36,14 @@ $twig = new \Twig\Environment($loader, [
     /* 'cache' => $PATH_CACHE, */ # À utiliser uniquement en production (ajouter var env)
 ]);
 
-
-
-
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 $router =  new \App\Router\Router($_GET['url']);
-
 
 #Toujours mettre les routes les plus précises en premier
 $router->get('/', function(){echo 'Vous êtes à la racine';});
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
-$router->get('/profil', "Profil#index");
+$router->get('/profile', "Profil#index");
 # En développement
-$router->get('/profil/:id', "Profil#render");
+$router->get('/profile/:id', "Profil#render");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 $router->run();
