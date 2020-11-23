@@ -1,6 +1,8 @@
 <?php
+namespace App;
 $PATH_TEMPLATES = __DIR__ . "/views";
 $PATH_CACHE = __DIR__ . "/cache";
+
 
 require_once('../vendor/autoload.php');
 
@@ -40,7 +42,9 @@ $twig = new \Twig\Environment($loader, [
 $router =  new \App\Router\Router($_GET['url']);
 
 #Toujours mettre les routes les plus précises en premier
-$router->get('/', function(){echo 'Vous êtes à la racine';});
+$router->get('/', function() use ($twig) {
+    echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu"));
+    });
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profil#index");
 # En développement
