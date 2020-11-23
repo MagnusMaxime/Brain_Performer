@@ -1,12 +1,4 @@
 {
-  "name" : "Brain Performer",
-  "authors": [
-      {
-      "name" : "Marc Partensky",
-      "email" : "marc.partensky@gmail.com"
-      }
-  ],
-
   "require" : {
     "twig/twig": "^3.0"
   },
