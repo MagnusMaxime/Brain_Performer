@@ -2,14 +2,13 @@
 namespace App\Router;
 require_once('Route.php');
 require_once('RouterException.php');
+
 class Router{
     private  $url;
     private $routes=[];
     private $namedRoutes=[];
     public function __construct($url){
-
         $this->url = $url;
-
     }
 
     private function add ($path, $callable, $name, $method){

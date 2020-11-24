@@ -1,13 +1,14 @@
 <?php
 
-
 namespace App\Controller;
 
-
-class HomeController
+class HomeController extends Controller
 {
-    public function show(){
+    static public function index(){
+        return $twig->render('index.html', []);
 
+    }
+    public function show(){
         echo "Je suis la home page";
     }
 }
