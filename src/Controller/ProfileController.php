@@ -11,7 +11,9 @@ class ProfileController extends Controller
     }
 
     public function render($id){
-        return "Je présente le profil ".$id;
+        /* return "Je présente le profil ".$id; */
+        global $twig;
+        return $twig->render('profile.html', ["profile" => $id]);
     }
 
     public function index() {

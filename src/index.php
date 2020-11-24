@@ -1,11 +1,10 @@
 <?php
-namespace App;
-$PATH_TEMPLATES = __DIR__ . "/views";
-$PATH_CACHE = __DIR__ . "/cache";
 
+
+
+namespace App;
 
 require_once('../vendor/autoload.php');
-
 
 /*$app = new Silex\Application(); #https://silex.symfony.com/
 $app['debug'] = true;
@@ -28,17 +27,26 @@ $app->get('/', function() use($app) {
 });
 
 $app->run();*/
+
+
+/* echo __DIR__ . "/views"; */
+/* require_once('./config.php'); */
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
 require_once ('./Controller/ProfileController.php');
 require_once ('./Controller/TestController.php');
 
-/* Documentation de Twig: https://twig.symfony.com/doc/3.x/intro.html */
-$loader = new \Twig\Loader\FilesystemLoader($PATH_TEMPLATES);
-$twig = new \Twig\Environment($loader, [
-    /* 'cache' => $PATH_CACHE, */ # À utiliser uniquement en production (ajouter var env)
-]);
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
+$twig = new \Twig\Environment($loader, []);
+
+/* \Twig\Loader\FilesystemLoader(__DIR__ . "/views"); */
+
+
+/* class Config { */
+/*     static $loader = loader; */
+/*     static $twig = $twig; */
+/* } */
 
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 $url = isset($_GET['url']) ? $_GET['url'] : "";
@@ -47,9 +55,10 @@ $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
 $router->get('/test/:id', "Test#test");
-$router->get('/', function() use ($twig) {
-    echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
-});
+$router->get('/', "Home#index");
+/* $router->get('/', function() use ($twig) { */
+/*     echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page")); */
+/* }); */
 /* $router->get('/', "Home#index"); */
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profile#index");
