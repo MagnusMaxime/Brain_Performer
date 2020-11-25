@@ -1,5 +1,8 @@
 # Healing Path  
 Your brain is the key!  
+Ce readme est disponible sous forme de page web:
+* thème clair: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer
+* thème sombre: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer?layout=jasonm23-dark
   
 ## Instructions newbie-friendly pour commencer le développement du projet  
 Ces instructions donnent une vue d'ensemble des étapes pour développer ce projet,  
