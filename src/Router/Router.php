@@ -3,6 +3,7 @@ namespace App\Router;
 require_once('Route.php');
 require_once('RouterException.php');
 
+#Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 class Router{
     private  $url;
     private $routes=[];

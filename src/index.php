@@ -48,18 +48,27 @@ $twig = new \Twig\Environment($loader, []);
 /*     static $twig = $twig; */
 /* } */
 
-#Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
+
 $url = isset($_GET['url']) ? $_GET['url'] : "";
 
 $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
-$router->get('/test/:id', "Test#test");
+#$router->get('/test/:id', "Test#test");
+$router->get("/connexion", "Connection#show");
+
+/*function() use ($twig) {
+         return $twig->render("connection.html");
+});*/
+
 $router->get('/', "Home#index");
-/* $router->get('/', function() use ($twig) { */
-/*     echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page")); */
-/* }); */
-/* $router->get('/', "Home#index"); */
+    /* $router->get('/', function() use ($twig) {
+     echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
+ });
+ $router->get('/', "Home#index"); */
+
+$router->get("/inscription", "SignUp#render");
+
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profile#index");
 /* $router->get('/profile'); */

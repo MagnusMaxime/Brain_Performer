@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/assets/css/connection.css" />
+<div class="signin">
+    <form action="" method="post">
+        <div class="">
+            <img src="/assets/img/logo.png" alt="logo" class="logo-big">
+        </div>
+
+        <div class="container">
+            <label for="mail"><b>Adresse mail : </b><input type="email" placeholder="Entrez votre adresse mail" id="mail" required></label>
+
+            <br>
+            <label for="password"><b>Mot de passe : </b><input type="password" placeholder="Entrez votre mot de passe" id="password" required></label>
+
+            <br>
+            <button type="submit" class="btn">Se connecter</button>
+            <label for="rememberme">
+                <input type="checkbox" checked="checked" id="rememberme"> Se souvenir de moi
+            </label>
+        </div>
+
+        <div class="container">
+            <button type="button" class="btn">S'inscire</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
