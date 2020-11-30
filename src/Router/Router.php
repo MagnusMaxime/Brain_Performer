@@ -5,14 +5,14 @@ require_once('RouterException.php');
 
 #Router de Graphikart : https://www.youtube.com/watch?v=I-DN2C7Gs7A
 class Router{
-    private  $url;
+    private $url;
     private $routes=[];
     private $namedRoutes=[];
     public function __construct($url){
         $this->url = $url;
     }
 
-    private function add ($path, $callable, $name, $method){
+    private function add($path, $callable, $name, $method){
         $route = new Route($path,$callable);
         $this->routes[$method][]=$route;
         if (is_string($callable) && $name===null){
@@ -45,7 +45,7 @@ class Router{
         throw new RouterException('No matching routes');
     }
 
-    public function url ($name, $params=[]){
+    public function url($name, $params=[]){
         if (!isset($this->namedRoutes[$name])){
             throw new RouterException("No route matches this name");
         }

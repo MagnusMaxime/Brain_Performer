@@ -56,7 +56,6 @@ $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
 #$router->get('/test/:id', "Test#test");
-$router->get("/connection", "Connection#show");
 
 /*function() use ($twig) {
          return $twig->render("connection.html");
@@ -67,6 +66,7 @@ $router->get('/', "Home#index");
      echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
  });
  $router->get('/', "Home#index"); */
+$router->get("/connection", "Connection#show");
 
 $router->get("/inscription", "SignUp#render");
 
