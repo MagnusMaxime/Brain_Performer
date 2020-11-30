@@ -36,6 +36,7 @@ require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
 require_once ('./Controller/ProfileController.php');
 require_once ('./Controller/TestController.php');
+require_once ('./Controller/ConnectionController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
@@ -55,7 +56,7 @@ $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
 #$router->get('/test/:id', "Test#test");
-$router->get("/connexion", "Connection#show");
+$router->get("/connection", "Connection#show");
 
 /*function() use ($twig) {
          return $twig->render("connection.html");
