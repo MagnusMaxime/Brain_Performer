@@ -81,8 +81,9 @@ composer install
 * **[flemme de lire, je préfère ytb](https://www.youtube.com/user/grafikarttv)**  
   
 ## Hébergement gratos  
-Tkt je gère! pour le moment..
-
+Le projet possède 2 branches: main et heroku
+La branche main est la branche principale sur laquelle on travail et est donc instable. Une fois que celle-ci devient stable on peut la fusionner ('merge') avec la branche heroku.
+Une fois cette fusion effectuée, le site sur heroku sera automatiquement mis à jour lorsque github reçoit une mise à jour sur la branche heroku.
 
 ## Structure du projet
 ...
