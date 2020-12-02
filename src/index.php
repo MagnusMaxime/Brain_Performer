@@ -6,6 +6,7 @@ namespace App;
 
 require_once('../vendor/autoload.php');
 
+
 /*$app = new Silex\Application(); #https://silex.symfony.com/
 $app['debug'] = true;
 
@@ -49,8 +50,11 @@ $twig = new \Twig\Environment($loader, []);
 /*     static $twig = $twig; */
 /* } */
 
-
-$url = isset($_GET['url']) ? $_GET['url'] : "";
+if (isset($_GET["url"])){
+    $url = $_GET["url"];
+}else {
+    $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+}
 
 $router =  new \App\Router\Router($url);
 
@@ -66,7 +70,7 @@ $router->get('/', "Home#index");
      echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
  });
  $router->get('/', "Home#index"); */
-$router->get("/connection", "Connection#show");
+$router->get("/connexion", "Connection#show");
 
 $router->get("/inscription", "SignUp#render");
 

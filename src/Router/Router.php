@@ -8,6 +8,7 @@ class Router{
     private $url;
     private $routes=[];
     private $namedRoutes=[];
+
     public function __construct($url){
         $this->url = $url;
     }
@@ -38,6 +39,7 @@ class Router{
         }
         #var_dump($this->url);
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route){
+
             if ($route->match($this->url)){
                 return $route->call();
             }

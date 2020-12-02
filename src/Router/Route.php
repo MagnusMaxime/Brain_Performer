@@ -14,6 +14,7 @@ class Route
         $this->callable = $callable;
     }
     public function match($url){
+
         $url = trim($url, '/');
         $path = preg_replace('#:([\w]+)#','([^/]+)', $this->path);#C'est pour prendre en compte les paramètres
 
@@ -21,6 +22,7 @@ class Route
             return false;
         }
         array_shift($matches);
+        #die($path."##".$url);
         #var_dump($matches);
         $this->matches = $matches;
         return true;
