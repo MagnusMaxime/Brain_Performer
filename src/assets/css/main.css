@@ -28,7 +28,16 @@ img.logo-big{
   margin-right: auto;
 }
 
+div#bloc-page{
+  margin: auto;
+  position: relative;
+  width: 80%;
+  background-color: antiquewhite;
+}
 
+a{
+  color: dodgerblue;
+}
 
 
 

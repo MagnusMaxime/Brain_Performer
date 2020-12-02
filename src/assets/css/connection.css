@@ -7,7 +7,7 @@ form {
     margin-right: auto;
     text-align:center;
 }
-input[type=email], input[type=password] {
+div.signin input[type=email], div.signin input[type=password] {
     width: 20%;
     padding: 10px 10px;
     margin: 5px 0;

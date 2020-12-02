@@ -66,10 +66,13 @@ $router =  new \App\Router\Router($url);
 });*/
 
 $router->get('/', "Home#index");
-    /* $router->get('/', function() use ($twig) {
-     echo $twig->render("index.html", array("nom"=>"Ferdinand Bardamu", "titre"=>"Titre de la page"));
+$router->get('/inscription', function() use ($twig) {
+     echo $twig->render("signup.html", ["title"=>"Inscription"]);
  });
- $router->get('/', "Home#index"); */
+$router->get('/faq', function() use ($twig) {
+    echo $twig->render("faq.html", ["title"=>"FAQ"]);
+});
+
 $router->get("/connexion", "Connection#show");
 
 $router->get("/inscription", "SignUp#render");
