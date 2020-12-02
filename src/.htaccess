@@ -1,8 +1,12 @@
-RewriteEngine on # on active le système de réecriture d'URL
+# on active le système de réecriture d'URL
+RewriteEngine on
 
+# RewriteBase /Users/marcpartensky/Programs/BrainPerformer/src/
 # si on veut acceder à n'importe quelle page, on redirige vers index.php
+
+# DocumentRoot "/Users/marcpartensky/Programs/BrainPerformer/src/"
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ index.php?url=$1 [NC,QSA,L]
 # ^(.*)$ expression régulière.
 # $1 est le contenu de l'url tapée
 #QSA on transfère les variable GET, L pour prendre en compte la dernier URL
