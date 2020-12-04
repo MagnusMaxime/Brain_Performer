@@ -38,6 +38,7 @@ require_once ('./Controller/HomeController.php');
 require_once ('./Controller/ProfileController.php');
 require_once ('./Controller/TestController.php');
 require_once ('./Controller/ConnectionController.php');
+require_once ('./Controller/RegisterController.php');
 require_once ('./Controller/ContactController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -67,16 +68,16 @@ $router =  new \App\Router\Router($url);
 });*/
 
 $router->get('/', "Home#index");
-$router->get('/inscription', function() use ($twig) {
-     echo $twig->render("signup.html", ["title"=>"Inscription"]);
- });
+/* $router->get('/inscription', function() use ($twig) { */
+/*      echo $twig->render("signup.html", ["title"=>"Inscription"]); */
+/*  }); */
 $router->get('/faq', function() use ($twig) {
     echo $twig->render("faq.html", ["title"=>"FAQ"]);
 });
 
 $router->get("/connexion", "Connection#show");
 $router->get("/contact", "Contact#show");
-$router->get("/inscription", "SignUp#render");
+$router->get("/inscription", "Register#show");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profile#index");
