@@ -2,14 +2,18 @@
 <html class="no-js" lang="fr">
 <head>
   {% include 'header.html' %}
+
+  {% block style %}{% endblock style %}
 </head>
 
 <body>
   {% include 'nav.html' %}
 
-  {% block content %}{% endblock %}
+  {% block content %}{% endblock content %}
 
   {% include 'footer.html' %}
+
+  {% block script %}{% endblock script %}
 </body>
 
 </html>

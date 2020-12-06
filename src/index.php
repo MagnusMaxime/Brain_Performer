@@ -44,6 +44,20 @@ require_once ('./Controller/ContactController.php');
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
 
+/* try */
+/* { */
+/*     // On se connecte à MySQL */
+/*     $bdd = new \PDO('mysql:host=localhost;dbname=brainperformer.db;charset=utf8', 'root', ''); */
+/* } */
+/* catch(\Exception $e) */
+/* { */
+/*     // En cas d'erreur, on affiche un message et on arrête tout */
+/*     die('Impossible de se connnecter à la base de donnée.'.$e->getMessage()); */
+/* } */
+
+/* $reponse = $bdd->query('SELECT * FROM jeux_video'); */
+/* echo $reponse; */
+
 /* \Twig\Loader\FilesystemLoader(__DIR__ . "/views"); */
 
 

@@ -1,9 +1,14 @@
 {% extends "layout.html" %}
 
+{% block style %}
+<link href="/assets/css/index.css" rel="stylesheet">
+{% endblock style %}
+
 {% block content %}
-<div class="container">
+<div class="main">
+    <div class="welcome"></div>
     <p> Your brain is the key. </p>
     <p> Notre startup est la meilleur car c'est notre projet.</p>
     <p> et tu t'appelles {{ nom }}.</p>
 </div>
-{% endblock %}
+{% endblock content %}
