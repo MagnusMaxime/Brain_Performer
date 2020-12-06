@@ -1,10 +1,61 @@
 .main {
-    background-color: white;
+    background-color: #A7DBD8;
+    padding-top: 1rem;
 }
 
 .welcome {
-    background-color: blue;
-    width: 100%;
-    height: 100%;
+    padding: 10rem;
+    margin: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+    border-color: #045A68;
+    border-style: solid;
+    height: 10rem;
+    background: rgb(4,90,104);
+    background: linear-gradient(328deg, rgba(4,90,104,1) 0%, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%);
+}
 
+.welcome hr {
+    background-color: black;
+    border: none;
+    height: 2px;
+}
+
+.welcome-down {
+}
+
+.welcome-down input {
+    margin: 1rem;
+    border-radius: 2rem;
+
+}
+
+.articles {
+    background-color: white;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.article-wrapper {
+    background-color: #A7DBD8;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.article {
+    background: white;
+    padding: 3rem;
+    padding-top: 1rem;
+}
+
+.article h3 {
+    font-size: 2rem;
+}
+
+.welcome input[type=text] {
+  padding: 6px;
+  border-radius: 5px
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
 }
