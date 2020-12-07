@@ -1,9 +1,5 @@
 /* Header */
 
-body
-{
-    background-color:#E0E4CC;
-}
 
 header
 {
@@ -21,15 +17,13 @@ header
 
 #logo
 {
-    display: flex;
+    border: 1px solid #ddd;
     flex-direction: row;
     align-items: baseline;
+    height: 50px;
 }
 
-#logo img
-{
-    width: 20%;
-}
+
 
 header h1
 {
@@ -66,7 +60,7 @@ nav a
     text-decoration: none;
 }
 
-nav a:hover
+nav a.item:hover
 {
     color: #760001;
     border-bottom: 3px solid #760001;

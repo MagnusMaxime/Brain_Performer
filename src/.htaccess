@@ -1,7 +1,8 @@
 RewriteEngine on # on active le système de réecriture d'URL
 
+# si on veut acceder à n'importe quelle page, on redirige vers index.php
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L] #si on veut acceder à n'importe quelle page, on redirige vers index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 # ^(.*)$ expression régulière.
 # $1 est le contenu de l'url tapée
 #QSA on transfère les variable GET, L pour prendre en compte la dernier URL
