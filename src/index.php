@@ -40,6 +40,7 @@ require_once ('./Controller/TestController.php');
 require_once ('./Controller/ConnectionController.php');
 require_once ('./Controller/RegisterController.php');
 require_once ('./Controller/ContactController.php');
+require_once ('./Controller/ExerciseController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
@@ -90,6 +91,7 @@ $router->get('/faq', function() use ($twig) {
 });
 
 $router->get("/connexion", "Connection#show");
+$router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
 
