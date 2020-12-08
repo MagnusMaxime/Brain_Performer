@@ -4,16 +4,25 @@
 <!--https://red-team-design.developpez.com/tutoriels/css/page-faq-css3/-->
 <link rel="stylesheet" type="text/css" href="/assets/css/faq.css" />
 
-<div id="bloc-page">
+<div id="bloc-page" class="main">
 
-    <section class="faq-section">
+    <div class="faq-section">
         <h1>Foire Aux Questions</h1>
-        <h2>Question 1</h2>
-        <input type="checkbox" id="q1">
-        <label for="q1">Question ?</label>
-        <p>... Le début de la réponse ...</p>
-        <p>... Suite de la réponse et paragraphes optionnels ...</p>
-    </section>
+        <div class="question">
+            <input type="checkbox" id="q1">
+            <label for="q1">Question ?</label>
+            <p>... Le début de la réponse ...</p>
+            <p>... Suite de la réponse et paragraphes optionnels ...</p>
+        </div>
+
+        <div class="question">
+            <input type="checkbox" id="q1">
+            <label for="q1">Question ?</label>
+            <p>... Le début de la réponse ...</p>
+            <p>... Suite de la réponse et paragraphes optionnels ...</p>
+        </div>
+
+    </div>
 </div>
 
 {% endblock %}
