@@ -91,9 +91,11 @@ $router->get('/faq', function() use ($twig) {
 });
 
 $router->get("/connexion", "Connection#show");
+
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
+$router->post("/inscription", "Register#register");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profile#index");
