@@ -6,6 +6,11 @@ html, body {
     font-family: 'Nunito', sans-serif;
 }
 
+div.center{
+    text-align: center;
+}
+
+
 /* body{ */
 /*   background-color: #E0E4CC; */
 /*   margin: 0%; */

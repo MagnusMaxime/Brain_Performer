@@ -1,7 +1,4 @@
 /* Espacement entre les questions */
-.faq-section{
-    margin: 40px 0;
-}
 
 /* Masquer les checkbox et les paragraphes */
 .faq-section input,
@@ -22,6 +19,17 @@
     overflow: hidden;
 }
 */
+
+.faq-section{
+
+    padding: 10%;
+    margin: 2%;
+    padding-top: 2rem;
+    border-color: #045A68;
+    border-style: solid;
+    height: 100%;
+}
+
 
 /* Si le checkbox est coché, montrer tous les paragraphes */
 .faq-section input[type=checkbox]:checked~p{
