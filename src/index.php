@@ -4,6 +4,14 @@
 
 namespace App;
 
+use PDO;
+
+define('DB_NAME', 'freedbtech_brainperformer');
+define('DB_USER', 'freedbtech_brainperformer');
+define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
+define('DB_HOST', 'freedb.tech');//Port : 3306
+
+
 require_once('../vendor/autoload.php');
 
 
@@ -44,7 +52,7 @@ require_once ('./Controller/ExerciseController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
-
+$DB = null;
 /* try */
 /* { */
 /*     // On se connecte à MySQL */
@@ -72,6 +80,15 @@ if (isset($_GET["url"])){
 }else {
     $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 }
+
+
+try {
+    $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+} catch (Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
+
+
 
 $router =  new \App\Router\Router($url);
 
@@ -104,3 +121,4 @@ $router->get('/profile/:id', "Profile#render");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 echo $router->run();
+
