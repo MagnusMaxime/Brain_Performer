@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<head>
+	<title>Inscription</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="/assets/css/Inscription.css" />
+</head>
+<body>
+	<section id="box2">
+		<nav id="articlerecent">
+			<p><a href="article récent 1">Article récent 1</a></p>
+				 <nav id="block"></nav>
+		</nav>
+		<nav id="articlerecent2">
+			<p><a href="article récent 2">Article récent 2</a></p>
+				<nav id="block"></nav>
+		</nav>
+	</section>
+	
+	<section id="box3">
+		<h2>Inscription</h2>
+		<p>Nom:</p><input type="text">
+		<p>Prénom:</p><input type="text">
+		<p>Identifiants:</p><input type="text">
+		<p>Email:</p><input type="email">
+		<p>Mot de passe</p><input type="password">
+		<p>Confirmer le Mot de passe</p><input type="password">
+		<input type="submit">
+	</section>
+</body>
+{% endblock %}
