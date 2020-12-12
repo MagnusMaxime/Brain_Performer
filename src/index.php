@@ -85,7 +85,7 @@ if (isset($_GET["url"])){
 
 try {
     $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
-} catch (Exception $e){
+} catch (\Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 
@@ -101,12 +101,16 @@ $router =  new \App\Router\Router($url);
 });*/
 
 $router->get('/', "Home#index");
-/* $router->get('/inscription', function() use ($twig) { */
-/*      echo $twig->render("signup.html", ["title"=>"Inscription"]); */
-/*  }); */
+$router->get('/cgu', function() use ($twig) {
+     echo $twig->render("CGU.html", ["title"=>"CGU"]);
+});
+
+
 $router->get('/faq', function() use ($twig) {
     echo $twig->render("faq.html", ["title"=>"FAQ"]);
 });
+
+
 
 $router->get("/connexion", "Connection#show");
 $router->post("/connexion", "Connection#connect");
@@ -114,7 +118,7 @@ $router->post("/connexion", "Connection#connect");
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
-/* $router->post("/inscription", "Register#register"); */
+$router->post("/inscription", "Register#register");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profil/:id', "User#index");

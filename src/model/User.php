@@ -28,6 +28,16 @@ class User{
         ];
         //var_dump($array);
         //var_dump($DB);
+				$req = $DB->prepare(
+					"SELECT `mail` FROM `user` WHERE (`mail`==:mail)"
+				);
+				$results = $req->execute(["mail" => $array["mail"]]);
+				echo $results;
+				if (!$results) {
+					echo "no results";
+					return false;
+				}
+
         $req = $DB->prepare(
             "INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar);");
         $req->execute($array);
@@ -50,7 +60,7 @@ class User{
             $_SESSION['urlavatar'] = $userinfo['urlavatar'];
             $_SESSION['updated'] = $userinfo['updated'];
             $_SESSION['created'] = $userinfo['created'];
-            header("Location: profil.php?id=".$_SESSION['id']);
+            header("Location: profil/".$_SESSION['id']);
             return true;
         } else {
             //Mauvais mail ou mot de passe !
