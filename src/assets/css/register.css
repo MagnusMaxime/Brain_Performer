@@ -25,8 +25,7 @@ div.signin input[type=email], div.signin input[type=password] {
     vertical-align: bottom;
     text-align: center;
     
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 25%;
     margin-top:2%;
     margin-bottom: 15%;
     border-radius: 15px;
