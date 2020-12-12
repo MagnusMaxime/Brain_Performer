@@ -8,7 +8,7 @@
 #sidebarex{
      width:20%;
      height: auto;
-     
+     margin-left: 5%;
      display: flex;
      flex-direction: column;
      
@@ -28,7 +28,7 @@
 .ARex:hover
 {
 	color :#A7DBDB;
-	border-bottom: #A7DBDB 3px solid; 
+	border-bottom: #760001 3px solid; 
 }
 .articlesex
 {
