@@ -78,7 +78,8 @@ ul
 	border:solid #A7DBD8 3px;
 	border-radius: 6px;
 	text-align: center;
-	margin-top: 1%;
+	
+
 	width: 50%;
 	margin-left: 25%;
 }
@@ -89,7 +90,7 @@ ul
 }
 .logo
 {
-	max-width: 80%;
-	max-height: 80%;
-	margin-left: 8%;
+	width: 324px;
+	height: 259.2px;
+	margin-left: 45px;
 }
