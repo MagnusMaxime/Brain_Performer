@@ -54,7 +54,7 @@
 {
 	
 	height: auto;
-	margin-left: 12%;
+	margin-left:6%;
 	display: flex;
 	flex-wrap: wrap;
 	;
@@ -67,9 +67,9 @@
 {
 	border:solid 6px #A7DBDB;
 	
-	height: 46%;
+	height: 48%;
 	width: 45%;
-	margin-top: 1%;
+	margin-top: 0%;
 	margin-right: 1%;
 	
 	text-align: center;
