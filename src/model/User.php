@@ -36,7 +36,7 @@ class User{
 
     static public function connect($mail, $password){
         global $DB;
-        $req = $DB->prepare("SELECT * FROM user WHERE mail = ? AND password = ?");
+        $req = $DB->prepare("SELECT * FROM `user` WHERE mail = ? AND password = ?");
         $req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
         $userexist = $req->rowCount();
         if($userexist == 1) {
