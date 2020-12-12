@@ -29,7 +29,7 @@ class RegisterController extends Controller
             return $twig->render('message.html', ["title"=>"Bravo", "message"=>"Votre inscription a bien été faite"]);
         }else{
             //ya eu un souci
-            return $twig->render('register.html', ["title"=>"Inscription pas ok"]);
+            return $twig->render('register.html', ["title"=>"Inscription pas ok", "alert_message"=>"Il y a eu un souci avec la base de donnée"]);
         }
 
         }
