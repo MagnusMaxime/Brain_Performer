@@ -85,7 +85,7 @@ if (isset($_GET["url"])){
 
 try {
     $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
-} catch (Exception $e){
+} catch (\Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 
@@ -114,7 +114,7 @@ $router->post("/connexion", "Connection#connect");
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
-/* $router->post("/inscription", "Register#register"); */
+$router->post("/inscription", "Register#register");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profil/:id', "User#index");
