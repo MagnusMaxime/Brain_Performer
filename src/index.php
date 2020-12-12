@@ -101,12 +101,16 @@ $router =  new \App\Router\Router($url);
 });*/
 
 $router->get('/', "Home#index");
-/* $router->get('/inscription', function() use ($twig) { */
-/*      echo $twig->render("signup.html", ["title"=>"Inscription"]); */
-/*  }); */
+$router->get('/cgu', function() use ($twig) {
+     echo $twig->render("CGU.html", ["title"=>"CGU"]);
+});
+
+
 $router->get('/faq', function() use ($twig) {
     echo $twig->render("faq.html", ["title"=>"FAQ"]);
 });
+
+
 
 $router->get("/connexion", "Connection#show");
 $router->post("/connexion", "Connection#connect");
