@@ -20,7 +20,7 @@ class RegisterController extends Controller
         //var_dump($_POST);
 
         if ($_POST["password"]!==$_POST["password-repeat"]){
-            return $twig->render('register.html', ["title"=>"Inscription pas ok"]);
+            return $twig->render('register.html', ["title"=>"Inscription pas ok", "alert_message"=>"Les mots de passe doivent correspondre"]);
         }
 
         $success=User::register($_POST);
