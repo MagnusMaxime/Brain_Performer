@@ -40,6 +40,7 @@ $app->run();*/
 
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
+require_once  ('./model/User.php');
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
