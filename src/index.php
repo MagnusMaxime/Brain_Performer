@@ -117,9 +117,7 @@ $router->get("/inscription", "Register#show");
 /* $router->post("/inscription", "Register#register"); */
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
-$router->get('/profil', "User#index");
-/* $router->get('/profile'); */
-$router->get('/profile/:id', "Profile#render");
+$router->get('/profil/:id', "User#index");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 echo $router->run();

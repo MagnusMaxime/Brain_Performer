@@ -10,14 +10,10 @@ class UserController extends Controller
         /* $this->viewPath = ROOT . '/Views/'; */
     }
 
-    public function render($id){
+    public function index($id){
         /* return "Je présente le profil ".$id; */
         global $twig;
         return $twig->render('user.html', ["user" => $id]);
-    }
-
-    public function index() {
-        return "La liste des profils est ici";
     }
 
     /* public function render($id) { */
