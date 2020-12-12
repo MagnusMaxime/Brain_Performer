@@ -109,6 +109,7 @@ $router->get('/faq', function() use ($twig) {
 });
 
 $router->get("/connexion", "Connection#show");
+$router->post("/connexion", "Connection#connect");
 
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
