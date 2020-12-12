@@ -7,6 +7,7 @@ form {
 }
 .container>*{
     display: block;
+    margin-top:5px;
     margin-left: auto;
     margin-right: auto;
     text-align:center;
@@ -18,4 +19,22 @@ div.signin input[type=email], div.signin input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+.container
+{
+    vertical-align: bottom;
+    text-align: center;
+    
+    margin-left: 25%;
+    margin-top:2%;
+    margin-bottom: 15%;
+    border-radius: 15px;
+    
+    background:linear-gradient(90deg,white,#A7DBD8,#36c0ee,#045a68);
+    justify-content: space-between;
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    width: 350px;
+    padding-bottom: 10px;
 }
