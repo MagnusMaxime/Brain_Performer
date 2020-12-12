@@ -1,3 +1,50 @@
+
+#titre_principal
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#logo
+{
+    border: 1px solid #ddd;
+    flex-direction: row;
+    align-items: baseline;
+    height: 50px;
+}
+
+nav {
+    margin-bottom: 10px;
+}
+
+nav ul
+{
+    list-style: none outside none;
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li
+{
+    margin: 0 10px;
+    display: inline;
+}
+
+nav a
+{
+    font-size: 1.3em;
+    color: #181818;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+nav a.item:hover
+{
+    color: #760001;
+    border-bottom: 3px solid #760001;
+}
+
 #menu-deroulant, #menu-deroulant ul {
     padding: 0;
     margin: 0;
@@ -5,17 +52,17 @@
 }
 
 #menu-deroulant {
-/* on centre le menu dans la page */
+    /* on centre le menu dans la page */
     text-align: left;
 }
 
 #menu-deroulant li {
-/* on place les liens du menu horizontalement */
+    /* on place les liens du menu horizontalement */
     display: inline-block;
 }
 
 #menu-deroulant ul li {
-/* on enlève ce comportement pour les liens du sous menu */
+    /* on enlève ce comportement pour les liens du sous menu */
     display: inherit;
     background-color: #E0E4CC;
     padding-top: 10px;
@@ -24,19 +71,19 @@
 #menu-deroulant a {
     text-decoration: none;
     display: block;
-	color:#000;
+    color:#000;
 }
 
 #menu-deroulant ul {
     position: absolute;
-/* on cache les sous menus complètement sur la gauche */
+    /* on cache les sous menus complètement sur la gauche */
     left: -999em;
     text-align: left;
     z-index: 1000;
 }
 
 #menu-deroulant li:hover ul {
-/* Au survol des li du menu on replace les sous menus */
+    /* Au survol des li du menu on replace les sous menus */
     left: 1.1%;
 }
 
