@@ -88,7 +88,7 @@ ul
 	box-shadow: 2px 2px 2px #A7DBD8 inset;
 	color:#A7DBD8;
 }
-#logo img
+#logo>img
 {
 	max-width: 100%;
 	max-height: 100%;
