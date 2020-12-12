@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--https://red-team-design.developpez.com/tutoriels/css/page-faq-css3/-->
+<link rel="stylesheet" type="text/css" href="/assets/css/faq.css" />
+
+<div id="bloc-page" class="main">
+
+    <div class="faq-section">
+        <h1>Foire Aux Questions</h1>
+        <div class="question">
+            <input type="checkbox" id="q1">
+            <label for="q1">Question ?</label>
+            <p>... Le début de la réponse ...</p>
+            <p>... Suite de la réponse et paragraphes optionnels ...</p>
+        </div>
+        <br>
+        <div class="question">
+            <input type="checkbox" id="q2">
+            <label for="q2">Question ?</label>
+            <p>... Le début de la réponse ...</p>
+            <p>... Suite de la réponse et paragraphes optionnels ...</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,8 +1,8 @@
-#footer{
+#footer {
     border: 1px solid #999;
     background-color: #69D2E7;
     width: 100%;
     text-align: center;
-    margin-top: 10%;
     padding: 0px;
+    /* bottom: 0px */
 }

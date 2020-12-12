@@ -1,34 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
-
-body{
-  background-color: #E0E4CC;
-  margin: 0%;
-  font : 15px Rockwell, sans-serif;
-  padding: 20px;
+html, body {
+    height: 100%;
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
 }
 
-.btn{
-  background-color: #ed5f00;
-  border-radius: 50px;
-  padding: 4px 20px 4px 20px;
-  transition: all 0.3s ease;
-}
-.btn:hover
-{
-  background-color: #ffc382;
-}
-nav a.btn:hover
-{
-  background-color: #ffc382;
-}
-img.logo-big{
-  height: 200px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+div.center{
+    text-align: center;
 }
 
 
+/* body{ */
+/*   background-color: #E0E4CC; */
+/*   margin: 0%; */
+/*   font : 15px Rockwell, sans-serif; */
+/*   height: 100%; */
+/* } */
 
+/* .btn{ */
+/*   background-color: #ed5f00; */
+/*   border-radius: 50px; */
+/*   padding: 4px 20px 4px 20px; */
+/*   transition: all 0.3s ease; */
+/* } */
+/* .btn:hover */
+/* { */
+/*   background-color: #ffc382; */
+/* } */
+/* nav a.btn:hover */
+/* { */
+/*   background-color: #ffc382; */
+/* } */
+/* img.logo-big{ */
+/*   height: 200px; */
+/*   display: block; */
+/*   margin-left: auto; */
+/*   margin-right: auto; */
+/* } */
 
+/* div#bloc-page{ */
+/*   margin: auto; */
+/*   position: relative; */
+/*   width: 80%; */
+/*   background-color: antiquewhite; */
+/* } */
 
+/* a{ */
+/*   color: dodgerblue; */
+/* } */

@@ -14,4 +14,3 @@ class Controller
     /* global $twig; */
     /* static $twig = $GLOBALS["twig"]; */
 }
-
