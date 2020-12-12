@@ -15,19 +15,23 @@ class User{
         //["password"]=> string(15) "AGsJyF4t6vX7QNX" ["password-repeat"]=> string(15) "AGsJyF4t6vX7QNX"
         //["bp-key"]=> string(2) "ze" ["rememberme"]=> string(2) "on" }
         $array = [
-            ""=>$data["email"],
             "firstname"=>$data["first-name"],
             "lastname"=>$data["last-name"],
+            "mail"=>$data["email"],
             "sex"=>$data["gender"]=="man" ? 0 : 1,
-            "birthdate"=>,
+            "birthdate"=>$data["birthday"],
             "token"=>$data["bp-key"],
             "password"=>password_hash($data["password"], PASSWORD_DEFAULT),//https://www.php.net/manual/fr/function.password-hash.php
-            "urlavatar"=>$data["url-avatar"],
             "language"=>"fr",//todo
-        ]
+            "urlavatar"=>$data["url-avatar"],
 
-        $req = $DB->prepare();
-
+        ];
+        //var_dump($array);
+        //var_dump($DB);
+        $req = $DB->prepare(
+            "INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar);");
+        $req->execute($array);
+        return true;
     }
 
 

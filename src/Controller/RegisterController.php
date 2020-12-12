@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Model\User;
+
 class RegisterController extends Controller
 {
     static public function show(){
@@ -18,12 +20,17 @@ class RegisterController extends Controller
         //var_dump($_POST);
 
         if ($_POST["password"]!==$_POST["password-repeat"]){
-
             return $twig->render('register.html', ["title"=>"Inscription pas ok"]);
         }
 
-        return $twig->render('message.html', ["title"=>"Bravo", "message"=>"Votre inscription a bien été faite"]);
-    }
+        $success=User::register($_POST);
+        if ($success){
+            //le compte a été ajouté à la base
+            return $twig->render('message.html', ["title"=>"Bravo", "message"=>"Votre inscription a bien été faite"]);
+        }else{
+            return $twig->render('register.html', ["title"=>"Inscription pas ok"]);
+        }
+        }
 
 }
 
