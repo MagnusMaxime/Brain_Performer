@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
     protected $viewPath;
 
@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function render($id){
         /* return "Je présente le profil ".$id; */
         global $twig;
-        return $twig->render('profile.html', ["profile" => $id]);
+        return $twig->render('user.html', ["user" => $id]);
     }
 
     public function index() {

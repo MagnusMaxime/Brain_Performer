@@ -44,7 +44,7 @@ require_once  ('./model/User.php');
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
-require_once ('./Controller/ProfileController.php');
+require_once ('./Controller/UserController.php');
 require_once ('./Controller/TestController.php');
 require_once ('./Controller/ConnectionController.php');
 require_once ('./Controller/RegisterController.php');
@@ -113,10 +113,10 @@ $router->get("/connexion", "Connection#show");
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
-$router->post("/inscription", "Register#register");
+/* $router->post("/inscription", "Register#register"); */
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
-$router->get('/profile', "Profile#index");
+$router->get('/profil', "User#index");
 /* $router->get('/profile'); */
 $router->get('/profile/:id', "Profile#render");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
