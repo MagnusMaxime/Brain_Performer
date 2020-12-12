@@ -2,12 +2,13 @@
 {
 	width: 100%;
 	height: 100%;
-
+	display:flex;
+	flex-direction: row;
 }
 #sidebarex{
-     width:10%;
-     height: 50%;
-     position:fixed;
+     width:20%;
+     height: auto;
+     
      display: flex;
      flex-direction: column;
      
@@ -22,9 +23,12 @@
 	width: 100%;
 	height: 9em;
 	border-bottom: solid black 3px;
-	
-
-
+	margin-top: 25%;
+}
+.ARex:hover
+{
+	color :#A7DBDB;
+	border-bottom: #A7DBDB 3px solid; 
 }
 .articlesex
 {
@@ -49,11 +53,12 @@
 .centre
 {
 	
-	height: 525px;
+	height: auto;
 	margin-left: 12%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	;
+	width: 90%;
 	
 
 }
@@ -62,15 +67,19 @@
 {
 	border:solid 6px #A7DBDB;
 	
-	height: 45%;
-	width: 40%;
-	margin-top: 1px;
-	margin-right: 10px;
+	height: 46%;
+	width: 45%;
+	margin-top: 1%;
+	margin-right: 1%;
 	
 	text-align: center;
+}
+.exercices:hover
+{
+	color :#A7DBDB;
+	box-shadow: 1px 1px 1px 1px inset #A7DBDB;
 	
-
-
+	text-decoration: underline;
 
 }
 .blocks
@@ -78,7 +87,7 @@
 	display: flex;
 	flex-direction: row;
 	height: 200px;
-
+	margin-top: 15%;
 
 }
 .blockex
