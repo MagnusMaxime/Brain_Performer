@@ -4,6 +4,14 @@
 
 namespace App;
 
+use PDO;
+
+define('DB_NAME', 'freedbtech_brainperformer');
+define('DB_USER', 'freedbtech_brainperformer');
+define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
+define('DB_HOST', 'freedb.tech');//Port : 3306
+
+
 require_once('../vendor/autoload.php');
 
 
@@ -40,10 +48,11 @@ require_once ('./Controller/TestController.php');
 require_once ('./Controller/ConnectionController.php');
 require_once ('./Controller/RegisterController.php');
 require_once ('./Controller/ContactController.php');
+require_once ('./Controller/ExerciseController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
-
+$DB = null;
 /* try */
 /* { */
 /*     // On se connecte à MySQL */
@@ -72,6 +81,15 @@ if (isset($_GET["url"])){
     $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 }
 
+
+try {
+    $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+} catch (Exception $e){
+    die('Erreur : ' . $e->getMessage());
+}
+
+
+
 $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
@@ -90,8 +108,11 @@ $router->get('/faq', function() use ($twig) {
 });
 
 $router->get("/connexion", "Connection#show");
+
+$router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
 $router->get("/inscription", "Register#show");
+$router->post("/inscription", "Register#register");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profile', "Profile#index");
@@ -100,3 +121,4 @@ $router->get('/profile/:id', "Profile#render");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 echo $router->run();
+
