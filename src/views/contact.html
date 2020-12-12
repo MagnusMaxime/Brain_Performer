@@ -1,7 +1,33 @@
 {% extends "layout.html" %}
-
+{% block style %}
+	<link rel = "stylesheet" href = "/assets/css/stylecontact.css"/>
+{% endblock style %}
 {% block content %}
-<p>ça a débuté comme ça.</p>
-{% endblock %}
+	<div id="pagecontact">
+		<section class="gauche">
+			<div class="cadre">
+				<h1>Contactez un administrateur par messagerie interne</h1>
+					<form>
+		<label for = "ask"> Dîtes-nous tout:</label><br>
+		<textarea cols="60" rows="17"></textarea>
+	</form>
+	<div class = "buttons">
+		<div class ="button"><span>Envoyer</span></div></div></section>
 
+		<section class="droite">
+			<div class="cadre">
+				<h1>Contactez un administrateur par courrier électronique</h1>
 
+				<div class="petitcadre">
+					<p> Pour toute question, vous pouvez également nous contacter par email. Un membre de notre équipe vous répondra dans les plus brefs délais. </p>
+					<div class = "logo"> <img class = "Logo" src="/assets/img/logo.png"></a> </div>
+					<div class="boutonmailto">
+						<div class ="mailto">Contactez-nous !</div></div></div></div>
+				
+				</div></section>
+			</div>
+
+		</section>
+
+	</div>
+	{% endblock content %}
