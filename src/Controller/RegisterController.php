@@ -28,8 +28,10 @@ class RegisterController extends Controller
             //le compte a été ajouté à la base
             return $twig->render('message.html', ["title"=>"Bravo", "message"=>"Votre inscription a bien été faite"]);
         }else{
+            //ya eu un souci
             return $twig->render('register.html', ["title"=>"Inscription pas ok"]);
         }
+
         }
 
 }

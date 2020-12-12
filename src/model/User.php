@@ -34,5 +34,29 @@ class User{
         return true;
     }
 
+    static public function connect($mail, $password){
+        global $DB;
+        $req = $DB->prepare("SELECT * FROM membres WHERE mail = ? AND motdepasse = ?");
+        $req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
+        $userexist = $req->rowCount();
+        if($userexist == 1) {
+            $userinfo = $req->fetch();
+            $_SESSION['id'] = $userinfo['id'];
+            $_SESSION['firstname'] = $userinfo['firstname'];
+            $_SESSION['lastname'] = $userinfo['lastname'];
+            $_SESSION['mail'] = $userinfo['mail'];
+            $_SESSION['sex'] = $userinfo['sex'];
+            $_SESSION['language'] = $userinfo['language'];
+            $_SESSION['urlavatar'] = $userinfo['urlavatar'];
+            $_SESSION['updated'] = $userinfo['updated'];
+            $_SESSION['created'] = $userinfo['created'];
+            header("Location: profil.php?id=".$_SESSION['id']);
+            return true;
+        } else {
+            //Mauvais mail ou mot de passe !
+            return false;
+        }
+
+    }
 
 }
