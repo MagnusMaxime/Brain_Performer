@@ -1,0 +1,22 @@
+#CGU
+{
+	border: 10px white solid;
+	text-align: center;
+	padding: 12px;
+	margin: auto;
+	background:linear-gradient(90deg,white,#A7DBD8,#36c0ee,#045a68);
+}	
+
+h2
+{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+p,ul
+{
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
+	width:50%;
+}

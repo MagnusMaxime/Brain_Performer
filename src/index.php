@@ -40,10 +40,11 @@ $app->run();*/
 
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
+require_once  ('./model/User.php');
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
-require_once ('./Controller/ProfileController.php');
+require_once ('./Controller/UserController.php');
 require_once ('./Controller/TestController.php');
 require_once ('./Controller/ConnectionController.php');
 require_once ('./Controller/RegisterController.php');
@@ -84,7 +85,7 @@ if (isset($_GET["url"])){
 
 try {
     $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
-} catch (Exception $e){
+} catch (\Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
 
@@ -100,14 +101,19 @@ $router =  new \App\Router\Router($url);
 });*/
 
 $router->get('/', "Home#index");
-/* $router->get('/inscription', function() use ($twig) { */
-/*      echo $twig->render("signup.html", ["title"=>"Inscription"]); */
-/*  }); */
+$router->get('/cgu', function() use ($twig) {
+     echo $twig->render("CGU.html", ["title"=>"CGU"]);
+});
+
+
 $router->get('/faq', function() use ($twig) {
     echo $twig->render("faq.html", ["title"=>"FAQ"]);
 });
 
+
+
 $router->get("/connexion", "Connection#show");
+$router->post("/connexion", "Connection#connect");
 
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
@@ -115,9 +121,7 @@ $router->get("/inscription", "Register#show");
 $router->post("/inscription", "Register#register");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
-$router->get('/profile', "Profile#index");
-/* $router->get('/profile'); */
-$router->get('/profile/:id', "Profile#render");
+$router->get('/profil/:id', "User#index");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 echo $router->run();
