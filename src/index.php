@@ -86,14 +86,11 @@ if (isset($_GET["url"])){
     $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 }
 
-
 try {
     $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
 } catch (\Exception $e){
     die('Erreur : ' . $e->getMessage());
 }
-
-
 
 $router =  new \App\Router\Router($url);
 
@@ -109,12 +106,9 @@ $router->get('/cgu', function() use ($twig) {
      echo $twig->render("CGU.html", ["title"=>"CGU"]);
 });
 
-
 $router->get('/faq', function() use ($twig) {
     echo $twig->render("faq.html", ["title"=>"FAQ"]);
 });
-
-
 
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");

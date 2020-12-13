@@ -26,11 +26,7 @@ class User {
 		error_log($query);
 		$req = $DB->prepare($query);
 		$results = $req->execute($conditions);
-		if (!$results) {
-			return false;
-		} else {
-			return true;
-		}
+		return !$results;
 	}
 
 	/**
@@ -96,6 +92,11 @@ class User {
 				/* $this->created = $user_row["created"]; */
 				/* $this->updated = $user_row["updated"]; */
 				/* $this->grade = $user_row["grade"]; */
+	}
+
+
+	public function getId() {
+		return $this->id;
 	}
 
 	/**
