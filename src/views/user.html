@@ -1,7 +1,31 @@
 {% extends "layout.html" %}
 
+{% block style %}
+<link type="text/css" rel="stylesheet" href="/assets/css/user.css">
+{% endblock style %}
+
 {% block content %}
-<div class="container">
+<div class="user">
+	<div class="info">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<div class="card">
+			<img src="{{urlavatar}}" alt="John" style="width:100%">
+			<h1>{{firstname}} {{lastname}}</h1>
+			<p class="title">CEO & Founder, Example</p>
+			<p>Harvard University</p>
+			<a href="#"><i class="fa fa-dribbble"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a class="mail" href="mailto:{{mail}}">Mail</a>
+			<footer>
+				<p>Crée le {{created}}</p>
+				<p>Modifié le {{updated}}</p>
+			</footer>
+		</div>
+	</div>
+	<div class="dashboard">
+	</div>
     <p> this is a test </p>
     <p> Voici le profil de {{ user }}, ce gros fdp.</p>
 </div>

@@ -2,18 +2,27 @@
 
 namespace App\Controller;
 
+use App\Model\User;
+
 class UserController extends Controller
 {
-    protected $viewPath;
+    /* protected $viewPath; */
 
-    public function __construct() {
+    /* public function __construct() { */
         /* $this->viewPath = ROOT . '/Views/'; */
-    }
+    /* } */
 
     public function index($id){
-        /* return "Je présente le profil ".$id; */
-        global $twig;
-        return $twig->render('user.html', ["user" => $id]);
+			/* return "Je présente le profil ".$id; */
+			if (!User::does_exist(["id" => $id])) {
+				http_response_code(404);
+				throw "This user does not exist!";
+			} else {
+				http_response_code(200);
+			}
+			$user = new User($id);
+			global $twig;
+			return $twig->render('user.html', $user->$get_info());
     }
 
     /* public function render($id) { */

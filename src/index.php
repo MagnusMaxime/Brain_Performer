@@ -14,6 +14,10 @@ define('DB_HOST', 'freedb.tech');//Port : 3306
 
 require_once('../vendor/autoload.php');
 
+/* function log($variable) { */
+/* 	error_log(print_r($variable, TRUE)); */
+/* } */
+
 
 /*$app = new Silex\Application(); #https://silex.symfony.com/
 $app['debug'] = true;
@@ -112,13 +116,13 @@ $router->get('/faq', function() use ($twig) {
 
 
 
-$router->get("/connexion", "Connection#show");
-$router->post("/connexion", "Connection#connect");
+$router->get("/connexion", "Connection#get");
+$router->post("/connexion", "Connection#post");
 
 $router->get("/exercices", "Exercise#showExercises");
 $router->get("/contact", "Contact#show");
-$router->get("/inscription", "Register#show");
-$router->post("/inscription", "Register#register");
+$router->get("/inscription", "Register#get");
+$router->post("/inscription", "Register#post");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profil/:id', "User#index");
