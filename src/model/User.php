@@ -26,6 +26,7 @@ class User {
 		error_log($query);
 		$req = $DB->prepare($query);
 		$results = $req->execute($conditions);
+		error_log($results);
 		return !$results;
 	}
 

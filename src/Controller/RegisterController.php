@@ -20,7 +20,7 @@ class RegisterController extends Controller
 				["title"=>"Inscription pas ok", "alert"=>"Les mots de passe doivent correspondre."]);
 		}
 
-		if (User::does_exist(["mail" => $_POST["email"]])) {
+		if (User::does_exist(["mail" => $_POST["mail"]])) {
 			return $twig->render('register.html',
 				["title"=>"Inscription pas ok", "alert"=>"Ce mail est déjà utilisé."]);
 		}
