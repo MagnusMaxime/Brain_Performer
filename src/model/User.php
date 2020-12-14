@@ -25,7 +25,7 @@ class User {
 		$conditions_query = join(", ", $conditions_query_array);
 		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
 		error_log($query);
-		console_log($query);
+
 		$req = $DB->prepare($query);
 		$results = $req->execute($conditions);
 		error_log($results);
@@ -36,7 +36,7 @@ class User {
 	 * On suppose que l'on a déjà vérifié si les informations de l'utilisateur lui
 	 * permettent de créer un compte.
 	 */
-	static public function register($data){
+	static public function register($data){//inscrit et connect un utilisateur
 			global $DB;
 			$user_row = [
 					"firstname"=>$data["firstname"],
@@ -52,8 +52,8 @@ class User {
 
 			$req = $DB->prepare(
 					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar);");
-			$req->execute($user_row);
-			$user = new User($id);
+			$info=$req->execute($user_row);
+            $user = self::connect($data["mail"], $data["password"]);//Après l'inscription on connecte l'utilisateur d'office
 			return $user;
 	}
 
@@ -76,6 +76,10 @@ class User {
 			global $DB;
 			$req = $DB->prepare("SELECT * FROM `user` WHERE mail = ? AND password = ?");
 			$req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
+			if ($req->rowCount()<=0){
+			    //La connexion a échouée
+                return false;
+            }
 			$user_row = $req->fetch();
 			$user = new User($user_row["id"]);
 			$user->setup_session();

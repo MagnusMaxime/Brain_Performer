@@ -16,7 +16,7 @@ class UserController extends Controller
 			/* return "Je présente le profil ".$id; */
 			if (!User::does_exist(["id" => $id])) {
 				http_response_code(404);
-				throw "This user does not exist!";
+				throw new \Exception("This user does not exist!");
 			} else {
 				http_response_code(200);
 			}
