@@ -26,12 +26,13 @@ class RegisterController extends Controller
 		}
 
 		$user = User::register($_POST);
-		echo $user->$id;
-		header("Location: /profil/" . $user->$id);
+		if (!$user){
+		    //il y a eu un problème dans l'inscripition
+            return $twig->render('register.html',
+                ["title"=>"Inscription pas ok", "alert"=>"Erreur inconnue"]);
+        }
+		//echo $user->$id;
+		//header("Location: /profil/".$user->$id);
+        return $twig->render("message.html", ["message"=>"vous êtes inscrit et votre id est ".$user->id]);
 	}
 }
-
-// Trucs d'Alexandre
-        //$_POST=[["first-name"]=> string(2) "ze" ["last-name"]=> string(2) "ze" ["url-avatar"]=> string(0) "" ["gender"]=> string(3) "man" ["birthday"]=> string(10) "2020-12-22" ["email"]=> string(2) "ze" ["password"]=> string(15) "AGsJyF4t6vX7QNX" ["password-repeat"]=> string(15) "AGsJyF4t6vX7QNX" ["bp-key"]=> string(2) "ze" ["rememberme"]=> string(2) "on" }
-
-        //var_dump($_POST);
