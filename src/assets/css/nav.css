@@ -101,16 +101,7 @@
 }
 
 /* background des liens menus et sous menus au survol */
-#menu-demo2 li:first-child:hover, #menu-demo2 li:first-child li:hover{
-    background:#729EBF;
-}
-#menu-demo2 li:nth-child(2):hover, #menu-demo2 li:nth-child(2) li:hover{
-    background:#729EBF;
-}
-#menu-demo2 li:nth-child(3):hover, #menu-demo2 li:nth-child(3) li:hover{
-    background:#729EBF;
-}
-#menu-demo2 li:last-child:hover, #menu-demo2 li:last-child li:hover{
+#menu-demo2 li:hover, #menu-demo2 li li:hover{
     background:#729EBF;
 }
 
@@ -119,7 +110,7 @@
     text-decoration:none;
     display:block;
     padding:8px 32px;
-    color:#fff;
+    color:black;
 }
 
 #menu-demo2 ul a{
@@ -127,7 +118,6 @@
 }
 
 #menu-demo2 li:hover li a{
-    color:#fff;
     text-transform:inherit;
 }
 
