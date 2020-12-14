@@ -55,6 +55,7 @@
 /* .submenu{ */
 /*     display: none; */
 /* } */
+	/* position: sticky; */
 #menu-demo2 {
 	box-shadow:
 		 0 -3em 3em rgba(0,0,0,0.1),
@@ -119,7 +120,9 @@
 
 /* background des liens menus et sous menus au survol */
 #menu-demo2 li:hover, #menu-demo2 li li:hover{
-    background: #eeeeee;
+    /* background: #36C0EE; */
+    background: linear-gradient(328deg, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%);
+    /* background: #eeeeee; */
 		/* box-shadow: */
 		/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
@@ -143,6 +146,5 @@
 }
 
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
-    /* background-color: #36C0EE; */
     /* color:black; */
 }
