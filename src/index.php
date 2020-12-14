@@ -54,6 +54,7 @@ require_once ('./Controller/ConnectionController.php');
 require_once ('./Controller/RegisterController.php');
 require_once ('./Controller/ContactController.php');
 require_once ('./Controller/ExerciseController.php');
+require_once('./Controller/LegalMentionsController.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
@@ -121,6 +122,9 @@ $router->post("/inscription", "Register#post");
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 $router->get('/profil/:id', "User#index");
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
+
+
+$router->get("/mentions-legales", "LegalMentions#show");
 
 echo $router->run();
 
