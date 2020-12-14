@@ -95,9 +95,8 @@
 
 /* background des liens menus */
 #menu-demo2 li {
-    background-color: #045A68;
-    background-image:-webkit-linear-gradient(top, white 0%, #A7DBD8 100%);
-    background-image:linear-gradient(to bottom, white 0%, #A7DBD8 100%);
+/*    background-image:-webkit-linear-gradient(top, white 0%, #A7DBD8 100%);
+    background-image:linear-gradient(to bottom, white 0%, #A7DBD8 100%); */
 }
 
 /* background des liens menus et sous menus au survol */
