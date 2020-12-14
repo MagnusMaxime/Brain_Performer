@@ -1,0 +1,22 @@
+#Mentions
+{
+	border: 10px #A7DBD8 solid;
+	text-align: center;
+	padding: 12px;
+	margin: auto;
+	background:white;
+}	
+
+h2
+{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+p,ul
+{
+	margin-left: 25%;
+	margin-right: 25%;
+	text-align: center;
+	width:50%;
+}
