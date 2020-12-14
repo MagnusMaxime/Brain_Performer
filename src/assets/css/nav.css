@@ -64,8 +64,9 @@
 
 /* Menu déroulant laid */
 #menu-demo2, #menu-demo2 ul{
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
+		margin-bottom: 2rem;
     list-style:none;
     text-align:center;
 }
@@ -73,6 +74,7 @@
 #menu-demo2 li{
     display:inline-block;
     position:relative;
+		padding: 1rem;
 }
 #menu-demo2 ul li{
     display:inherit;
@@ -84,9 +86,10 @@
 #menu-demo2 ul li:last-child{
 }
 #menu-demo2 ul{
-    position:absolute;
+    position: absolute;
     z-index: 1000;
     max-height:0;
+		top: 5.5rem;
     left: 0;
     right: 0;
     overflow:hidden;
@@ -96,39 +99,50 @@
 }
 
 #menu-demo2 li:hover ul{
-    max-height:15em;
+    max-height: 20em;
+    background: white;
+		/* padding-top: 2em; */
+		box-shadow:
+			 0.1em 0.3em 1em rgba(0,0,0,0.3);
 }
 
 /* background des liens menus */
-#menu-demo2 li {
+#menu-demo2 li li{
+		padding: 0;
 /*    background-image:-webkit-linear-gradient(top, white 0%, #A7DBD8 100%);
     background-image:linear-gradient(to bottom, white 0%, #A7DBD8 100%); */
+	/* box-shadow: */
+	/* 	 0 -3em 3em rgba(0,0,0,0.1), */
+	/* 	 0 0  0 2px rgb(255,255,255), */
+	/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
 
 /* background des liens menus et sous menus au survol */
 #menu-demo2 li:hover, #menu-demo2 li li:hover{
-    background:#729EBF;
+    background: #eeeeee;
+		/* box-shadow: */
+		/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
 
 /* les a href */
 #menu-demo2 a{
     text-decoration:none;
     display:block;
-    padding:8px 32px;
+    padding: 1em 2em;
     color:black;
 }
 
 #menu-demo2 ul a{
-    background-color: white;
-    padding:8px 0;
+    /* background-color: white; */
+    padding:2em 0;
 }
 
 #menu-demo2 li:hover li a{
     text-transform:inherit;
-    background-color: white;
+    /* background-color: white; */
 }
 
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
-    background-color: #36C0EE;
-    color:black;
+    /* background-color: #36C0EE; */
+    /* color:black; */
 }
