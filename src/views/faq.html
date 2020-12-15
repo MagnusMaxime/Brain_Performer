@@ -8,19 +8,16 @@
 
     <div class="faq-section">
         <h1>Foire Aux Questions</h1>
+
+        {% for question in faq %}
         <div class="question">
-            <input type="checkbox" id="q1">
-            <label for="q1">Question ?</label>
-            <p>... Le début de la réponse ...</p>
-            <p>... Suite de la réponse et paragraphes optionnels ...</p>
+            <input type="checkbox" id="q{{question.id}}">
+            <label for="q{{question.id}}">{{question.question}}</label>
+            <p>{{question.answer}}</p>
+
         </div>
-        <br>
-        <div class="question">
-            <input type="checkbox" id="q2">
-            <label for="q2">Question ?</label>
-            <p>... Le début de la réponse ...</p>
-            <p>... Suite de la réponse et paragraphes optionnels ...</p>
-        </div>
+        {% endfor %}
+
 
     </div>
 </div>

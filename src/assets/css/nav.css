@@ -154,6 +154,9 @@
 		/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
 
+.brain-logo{
+    width: 15%;
+}
 /* les a href */
 #menu-demo2 a{
     text-decoration:none;

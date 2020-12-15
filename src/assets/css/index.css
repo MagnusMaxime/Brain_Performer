@@ -9,7 +9,8 @@
     /* padding-top: 2rem; */
     text-align: center;
     background: rgb(4,90,104);
-    background-image: url("/assets/img/sous-la-mer.png");
+    background-image: url("/assets/img/merfondecran.jpg");
+    background-repeat:no-repeat;
     width: 100vw;
     height: 100vh;
   /*  background: linear-gradient(328deg, rgba(4,90,104,1) 0%, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%); */
