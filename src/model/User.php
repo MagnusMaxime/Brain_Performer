@@ -117,10 +117,10 @@ class User {
 	public function get_row() {
 		global $DB;
 		$req = $DB->prepare(
-			"SELECT * FROM `user` WHERE (`id`==:id)"
+			"SELECT * FROM `user` WHERE (`id`= :id)"
 		);
 		$results = $req->execute(["id" => $this->id]);
-		return $results[0];
+		return $req->fetch();
 	}
 
 	/**
