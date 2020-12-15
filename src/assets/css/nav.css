@@ -1,61 +1,5 @@
 /* #titre_principal */
-/* { */
-/*     display: flex; */
-/*     flex-direction: column; */
-/* } */
 
-/* #logo */
-/* { */
-/*     border: 1px solid #ddd; */
-/*     flex-direction: row; */
-/*     align-items: baseline; */
-/*     height: 50px; */
-/* } */
-
-/* nav { */
-/*     margin-bottom: 20%; */
-/* } */
-
-/* nav ul */
-/* { */
-/*     list-style: none outside none; */
-/*     margin:0; */
-/*     padding: 0; */
-/*     text-align: center; */
-/* } */
-
-/* nav li */
-/* { */
-/*     margin: 0 10px; */
-/*     display: inline; */
-/* } */
-
-/* nav a */
-/* { */
-/*     font-size: 1.3em; */
-/*     color: #181818; */
-/*     padding-bottom: 3px; */
-/*     text-decoration: none; */
-/* } */
-
-/* nav a.item:hover */
-/* { */
-/*     color: #760001; */
-/*     border-bottom: 3px solid #760001; */
-/* } */
-
-/* nav > ul >li{ */
-/*     float: left; */
-/* } */
-
-/* nav li{ */
-/*     list-style-type: none; */
-/* } */
-
-/* .submenu{ */
-/*     display: none; */
-/* } */
-	/* position: sticky; */
 #navbar {
 	top: 0;
 	position: sticky;
@@ -155,8 +99,15 @@
 }
 
 .brain-logo{
-    width: 15%;
+    position: relative;
+    top:30px;
+    max-width: 5.5%;
+    min-height: auto;
 }
+
+#image{
+}
+
 /* les a href */
 #menu-demo2 a{
     text-decoration:none;
