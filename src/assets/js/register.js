@@ -27,7 +27,9 @@ function manageToken(){
         document.querySelector("#token-label").hidden=true;
 
     }else{
-        document.querySelector("#hasToken").hidden=false;
+        //Il n'y a pas de token dans l'url
+        document.querySelector("#hasToken").hidden=true;
+        document.querySelector("#hasToken").remove();
         console.log("Il n'y a pas de token dans l'URL");
     }
 }
