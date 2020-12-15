@@ -5,14 +5,6 @@ namespace App\Controller;
 
 use App\Model\User;
 
-function checkRecaptcha($captcha)
-{
-    $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.urlencode(RECAPTCHA_SECRET_KEY).'&response=' . urlencode($captcha);
-    $response = file_get_contents($url);
-    $responseKeys = json_decode($response, true);
-    // should return JSON with success as true
-    return $responseKeys["success"];
-}
 
 
 class RegisterController extends Controller
@@ -25,7 +17,7 @@ class RegisterController extends Controller
 	static public function post() {//fonction appelée un fois que l'utilisateur à remplit le formulaire
 		global $twig;
 
-        if (!checkRecaptcha($_POST["g-recaptcha-response"])){
+        if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('register.html',
                 ["title"=>"Inscription pas ok", "alert"=>"Le reCAPTACHA n'a pas été validé"]);

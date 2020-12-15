@@ -12,6 +12,7 @@ define('DB_USER', 'freedbtech_brainperformer');
 define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
 define('DB_HOST', 'freedb.tech');//Port : 3306
 
+define("CONTACT_MAIL", "contact@brainperformer.fr");//mail de contact pour brainperformer
 
 require_once('../vendor/autoload.php');
 
@@ -47,6 +48,7 @@ $app->run();*/
 /* require_once('./config.php'); */
 require_once  ('./model/User.php');
 require_once ('./model/Faq.php');
+require_once ('./model/Ticket.php');
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
@@ -117,6 +119,7 @@ $router->post("/connexion", "Connection#post");
 
 $router->get("/exercices", "Exercise#show");
 $router->get("/contact", "Contact#show");
+$router->post("/contact", "Contact#send");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 
