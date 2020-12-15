@@ -7,6 +7,7 @@
 
 {% block content %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="/assets/js/register.js"></script>
 <div class="signup">
     <form action="" method="post">
         <div class="container">
@@ -41,9 +42,9 @@
             <label for="password-repeat"><b>Répétez votre mot de passe : </b></label>
             <input type="password" name="password-repeat" maxlength="50" placeholder="mot de passe" id="password-repeat" required>
 
-            <label for="token"><b>Entrez votre clée BrainPerformer : </b></label>
+            <label for="token" id="token-label"><b>Entrez votre clée BrainPerformer : </b></label>
             <input type="text" name="token" maxlength="50" placeholder="" id="token" required>
-
+            <p id="hasToken">Votre token a été pris en compte</p>
 
             <label>
                 <input type="checkbox" checked="checked" name="rememberme" id="rememberme"> Se souvenir de moi
