@@ -6,6 +6,7 @@ namespace App;
 
 use PDO;
 
+define("RECAPTCHA_SECRET_KEY", "6LfaqQcaAAAAACjDJ6ioUZ9aBQnPKVSLD7UXnv-e");
 define('DB_NAME', 'freedbtech_brainperformer');
 define('DB_USER', 'freedbtech_brainperformer');
 define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');

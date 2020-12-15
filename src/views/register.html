@@ -6,6 +6,7 @@
 
 
 {% block content %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <div class="signup">
     <form action="" method="post">
         <div class="container">
@@ -47,7 +48,7 @@
             <label>
                 <input type="checkbox" checked="checked" name="rememberme" id="rememberme"> Se souvenir de moi
             </label>
-
+            <div class="g-recaptcha" data-sitekey="6LfaqQcaAAAAAET55-9GYdOzE7dKZAuEaNxROBvp"></div>
             <div class="clearfix">
                 <a href="/inscription">
                     <button type="submit" class="signupbtn">S'inscrire</button>
