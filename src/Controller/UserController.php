@@ -13,9 +13,11 @@ class UserController extends Controller
     /* } */
 
     public function index($id){
+            global $twig;
 			/* return "Je présente le profil ".$id; */
 			if (!User::does_exist(["id" => $id])) {
 				http_response_code(404);
+				return $twig->render("message.html", ["message"=>"Le profil ".$id." n'existe pas :("]);
 				throw new \Exception("This user does not exist!");
 			} else {
 				http_response_code(200);

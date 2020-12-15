@@ -24,12 +24,13 @@ class User {
 		}
 		$conditions_query = join(", ", $conditions_query_array);
 		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
-		error_log($query, $conditions);
+		//error_log($query, $conditions);//Warning: error_log() expects parameter 2 to be int, array given in C:\wamp64\www\gh\BrainPerformer\src\model\User.php on line 27
 
 		$req = $DB->prepare($query);
 		$results = $req->execute($conditions);
-		error_log($results);
-		return !$results;
+		//error_log($results);
+		//return !$results;
+        return $req->rowCount()>=1;
 	}
 
 	/**
