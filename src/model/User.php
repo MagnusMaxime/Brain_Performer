@@ -77,7 +77,6 @@ class User {
 			global $DB;
 			$req = $DB->prepare("SELECT * FROM `user` WHERE mail = ? AND password = ?");
 			$result = $req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
-			error_log($result);
 			$row_count =$req->rowCount();
 			if ($row_count<=0){
 				error_log($row_count);

@@ -46,6 +46,7 @@ $app->run();*/
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
 require_once  ('./model/User.php');
+require_once ('./model/Faq.php');
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
@@ -57,6 +58,7 @@ require_once ('./Controller/ContactController.php');
 require_once ('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
 require_once('./Controller/IncidentController.php');
+require_once ("./Controller/FaqController.php");
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
@@ -109,10 +111,7 @@ $router->get('/cgu', function() use ($twig) {
      echo $twig->render("CGU.html", ["title"=>"CGU"]);
 });
 
-$router->get('/faq', function() use ($twig) {
-    echo $twig->render("faq.html", ["title"=>"FAQ"]);
-});
-
+$router->get("/faq", "Faq#show");
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");
 
