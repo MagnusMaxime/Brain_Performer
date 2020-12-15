@@ -142,8 +142,10 @@ class User {
 	public function get_info() {
 		$row = $this->get_row();
 		/* var_dump($row); */
-		$grade = $row["grade"];
+		$grade = $row["grade"] !== NULL ? $row["grade"] : 0;//todo parfois ya des NULL dans les grades
+
 		/* error_log($grade); */
+
 		return [
 			"firstname" => $row["firstname"],
 			"lastname" => $row["lastname"],
@@ -152,7 +154,7 @@ class User {
 			"urlavatar" => $row["urlavatar"],
 			"created" => $row["created"],
 			"updated" => $row["updated"],
-			"grade" => self::$grades[$grade]
+			"grade" => (self::$grades)[$grade]
 		];
 	}
 
