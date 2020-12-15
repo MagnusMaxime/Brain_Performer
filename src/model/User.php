@@ -20,16 +20,20 @@ class User {
 		global $DB;
 		$conditions_query_array = [];
 		foreach($conditions as $key => $value) {
-			array_push($conditions_query_array, "`".$key."`= :".$key);
+			array_push($conditions_query_array, "`".$key."` = '".$value."'");
 		}
 		$conditions_query = join(", ", $conditions_query_array);
 		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
-		error_log($query, $conditions);
+		error_log($query);
+		/* error_log(json_encode($conditions)); */
 
 		$req = $DB->prepare($query);
-		$results = $req->execute($conditions);
-		error_log($results);
-		return !$results;
+		$req->execute($conditions);
+		/* $results = $req->fetch(); */
+		/* error_log(json_encode($results)); */
+		/* error_log(!$results); */
+		error_log($req->rowCount());
+		return $req->rowCount()>=1;
 	}
 
 	/**
@@ -53,7 +57,7 @@ class User {
 			$req = $DB->prepare(
 					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar);");
 			$req->execute($user_row);
-			error_log($data);
+			error_log($user_row["urlavatar"]);
 			$user = self::connect($data["mail"], $data["password"]);//Après l'inscription on connecte l'utilisateur d'office
 			return $user;
 	}
@@ -63,10 +67,16 @@ class User {
 	 */
 	static public function match_password($mail, $password) {
 			global $DB;
-			$req = $DB->prepare("SELECT * FROM `user` WHERE mail = ? AND password = ?");
-			$req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
-			$user_exists = $req->rowCount();
-			return $user_exists == 1;
+			$sql = "SELECT password FROM `user` WHERE `mail` = '".$mail."'";
+			error_log($sql);
+			$req = $DB->prepare($sql);
+			/* $req->execute(["mail" => $mail, "password" => password_hash($password, PASSWORD_DEFAULT)]); */
+			$req->execute();
+			$password_hash = $req->fetch()[0];
+			/* $user_exists = $req->rowCount(); */
+			/* error_log($user_exists); */
+			/* return $user_exists == 1; */
+			return password_verify($password, $password_hash);
 	}
 
 	/**
@@ -75,10 +85,10 @@ class User {
 	 */
 	static public function connect($mail, $password){
 			global $DB;
-			$req = $DB->prepare("SELECT * FROM `user` WHERE mail = ? AND password = ?");
-			$result = $req->execute([$mail, password_hash($password, PASSWORD_DEFAULT)]);
+			$req = $DB->prepare("SELECT * FROM `user` WHERE mail = ?");
+			$result = $req->execute([$mail]);
 			error_log($result);
-			$row_count =$req->rowCount();
+			$row_count = $req->rowCount();
 			if ($row_count<=0){
 				error_log($row_count);
 				//La connexion a échouée
@@ -86,7 +96,7 @@ class User {
 				return false;
 			}
 			$user_row = $req->fetch();
-			$user = new User($user_row["id"]);
+			$user = new self($user_row["id"]);
 			$user->setup_session();
 			return $user;
 	}
@@ -117,10 +127,12 @@ class User {
 	public function get_row() {
 		global $DB;
 		$req = $DB->prepare(
-			"SELECT * FROM `user` WHERE (`id`==:id)"
+			"SELECT * FROM `user` WHERE (`id` = :id)"
 		);
-		$results = $req->execute(["id" => $this->id]);
-		return $results[0];
+		$req->execute(["id" => $this->id]);
+		$results = $req->fetch();
+		/* var_dump($results); */
+		return $results;
 	}
 
 	/**
@@ -129,14 +141,18 @@ class User {
 	 */
 	public function get_info() {
 		$row = $this->get_row();
+		/* var_dump($row); */
+		$grade = $row["grade"];
+		/* error_log($grade); */
 		return [
 			"firstname" => $row["firstname"],
 			"lastname" => $row["lastname"],
 			"mail" => $row["mail"],
 			"birthdate" => $row["birthdate"],
-			"created" => date('d/m/Y H:i:s', $row["created"]),
-			"updated" => date('d/m/Y H:i:s', $row["updated"]),
-			"grade" => User::$grades[$row["grade"]]
+			"urlavatar" => $row["urlavatar"],
+			"created" => $row["created"],
+			"updated" => $row["updated"],
+			"grade" => self::$grades[$grade]
 		];
 	}
 

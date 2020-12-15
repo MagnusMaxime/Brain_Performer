@@ -25,7 +25,7 @@ class ConnectionController extends Controller
 
         $user = User::connect($_POST["mail"], $_POST["password"]);
 
-				header("Location: profil/" . $user->get_id());
+				header("Location: profil/" . strval($user->get_id()));
 
         /* if ($success){ */
         /*     return $twig->render('message.html', ["title"=>"Profil", "message"=>"Vous êtes connecté, bravo !"]); */

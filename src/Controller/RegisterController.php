@@ -31,7 +31,6 @@ class RegisterController extends Controller
                 ["title"=>"Inscription pas ok", "alert"=>"Le reCAPTACHA n'a pas été validé"]);
         }
 
-
         if ($_POST["password"]!==$_POST["password-repeat"]){
 			return $twig->render('register.html',
 				["title"=>"Inscription pas ok", "alert"=>"Les mots de passe doivent correspondre."]);

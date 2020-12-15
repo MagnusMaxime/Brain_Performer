@@ -22,7 +22,7 @@ class UserController extends Controller
 			}
 			$user = new User($id);
 			global $twig;
-			return $twig->render('user.html', $user->$get_info());
+			return $twig->render('user.html', $user->get_info());
     }
 
     /* public function render($id) { */
