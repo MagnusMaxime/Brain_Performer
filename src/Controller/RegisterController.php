@@ -40,7 +40,7 @@ class RegisterController extends Controller
 	static public function post() {//fonction appelée un fois que l'utilisateur à remplit le formulaire
 		global $twig;
 
-        if (Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
+        if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('register.html',
                 ["title"=>"Inscription pas ok", "alert"=>"Le reCAPTACHA n'a pas été validé"]);
