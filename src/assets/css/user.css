@@ -1,16 +1,25 @@
-.user .card {
+.user .card 
+{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   text-align: center;
+  border: solid 6px #A7DBDB;
+  position: absolute;
+  top: 190px;
+  left: 150px;
+  width: 350px;
+
 }
 
-.user .title {
+.user .title
+ {
   color: grey;
   font-size: 18px;
 }
 
-.user .mail {
+.user .mail 
+{
   border: none;
   outline: 0;
   display: inline-block;
@@ -23,12 +32,73 @@
   font-size: 18px;
 }
 
-.user a {
+.user a
+ {
   text-decoration: none;
   font-size: 22px;
   color: black;
 }
 
-.user .mail:hover, a:hover {
+.user .mail:hover, a:hover 
+{
   opacity: 0.7;
+}
+
+.blockex
+{
+  width:40%;
+  height: 70%;
+  background-color: #045a68;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exercices
+
+{
+  border:3px #A7DBDB outset;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 47.15%;
+  width: 45%;
+  margin-top: 0%;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.blocks
+{
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  margin-top: 15%;
+
+}
+.centre
+{
+  
+  position: absolute;
+  top: 197px;
+  left: 50%;
+  width: 350px;
+  margin-left:2px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+#eff
+{
+  border:3px #A7DBDB outset;
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  width: 350px;
+  display: flex;
+  width: 46%;
+  box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
 }

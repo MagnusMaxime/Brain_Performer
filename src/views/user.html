@@ -1,27 +1,61 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link type="text/css" rel="stylesheet" href="/assets/css/user.css">
+<link rel="stylesheet" href="/assets/css/user.css">
 {% endblock style %}
 
 {% block content %}
 <div class="user">
 	<div class="info">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<div class="card">
-			<img src="{{urlavatar}}" alt="John" style="width:100%">
-			<h1>{{firstname}} {{lastname}}</h1>
-			<p class="title">CEO & Founder, Example</p>
-			<p>Harvard University</p>
-			<a href="#"><i class="fa fa-dribbble"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-linkedin"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a class="mail" href="mailto:{{mail}}">Mail</a>
-			<footer>
-				<p>Crée le {{created}}</p>
-				<p>Modifié le {{updated}}</p>
-			</footer>
-		</div>
+		<div id="box">
+			<div class="card">
+				<img src="{{urlavatar}}" alt="John" style="width:100%">
+				<h1>{{firstname}} {{lastname}}</h1>
+				<p> Voici le profil de {{ user }}.</p>
+				<p>Age:{{age}}</p>
+				<p>Date de naissance:{{birthday}}</p>
+				<a class="mail" href="mailto:{{mail}}">Mail</a>
+				<footer>
+					<p>Crée le {{created}}</p>
+					<p>Modifié le {{updated}}</p>
+				</footer>
+			</div>
+		</div>	
 	</div>
+	<div id="eff">
+	<h1>Derniers exercices éffectués</h1>
+	</div>
+	<section class="centre">
+			<div class="exercices"><a href ="#"></a>
+				<h1 class="titreexercices">Exercice 1</h1>
+				<div class="blocks">
+					<div class="blockex"></div>
+					<div class="blockex"></div>
+				</div>
+			</div>
+			<div class="exercices"><a href ="#"></a>
+				<h1 class="titreexercices">Exercice 2</h1>
+				<div class="blocks">
+					<div class="blockex"></div>
+					<div class="blockex"></div>
+				</div>
+			</div>
+			<div class="exercices"><a href ="#"></a>
+				<h1 class="titreexercices">Exercice 3</h1>
+				<div class="blocks">
+					<div class="blockex"></div>
+					<div class="blockex"></div>
+				</div>
+			</div>
+			<div class="exercices"><a href ="#"></a>
+				<h1 class="titreexercices">Exercice 4</h1>
+				<div class="blocks">
+					<div class="blockex"></div>
+					<div class="blockex"></div>
+				</div>
+			</div>
+
+	</section>
+</div>
 {% endblock %}
