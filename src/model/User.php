@@ -5,12 +5,15 @@ namespace App\Model;
 
 
 class User {
-	public static $grades = [
+	public static $grades = [//NE PAS CHANGER CE TABLEAU
 		"patient",
 		"médecin",
+        "gestionnaire",
 		"admin",
-		"dev"
+		"dev",
+
 	];
+
 
 	/**
 	 * Vérifie si un utilisateur existe dans la base de données sql
@@ -20,7 +23,7 @@ class User {
 		global $DB;
 		$conditions_query_array = [];
 		foreach($conditions as $key => $value) {
-			array_push($conditions_query_array, "`".$key."` = '".$value."'");
+            array_push($conditions_query_array, "`".$key."`= :".$key);
 		}
 		$conditions_query = join(", ", $conditions_query_array);
 		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
@@ -35,6 +38,7 @@ class User {
 		error_log($req->rowCount());
 		return $req->rowCount()>=1;
 	}
+
 
 	/**
 	 * On suppose que l'on a déjà vérifié si les informations de l'utilisateur lui
@@ -52,10 +56,12 @@ class User {
 					"password"=>password_hash($data["password"], PASSWORD_DEFAULT),//https://www.php.net/manual/fr/function.password-hash.php
 					"language"=>"fr",//todo
 					"urlavatar"=>$data["urlavatar"],
+                    "grade"=>$data["grade"],
+                    "parent"=>$data["parent"],
 			];
 
 			$req = $DB->prepare(
-					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar);");
+					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`, `grade`, `parent`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar, :grade, :parent);");
 			$req->execute($user_row);
 			error_log($user_row["urlavatar"]);
 			$user = self::connect($data["mail"], $data["password"]);//Après l'inscription on connecte l'utilisateur d'office
@@ -67,11 +73,11 @@ class User {
 	 */
 	static public function match_password($mail, $password) {
 			global $DB;
-			$sql = "SELECT password FROM `user` WHERE `mail` = '".$mail."'";
+			$sql = "SELECT password FROM `user` WHERE `mail` = :mail";
 			error_log($sql);
 			$req = $DB->prepare($sql);
 			/* $req->execute(["mail" => $mail, "password" => password_hash($password, PASSWORD_DEFAULT)]); */
-			$req->execute();
+            $req->execute(["mail"=>$mail]);
 			$password_hash = $req->fetch()[0];
 			/* $user_exists = $req->rowCount(); */
 			/* error_log($user_exists); */
@@ -145,17 +151,10 @@ class User {
 		$grade = $row["grade"] !== NULL ? $row["grade"] : 0;//todo parfois ya des NULL dans les grades
 
 		/* error_log($grade); */
+        $result=$row;//todo faire une copie
+        $result["grade"]=(self::$grades)[$grade];
 
-		return [
-			"firstname" => $row["firstname"],
-			"lastname" => $row["lastname"],
-			"mail" => $row["mail"],
-			"birthdate" => $row["birthdate"],
-			"urlavatar" => $row["urlavatar"],
-			"created" => $row["created"],
-			"updated" => $row["updated"],
-			"grade" => (self::$grades)[$grade]
-		];
+		return $result;
 	}
 
 	/*
@@ -173,6 +172,7 @@ class User {
 		$_SESSION['urlavatar'] = $info['urlavatar'];
 		$_SESSION['updated'] = $info['updated'];
 		$_SESSION['created'] = $info['created'];
+        $_SESSION['grade'] = $info['grade'];
 	}
 }
 

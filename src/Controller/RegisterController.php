@@ -3,7 +3,30 @@
 
 namespace App\Controller;
 
+use App\Model\Token;
 use App\Model\User;
+
+
+function randomPassword($len) {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    $pass = "";
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < $len; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass .= $alphabet[$n];
+    }
+    return $pass;
+}
+
+function getNewTokenForDoctor($len){
+    $token=randomPassword($len);
+    while (Token::isPatientToken($token) or Token::isDoctorToken($token)){
+        $token=randomPassword($len);
+    }
+    return $token;
+
+}
+
 
 
 
@@ -17,7 +40,7 @@ class RegisterController extends Controller
 	static public function post() {//fonction appelée un fois que l'utilisateur à remplit le formulaire
 		global $twig;
 
-        if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
+        if (Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('register.html',
                 ["title"=>"Inscription pas ok", "alert"=>"Le reCAPTACHA n'a pas été validé"]);
@@ -32,6 +55,41 @@ class RegisterController extends Controller
 			return $twig->render('register.html',
 				["title"=>"Inscription pas ok", "alert"=>"Ce mail est déjà utilisé."]);
 		}
+        $grade=-1;
+		$parent=0;
+		$token='';
+
+		if (Token::isDoctorToken($_POST["token"])){
+		    //C'est un médecin
+            $grade=array_search("médecin", User::$grades);
+            Token::destroyDoctorToken($_POST["token"]);//on détruit le token des token disponible pour des inscription médecin
+            //$token = getNewTokenForDoctor(10); //on génére un token pour les futurs patients du médecin
+            $token = $_POST["token"];//Le token associé au médecin est celui du formulaire
+            if ($grade===false){
+                throw new \Exception("Il n'y a pas 'médecin' dans les grades :(");
+            }
+        }else{
+		    $doctor=Token::isPatientToken($_POST["token"]);
+		    if ($doctor){
+		        //Inscription d'un patient qui a pour médecin $doctor
+                $grade=array_search("patient", User::$grades);
+                $parent=$doctor->id;
+                if ($grade===false){//NE PAS CHANGER EN !$grade
+                    throw new \Exception("Il n'y a pas 'patient' dans les grades :(");
+                }
+            }else{
+		        //le token ne correspond ni à un médecin ni à un patient
+                return $twig->render('register.html',
+                    ["title"=>"Inscription", "alert"=>"Votre token n'est pas valide"]);
+            }
+        }
+
+		$tokenEntered=$_POST["token"];
+
+        $_POST["grade"]=$grade;//todo pas beau
+        $_POST["parent"]=$parent;
+        $_POST["token"]=$token;//on écrase le token du formulaire
+
 
 		$user = User::register($_POST);
 		if (!$user){

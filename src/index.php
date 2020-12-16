@@ -49,6 +49,7 @@ $app->run();*/
 require_once  ('./model/User.php');
 require_once ('./model/Faq.php');
 require_once ('./model/Ticket.php');
+require_once ("./model/Token.php");
 require_once('./Router/Router.php');
 require_once('./Controller/Controller.php');
 require_once ('./Controller/HomeController.php');
