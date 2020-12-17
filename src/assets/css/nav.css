@@ -1,81 +1,10 @@
 /* #titre_principal */
-/* { */
-/*     display: flex; */
-/*     flex-direction: column; */
-/* } */
 
-/* #logo */
-/* { */
-/*     border: 1px solid #ddd; */
-/*     flex-direction: row; */
-/*     align-items: baseline; */
-/*     height: 50px; */
-/* } */
-
-/* nav { */
-/*     margin-bottom: 20%; */
-/* } */
-
-/* nav ul */
-/* { */
-/*     list-style: none outside none; */
-/*     margin:0; */
-/*     padding: 0; */
-/*     text-align: center; */
-/* } */
-
-/* nav li */
-/* { */
-/*     margin: 0 10px; */
-/*     display: inline; */
-/* } */
-
-/* nav a */
-/* { */
-/*     font-size: 1.3em; */
-/*     color: #181818; */
-/*     padding-bottom: 3px; */
-/*     text-decoration: none; */
-/* } */
-
-/* nav a.item:hover */
-/* { */
-/*     color: #760001; */
-/*     border-bottom: 3px solid #760001; */
-/* } */
-
-/* nav > ul >li{ */
-/*     float: left; */
-/* } */
-
-/* nav li{ */
-/*     list-style-type: none; */
-/* } */
-
-/* .submenu{ */
-/*     display: none; */
-/* } */
-	/* position: sticky; */
 #navbar {
 	top: 0;
 	position: sticky;
 	padding-bottom: 2em;
 }
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-/* .sticky { */
-/*   position: fixed; */
-/*   top: 0; */
-/*   width: 100%; */
-/* } */
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-/* #navbar + div { */
-/* 	padding-top: 80px; */
-/* } */
-/* body > div{ */
-/* 	/1* padding-top: 2em; *1/ */
-/* } */
 
 #menu-demo2 {
 	/* position: absolute; */
@@ -93,7 +22,6 @@
 #menu-demo2, #menu-demo2 ul{
     padding: 0;
     margin: 0;
-		/* margin-bottom: 2rem; */
     list-style:none;
     text-align:center;
 }
@@ -128,7 +56,6 @@
 #menu-demo2 li:hover ul{
     max-height: 20em;
     background: white;
-		/* padding-top: 2em; */
 		box-shadow:
 			 0.1em 0.3em 1em rgba(0,0,0,0.3);
 }
@@ -136,28 +63,20 @@
 /* background des liens menus */
 #menu-demo2 li li{
 		padding: 0;
-/*    background-image:-webkit-linear-gradient(top, white 0%, #A7DBD8 100%);
-    background-image:linear-gradient(to bottom, white 0%, #A7DBD8 100%); */
-	/* box-shadow: */
-	/* 	 0 -3em 3em rgba(0,0,0,0.1), */
-	/* 	 0 0  0 2px rgb(255,255,255), */
-	/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
 
 /* background des liens menus et sous menus au survol */
 #menu-demo2 li:hover, #menu-demo2 li li:hover{
-    /* background: #36C0EE; */
     background: linear-gradient(328deg, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%);
-	/* color: blue; */
-    /* background: #eeeeee; */
-		/* box-shadow: */
-		/* 	 0.3em 0.3em 1em rgba(0,0,0,0.3); */
 }
 
 .brain-logo{
-    width: 15%;
+    position: relative;
+    top:30px;
+    max-width: 5.5%;
+    min-height: auto;
 }
-/* les a href */
+
 #menu-demo2 a{
     text-decoration:none;
     display:block;
@@ -166,15 +85,12 @@
 }
 
 #menu-demo2 ul a{
-    /* background-color: white; */
     padding:2em 0;
 }
 
 #menu-demo2 li:hover li a{
     text-transform:inherit;
-    /* background-color: white; */
 }
 
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
-    /* color: linear-gradient(328deg, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%); */
 }
