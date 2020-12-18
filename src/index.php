@@ -12,6 +12,9 @@ define('DB_USER', 'freedbtech_brainperformer');
 define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
 define('DB_HOST', 'freedb.tech');//Port : 3306
 
+define("MAIL",'contact.brainperformer@gmail.com');
+define('PASSWORD', 'brainperformer');
+
 define("CONTACT_MAIL", "contact@brainperformer.fr");//mail de contact pour brainperformer
 
 require_once('../vendor/autoload.php');
