@@ -56,7 +56,7 @@
     position: absolute;
     z-index: 1000;
     max-height:0;
-		top: 5.5rem;
+		top: 4.5rem;
     left: 0;
     right: 0;
     overflow:hidden;
@@ -84,18 +84,14 @@
 
 
 .li-text a {
-	padding: 1em 2em;
+	padding: 0.5em 1em;
+	width: 6em;
 }
 
 #menu-demo2 a {
     text-decoration:none;
     display:block;
-    /* padding: 1em 2em; */
     color:black;
-}
-
-#menu-demo2 ul a{
-    padding:2em 0;
 }
 
 #menu-demo2 li:hover li a{
@@ -117,10 +113,15 @@
 		/* height: 4.5vh; */
 		/* width: 5%; */
 		/* height: 5%; */
-		padding: 0;
+		/* padding: 0; */
+		padding-left: 2em;
+		padding-right: 2em;
+		width: 6em;
 		margin: 0;
 		/* width: 7vw; */
-		height: 11vh;
+		/* height: 11vh; */
+		height: 4.5em;
+		/* width: 7em; */
 		display: block;
 		/* height: 8vh; */
 		/* height: auto; */
