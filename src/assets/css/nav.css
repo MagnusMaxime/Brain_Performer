@@ -6,6 +6,15 @@
 	padding-bottom: 2em;
 }
 
+/* Du responsif responsable */
+@media (max-width: 1000px) {
+	#navbar {
+		position: relative;
+	}
+}
+
+
+
 #menu-demo2 {
 	/* position: absolute; */
 	position: relative;
@@ -26,9 +35,12 @@
     text-align:center;
 }
 
-#menu-demo2 li{
-    display:inline-block;
-    position:relative;
+#menu-demo2 li {
+	display:inline-block;
+	position:relative;
+}
+
+#menu-demo2 .li-text {
 		padding: 1rem;
 }
 #menu-demo2 ul li{
@@ -70,17 +82,15 @@
     background: linear-gradient(328deg, rgba(54,192,238,1) 51%, rgba(255,255,255,1) 100%);
 }
 
-.brain-logo{
-    position: relative;
-    top:30px;
-    max-width: 5.5%;
-    min-height: auto;
+
+.li-text a {
+	padding: 1em 2em;
 }
 
-#menu-demo2 a{
+#menu-demo2 a {
     text-decoration:none;
     display:block;
-    padding: 1em 2em;
+    /* padding: 1em 2em; */
     color:black;
 }
 
@@ -93,4 +103,83 @@
 }
 
 #menu-demo2 li:hover a, #menu-demo2 li li:hover a{
+}
+
+#img-logo{
+    /* position: relative; */
+	/* position: absolute; */
+    /* top:30px; */
+    /* max-width: 5.5%; */
+    /* max-height: 5.5%; */
+    /* min-height: auto; */
+		/* object-fit: cover; */
+		/* width: 10.5vw; */
+		/* height: 4.5vh; */
+		/* width: 5%; */
+		/* height: 5%; */
+		padding: 0;
+		margin: 0;
+		/* width: 7vw; */
+		height: 11vh;
+		display: block;
+		/* height: 8vh; */
+		/* height: auto; */
+		/* top: 10vh; */
+
+		/* height: auto; */
+		/* position: absolute; */
+		/* height: 100%; */
+		/* width: 100%; */
+		/* display: flex; */
+		/* object-fit: contains; */
+	/* height: 2rem; */
+	/* width: 2rem; */
+}
+
+#a-logo {
+	/* object-fit: cover; */
+	padding: 0;
+	margin: 0;
+		/* top: 10vh; */
+	/* display: flex; */
+	/* display: block; */
+	/* width: 5.5%; */
+	/* height: 5.5%; */
+
+	/* width: 5.5%; */
+	/* height: 5.5%; */
+    /* max-width: 5.5%; */
+    /* max-height: 5.5%; */
+}
+
+#menu-demo2 {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 1000px) {
+	#menu-demo2 {
+		    flex-direction: column;
+	}
+}
+
+#li-logo {
+	/* display:inline-block; */
+	padding: 0;
+	margin: 0;
+	/* top: 50%; */
+	display: block;
+	/* position: absolute; */
+	height: auto;
+	/* display: flex; */
+	top: 50%;
+	/* display:inline-block; */
+	/* position: absolute; */
+	/* display: block; */
+	/* max-width: 5.5%; */
+	/* max-height: 5.5%; */
+	/* min-height: auto; */
 }
