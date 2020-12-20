@@ -21,7 +21,7 @@ class Controller
     return $responseKeys["success"];
     }
 
-    static public  function needToBeConnected(){
+    static public function needToBeConnected(){
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas conecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
             header("Location: /");//on le redirige à l'accueil
@@ -29,6 +29,22 @@ class Controller
         }
         return false;
     }
+
+    static public function needToBeAdmin(){
+        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas conecté
+            //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
+            header("Location: /");//on le redirige à l'accueil
+            return true;
+        } else if ($_SESSION["grade"]<=1){
+            //l'utilisateur est connecté mais c'est un patien ou un médecin
+            header("Location: /");//on le redirige à l'accueil
+            return true;
+        }
+        return false;
+    }
+
+
+
 
     static public function isAGoodPassword($pass){
         if(preg_match('/[A-Z]/', $pass)){

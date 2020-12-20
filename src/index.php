@@ -66,6 +66,7 @@ require_once('./Controller/LegalMentionsController.php');
 require_once('./Controller/IncidentController.php');
 require_once ("./Controller/FaqController.php");
 require_once ("./Controller/DeconnectionController.php");
+require_once ("./Controller/DashboardController.php");
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
@@ -137,6 +138,10 @@ $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/modifierprofil/:id", "User#displayEditPage");
 $router->post("/modifierprofil/:id", "User#modifyAccount");
+
+$router->get('/reglage', "Dashboard#show");
+$router->get('/gerer-faq', "Faq#manage");
+
 
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
