@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="/assets/css/user.css">
+<link rel="stylesheet" href="/assets/css/myAccount.css">
 {% endblock style %}
 
 {% block content %}
@@ -26,7 +26,9 @@
 				<p>Compte de {{USER.grade_name}} {{USER.public ? "public" : "privé"}}</p>
 
 
-				<p class="mail">Mail : {{USER.mail}}</p>
+				<p>Mail associé :
+					<span class="mail"> {{USER.mail}}</span>
+				</p>
 				<button onclick="window.location.href = '/modifierprofil/{{USER.id}}';">Modifier mon profil</button>
 				<footer>
 					<p>Crée le {{USER.created}}</p>
@@ -36,39 +38,6 @@
 		</div>	
 	</div>
 
-
-	<div id="eff">
-	<h1>Derniers exercices éffectués</h1>
-	</div>
-	<section class="centre">
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 1</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-			</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 2</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-			</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 3</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-			</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 4</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-			</div>
 
 	</section>
 </div>

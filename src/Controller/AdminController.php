@@ -23,7 +23,9 @@ class AdminUserController extends Controller
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('admin/user.html');
+			$users_info = User::get_all_info();
+			/* var_dump($users_info); */
+			return $twig->render('admin/users.html', ["users" => $users_info]);
 		}
 
 		/**
@@ -42,7 +44,7 @@ class AdminUserController extends Controller
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('adminUser.html');
+			return $twig->render('admin/user.html');
 		}
 
 		/* static public function userNew() { */
