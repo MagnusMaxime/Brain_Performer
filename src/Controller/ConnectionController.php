@@ -10,7 +10,7 @@ class ConnectionController extends Controller
 {
     static public function get() {
         global $twig;
-        return $twig->render('connection.html', []);
+        return $twig->render('connection.html', ["title"=>"Connexion"]);
     }
     static public function post() {
         global $twig;
@@ -33,6 +33,11 @@ class ConnectionController extends Controller
         /*     return $twig->render('connection.html', ["title"=>"Connexion", "alert_message"=>"Echec de l'authentification"]); */
         /* } */
 
+    }
+
+    static public function forgottenPassword(){
+        global $twig;
+        return $twig->render('forgottenPassword.html', ["title"=>"Mot de passe oublié"]);
     }
 
 }

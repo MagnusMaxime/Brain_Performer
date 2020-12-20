@@ -126,6 +126,7 @@ $router->get('/cgu', function() use ($twig) {
 $router->get("/faq", "Faq#show");
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");
+$router->get("/mot-de-passe-oublie", "Connection#forgottenPassword");
 $router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#show");
 $router->get("/contact", "Contact#show");
