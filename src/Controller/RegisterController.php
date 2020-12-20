@@ -28,6 +28,19 @@ function getNewTokenForDoctor($len){
 }
 
 
+function isAGoodPassword($pass){
+    if(preg_match('/[A-Z]/', $pass)){
+        // Il y a une majuscule dans le mot de passe
+        if(preg_match('/[a-z]/', $pass)){
+            // Il y a une minuscule dans le mot de passe
+            if(preg_match('/[0-9]/', $pass)){
+                // Il y a un nombre dans le mot de passe
+                return strlen($pass)>=5;//il faut au moins 5 caractère dans le mot de passe
+            }
+        }
+    }
+    return false;
+}
 
 
 class RegisterController extends Controller
@@ -43,18 +56,23 @@ class RegisterController extends Controller
         if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('register.html',
-                ["title"=>"Inscription pas ok", "alert"=>"Le reCAPTACHA n'a pas été validé"]);
+                ["title"=>"Inscription", "alert"=>"Le reCAPTACHA n'a pas été validé."]);
         }
 
         if ($_POST["password"]!==$_POST["password-repeat"]){
 			return $twig->render('register.html',
-				["title"=>"Inscription pas ok", "alert"=>"Les mots de passe doivent correspondre."]);
+				["title"=>"Inscription", "alert"=>"Les mots de passe doivent correspondre."]);
 		}
 
 		if (User::does_exist(["mail" => $_POST["mail"]])) {
 			return $twig->render('register.html',
-				["title"=>"Inscription pas ok", "alert"=>"Ce mail est déjà utilisé."]);
+				["title"=>"Inscription", "alert"=>"Ce mail est déjà utilisé."]);
 		}
+		if (!isAGoodPassword($_POST["password"])){
+            return $twig->render('register.html',
+                ["title"=>"Inscription", "alert"=>"Votre mot de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule et un nombre."]);
+        }
+
         $grade=-1;
 		$parent=0;
 		$token='';
