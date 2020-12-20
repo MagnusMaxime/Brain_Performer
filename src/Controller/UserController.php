@@ -31,18 +31,17 @@ class UserController extends Controller
 			}
 
 			if (isset($_SESSION["id"])){
-			    //l'utilisateur est conecté
-                if ($_SESSION['id']==$id){
-                    //l'utilisateur regarde son propre profil, on redirige vers /moncompte
-                    header("Location: /moncompte");
-                    return true;
-                }
-
-            }
+				//l'utilisateur est conecté
+				if ($_SESSION['id']==$id){
+					//l'utilisateur regarde son propre profil, on redirige vers /moncompte
+					header("Location: /moncompte");
+					return true;
+				}
+			}
 
 
 			$user = new User($id);
-			$user_info=$user->get_info();
+			$user_info = $user->get_info();
 			if (intval($user_info["public"])==0){
 			    //l'utilisateur que l'on veut afficher est privé
 							if ($_SESSION["grade"]==0){
@@ -64,7 +63,7 @@ class UserController extends Controller
 					}
 
 			global $twig;
-			$twig_array=$user->get_info();
+			$twig_array = $user->get_info();
 			$twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
 			//var_dump(isset($_SESSION['user']) ? $_SESSION['user'] : false);
 			return $twig->render('user.html', $twig_array);
@@ -152,9 +151,6 @@ class UserController extends Controller
             $twig_array["alert"]="Erreur inconnue.";
             return $twig->render('editAccount.html', $twig_array);
         }
-
-
-
     }
 
     /* public function render($id) { */

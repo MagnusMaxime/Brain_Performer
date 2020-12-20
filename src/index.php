@@ -134,15 +134,14 @@ $router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 
-$router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
+$router->get("/mentions-legales", "LegalMentions#show");
+$router->get("/incident", "Incident#show");
 
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/modifierprofil/:id", "User#displayEditPage");
 $router->post("/modifierprofil/:id", "User#modifyAccount");
 
-$router->get("/mentions-legales", "LegalMentions#show");
-$router->get("/incident", "Incident#show");
 
 # Admin
 $router->get('/admin', "Admin#index");
