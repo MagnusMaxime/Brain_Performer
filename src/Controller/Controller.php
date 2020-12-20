@@ -22,7 +22,7 @@ class Controller
     }
 
     static public function needToBeConnected(){
-        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas conecté
+        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
             header("Location: /");//on le redirige à l'accueil
             return true;
@@ -30,8 +30,19 @@ class Controller
         return false;
     }
 
+		static public function needToBeDev() {
+			if (!self::needToBeConnected()) {
+				return false;
+			}
+			if ($_SESSION["grade"]<=2) {
+				header("Location: /");
+				return true;
+			}
+			return false;
+		}
+
     static public function needToBeAdmin(){
-        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas conecté
+        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
             header("Location: /");//on le redirige à l'accueil
             return true;
@@ -42,9 +53,6 @@ class Controller
         }
         return false;
     }
-
-
-
 
     static public function isAGoodPassword($pass){
         if(preg_match('/[A-Z]/', $pass)){
@@ -59,5 +67,4 @@ class Controller
         }
         return false;
     }
-
 }
