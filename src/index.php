@@ -66,7 +66,6 @@ require_once('./Controller/LegalMentionsController.php');
 require_once('./Controller/IncidentController.php');
 require_once ("./Controller/FaqController.php");
 require_once ("./Controller/DeconnectionController.php");
-require_once ("./Controller/DashboardController.php");
 require_once ("./Controller/AdminController.php");
 
 session_start();
@@ -144,16 +143,13 @@ $router->post("/modifierprofil/:id", "User#modifyAccount");
 $router->get("/mentions-legales", "LegalMentions#show");
 $router->get("/incident", "Incident#show");
 
-# Dev
-$router->get('/reglage', "Dashboard#show");
-$router->get('/gerer-faq', "Faq#manage");
-$router->post('/gerer-faq', "Faq#post");
-
 # Admin
 $router->get('/admin', "Admin#index");
-$router->get('/admin/user/:id', "Admin#user");
-$router->post('/admin/user/:id', "Admin#user");
-$router->get('/admin/users', "Admin#users");
+$router->get('/admin/users', "AdminUser#users");
+$router->get('/admin/user/:id', "AdminUser#user");
+$router->post('/admin/user/:id', "AdminUser#user");
+$router->get('/admin/faq', "AdminFaq#get");
+$router->post('/admin/faq', "AdminFaq#post");
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 

@@ -11,9 +11,23 @@ class User {
         "gestionnaire",
 		"admin",
 		"dev",
-
 	];
 
+	/**
+	 * Récupère tout les utilisateurs.
+	 */
+	public static function get_all() {
+		global $DB;
+		$query = "SELECT `id` FROM `user`";
+		$req = $DB->prepare($query);
+		$req->execute();
+		$ids = $req->fetch();
+		$users = [];
+		foreach ($ids as $id) {
+			array_push($users, new self($id));
+		}
+		return $users;
+	}
 
 	/**
 	 * Vérifie si un utilisateur existe dans la base de données sql
