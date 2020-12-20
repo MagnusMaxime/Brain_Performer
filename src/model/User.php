@@ -202,7 +202,7 @@ class User {
 		$_SESSION['urlavatar'] = $info['urlavatar'];
 		$_SESSION['updated'] = $info['updated'];
 		$_SESSION['created'] = $info['created'];
-        $_SESSION['grade'] = $info['grade'];
+        $_SESSION['grade'] = $info['grade'];//int
         $_SESSION['public'] = $info['public'];
         $_SESSION['user'] = $info;
 	}
