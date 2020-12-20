@@ -141,6 +141,7 @@ $router->post("/modifierprofil/:id", "User#modifyAccount");
 
 $router->get('/reglage', "Dashboard#show");
 $router->get('/gerer-faq', "Faq#manage");
+$router->post('/gerer-faq', "Faq#post");
 
 
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
