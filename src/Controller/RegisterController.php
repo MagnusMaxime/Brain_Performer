@@ -40,25 +40,28 @@ class RegisterController extends Controller
 	static public function post() {//fonction appelée un fois que l'utilisateur à remplit le formulaire
 		global $twig;
 
+		$twig_array=$_POST;
+		$twig_array["title"]="Inscription";
+
         if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
-            return $twig->render('register.html',
-                ["title"=>"Inscription", "alert"=>"Le reCAPTACHA n'a pas été validé."]);
+            $twig_array["alert"]="Le reCAPTACHA n'a pas été validé.";
+            return $twig->render('register.html', $twig_array);
         }
 
         if ($_POST["password"]!==$_POST["password-repeat"]){
-			return $twig->render('register.html',
-				["title"=>"Inscription", "alert"=>"Les mots de passe doivent correspondre."]);
+            $twig_array["alert"]="Les mots de passe doivent correspondre.";
+			return $twig->render('register.html',$twig_array);
 		}
 
 		if (User::does_exist(["mail" => $_POST["mail"]])) {
-			return $twig->render('register.html',
-				["title"=>"Inscription", "alert"=>"Ce mail est déjà utilisé."]);
+		    $twig_array["alert"]="Ce mail est déjà utilisé.";
+			return $twig->render('register.html',$twig_array);
 		}
 
 		if (!self::isAGoodPassword($_POST["password"])){
-            return $twig->render('register.html',
-                ["title"=>"Inscription", "alert"=>"Votre mot de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule et un nombre."]);
+            $twig_array["alert"]="Votre mot de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule et un nombre.";
+            return $twig->render('register.html',$twig_array);
         }
 
         $grade=-1;
@@ -85,8 +88,8 @@ class RegisterController extends Controller
                 }
             }else{
 		        //le token ne correspond ni à un médecin ni à un patient
-                return $twig->render('register.html',
-                    ["title"=>"Inscription", "alert"=>"Votre token n'est pas valide"]);
+                $twig_array["alert"]="Votre token n'est pas valide";
+                return $twig->render('register.html',$twig_array);
             }
         }
 
@@ -100,8 +103,8 @@ class RegisterController extends Controller
 		$user = User::register($_POST);
 		if (!$user){
 		//il y a eu un problème dans l'inscripition
-				return $twig->render('register.html',
-						["title"=>"Inscription", "alert"=>"Erreur inconnue."]);
+            $twig_array["alert"]="Erreur inconnue.";
+            return $twig->render('register.html',$twig_array);
 		}
 		/* return $twig->render("message.html", ["message"=>"vous êtes inscrit et votre id est ".$user->id]); */
 
