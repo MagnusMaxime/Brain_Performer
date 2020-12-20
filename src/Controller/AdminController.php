@@ -23,26 +23,26 @@ class AdminUserController extends Controller
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('admin/user.html')
+			return $twig->render('admin/user.html');
 		}
 
 		/**
 		 * Update a user.
 		 */
-		static public function update(id) {
-			$_POST['id']
+		static public function update($id) {
+			/* $_POST['id'] */
 			global $twig;
 			if (self::needToBeAdmin()) {
 				return "";
 			}
 		}
 
-		static public function user(id) {
+		static public function user($id) {
 			global $twig;
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('adminUser.html')
+			return $twig->render('adminUser.html');
 		}
 
 		/* static public function userNew() { */
