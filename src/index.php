@@ -145,9 +145,9 @@ $router->get("/incident", "Incident#show");
 
 # Admin
 $router->get('/admin', "Admin#index");
-$router->get('/admin/users', "AdminUser#users");
-$router->get('/admin/user/:id', "AdminUser#user");
-$router->post('/admin/user/:id', "AdminUser#user");
+$router->get('/admin/profils', "AdminUser#users");
+$router->get('/admin/profil/:id', "AdminUser#user");
+$router->post('/admin/profil/:id', "AdminUser#user");
 $router->get('/admin/faq', "AdminFaq#get");
 $router->post('/admin/faq', "AdminFaq#post");
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
