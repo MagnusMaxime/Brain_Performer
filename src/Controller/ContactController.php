@@ -5,6 +5,9 @@ namespace App\Controller;
 
 
 use App\Model\Ticket;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Except;
 
 class ContactController extends Controller
 {
@@ -19,7 +22,38 @@ class ContactController extends Controller
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"reCAPTCHA non validé"]);
         }
-        $amil=new PHPMailer;
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;  // Enable verbose debug output
+            $mail->isSMTP();     // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com'; // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;   // Enable SMTP authentication
+            $mail->Username   = MAIL;     // SMTP username
+            $mail->Password   = MAIL_PASSWORD;  // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 587;   // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            // From email address and name
+            $mail->setFrom(MAIL, $_POST["name-mail"]);
+            // To email addresss
+            $mail->addAddress(MAIL);   // Add a recipient
+            //$mail->addReplyTo('reply@example.com', 'Reply'); // Recipent reply address
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');
+
+            // Content
+            $mail->isHTML(false);  // Set email format to HTML
+            $mail->Subject = '[Formulaire contact]'.$_POST["topic-message"];
+            $mail->Body    = $_POST["message-mail"];
+            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            $mail->send();
+            return $twig->render('message.html', ["title"=>"Mail envoyé","message"=>"Le mail a été envoyé à ".CONTACT_MAIL]);
+
+        } catch (Exception $e) {
+            return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"Erreur dans l'envoi du mail ".$mail->ErrorInfo]);
+
+        }
+
 
     }
 
