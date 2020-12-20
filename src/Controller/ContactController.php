@@ -19,7 +19,7 @@ class ContactController extends Controller
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"reCAPTCHA non validé"]);
         }
-        
+        $amil=new PHPMailer;
 
     }
 
