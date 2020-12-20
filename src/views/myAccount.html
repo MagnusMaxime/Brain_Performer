@@ -27,6 +27,7 @@
 
 
 				<p class="mail">Mail : {{USER.mail}}</p>
+				<button onclick="window.location.href = '/modifierprofil/{{USER.id}}';">Modifier mon profil</button>
 				<footer>
 					<p>Crée le {{USER.created}}</p>
 					<p>Modifié le {{USER.updated}}</p>
@@ -34,7 +35,7 @@
 			</div>
 		</div>	
 	</div>
-	<button onclick="window.location.href = '/modifierprofil/{{USER.id}}';">Modifier mon profil</button>
+
 
 	<div id="eff">
 	<h1>Derniers exercices éffectués</h1>

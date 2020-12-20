@@ -8,18 +8,18 @@
 
 <body>
 {% if USER is defined and USER %}
-
-    {% include 'navuser.html' %}
-
+    {% if USER.grade >=2 %}
+        {% include 'navadmin.html' %}
+    {% else %}
+        {% include 'navuser.html' %}
+    {% endif %}
 {% else %}
-
-  {% include 'nav.html' %}
-
+    {% include 'nav.html' %}
 {% endif %}
 
-	{% if alert %}
-		{% include 'alert.html' %}
-	{% endif %}
+{% if alert %}
+    {% include 'alert.html' %}
+{% endif %}
 
   {% block content %}{% endblock content %}
 

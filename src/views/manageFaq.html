@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div id="bloc-page" class="main">
+
+    <div class="faq-section">
+        <h1>Foire Aux Questions</h1>
+        <form action="" method="post">
+        {% for question in faq %}
+        <div class="question">
+
+            <label for="q{{question.id}}">Question :</label>
+            <input type="text" name="q{{question.id}}" placeholder="question" id="q{{question.id}}" required>
+
+            <label for="a{{question.id}}">Réponse :</label>
+            <textarea id="a{{question.id}}" name="a{{question.id}}" required>{{question.answer}}</textarea>
+
+            <button onclick="delete({{question.id}})">Supprimer</button>
+
+        </div>
+        {% endfor %}
+
+            <button type="submit">Sauvegarder</button>
+        </form>
+        <h2>Ajouter une question</h2>
+        <label for="q_add">Question :</label>
+        <input type="text" name="q_add" placeholder="question" id="q_add" required>
+
+        <label for="a_add">Réponse :</label>
+        <textarea id="a_add" name="a_add"></textarea>
+
+        <button onclick="add_question()">Ajouter la question</button>
+
+
+
+    </div>
+</div>
+
+{% endblock %}
