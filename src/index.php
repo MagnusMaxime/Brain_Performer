@@ -13,9 +13,9 @@ define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
 define('DB_HOST', 'freedb.tech');//Port : 3306
 
 define("MAIL",'contact.brainperformer@gmail.com');
-define('PASSWORD', 'brainperformer');
+define('MAIL_PASSWORD', 'brainperformer');
 
-define("CONTACT_MAIL", "contact@brainperformer.fr");//mail de contact pour brainperformer
+define("CONTACT_MAIL", "contact.brainperformer@gmail.com");//mail de contact pour brainperformer
 
 require_once('../vendor/autoload.php');
 
@@ -130,7 +130,7 @@ $router->post("/connexion", "Connection#post");
 $router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#show");
 $router->get("/contact", "Contact#show");
-$router->post("/contact", "Contact#send");
+$router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 
@@ -147,6 +147,7 @@ $router->get("/incident", "Incident#show");
 # Dev
 $router->get('/reglage', "Dashboard#show");
 $router->get('/gerer-faq', "Faq#manage");
+$router->post('/gerer-faq', "Faq#post");
 
 # Admin
 $router->get('/admin', "Admin#index");

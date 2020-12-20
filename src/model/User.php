@@ -58,7 +58,7 @@ class User {
 					"urlavatar"=>$data["urlavatar"],
                     "grade"=>$data["grade"],
                     "parent"=>$data["parent"],
-                    "public"=>$data["publicuser"]
+                    "public"=>$data["publicuser"]=="on" ? 1 : 0
 			];
 
 			$req = $DB->prepare(

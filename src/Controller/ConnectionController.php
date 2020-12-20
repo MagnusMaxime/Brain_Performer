@@ -16,7 +16,7 @@ class ConnectionController extends Controller
         global $twig;
         /* var_dump($_POST); */
 				if (!User::does_exist(["mail" => $_POST["mail"]])) {
-            return $twig->render('connection.html', ["title"=>"Connexion", "alert"=>"Cet email n'est pas reconnu."]);
+                return $twig->render('connection.html', ["title"=>"Connexion", "alert"=>"Cet email n'est pas reconnu."]);
 				}
 
 				if (!User::match_password($_POST["mail"], $_POST["password"])) {
