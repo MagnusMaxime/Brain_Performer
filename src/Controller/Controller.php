@@ -21,6 +21,13 @@ class Controller
     return $responseKeys["success"];
     }
 
-    
+    static public  function needToBeConnected(){
+        if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas conecté
+            //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
+            header("Location: /");//on le redirige à l'accueil
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -113,9 +113,10 @@ class RegisterController extends Controller
 		if (!$user){
 		//il y a eu un problème dans l'inscripition
 				return $twig->render('register.html',
-						["title"=>"Inscription pas ok", "alert"=>"Erreur inconnue"]);
+						["title"=>"Inscription", "alert"=>"Erreur inconnue"]);
 		}
 		/* return $twig->render("message.html", ["message"=>"vous êtes inscrit et votre id est ".$user->id]); */
-	header("Location: /profil/".$user->get_id());
+
+        header("Location: /profil/".$user->get_id());
 	}
 }

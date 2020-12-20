@@ -7,7 +7,15 @@
 </head>
 
 <body>
+{% if USER is defined and USER %}
+
+    {% include 'navuser.html' %}
+
+{% else %}
+
   {% include 'nav.html' %}
+
+{% endif %}
 
 	{% if alert %}
 		{% include 'alert.html' %}

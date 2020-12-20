@@ -12,9 +12,10 @@ class UserController extends Controller
         /* $this->viewPath = ROOT . '/Views/'; */
     /* } */
 
-    public function index($id){
+    public function publicDisplay($id){
+            //On affiche les donneés public du profil d'id $id
             global $twig;
-			/* return "Je présente le profil ".$id; */
+
 			if (!User::does_exist(["id" => $id])) {
 				http_response_code(404);
 				return $twig->render("message.html", ["message"=>"Le profil ".$id." n'existe pas :("]);
@@ -22,9 +23,38 @@ class UserController extends Controller
 			} else {
 				http_response_code(200);
 			}
+			if (isset($_SESSION["id"])){
+			    //l'utilisateur est conecté
+                if ($_SESSION['id']==$id){
+                    //l'utilisateur regarde son propre profil, on redirige vers /moncompte
+                    header("Location: /moncompte");
+                    return true;
+                }
+
+            }
+
 			$user = new User($id);
 			global $twig;
-			return $twig->render('user.html', $user->get_info());
+			$twig_array=$user->get_info();
+			$twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
+			var_dump(isset($_SESSION['user']) ? $_SESSION['user'] : false);
+			return $twig->render('user.html', $twig_array);
+    }
+
+    public function privateDisplay(){
+        //l'utilisateur est connecté et regarde son propre compte
+        global $twig;
+        if (self::needToBeConnected()){
+            //l'utilisateur est pas connecté et a besoin d'être connecté
+            return "";
+        } else{
+            //echo 'vous êtes co '+$_SESSION["id"];
+        }
+
+        $twig_array=["title"=>"Mon compte", "USER"=>isset($_SESSION['user']) ? $_SESSION['user'] : false];
+        $twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
+       
+        return $twig->render('myAccount.html', $twig_array);
     }
 
     /* public function render($id) { */

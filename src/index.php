@@ -65,9 +65,13 @@ require_once ('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
 require_once('./Controller/IncidentController.php');
 require_once ("./Controller/FaqController.php");
-
+require_once ("./Controller/DeconnectionController.php");
+session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
 $twig = new \Twig\Environment($loader, []);
+$USER = isset($_SESSION['user']) ? $_SESSION['user'] : false;
+$twig->addGlobal('USER', $USER);
+
 $DB = null;
 /* try */
 /* { */
@@ -120,7 +124,7 @@ $router->get('/cgu', function() use ($twig) {
 $router->get("/faq", "Faq#show");
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");
-
+$router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#show");
 $router->get("/contact", "Contact#show");
 $router->post("/contact", "Contact#send");
@@ -129,13 +133,15 @@ $router->post("/inscription", "Register#post");
 
 $router->get('/home', "Home#show"); #Pour appeler le controller HomeController et appeler la méthode show
 
-$router->get('/profil/:id', "User#index");
+$router->get('/profil/:id', "User#publicDisplay");
+$router->get('/moncompte', "User#privateDisplay");
 
 $router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 
 $router->get("/mentions-legales", "LegalMentions#show");
 $router->get("/incident", "Incident#show");
+
 
 echo $router->run();
 

@@ -153,7 +153,7 @@ class User {
 		/* error_log($grade); */
         $result=$row;//todo faire une copie
         $result["grade"]=(self::$grades)[$grade];
-
+        $result["age"]=date_diff(date_create($result["birthdate"]) , date_create('now'))->y;
 		return $result;
 	}
 
@@ -173,6 +173,8 @@ class User {
 		$_SESSION['updated'] = $info['updated'];
 		$_SESSION['created'] = $info['created'];
         $_SESSION['grade'] = $info['grade'];
+        //$_SESSION['user'] = ['id' => $info['id'], 'firstname' => $info['firstname'], 'lastname' => $info['lastname'], 'mail' => $info['mail'], 'sex' => $info['sex'], 'language' => $info['language'], 'urlavatar' => $info['urlavatar'], 'updated' => $info['updated'], 'created' => $info['created'], 'grade' => $info['grade']];
+        $_SESSION['user'] = $info;
 	}
 }
 
