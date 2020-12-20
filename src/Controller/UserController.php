@@ -42,26 +42,26 @@ class UserController extends Controller
 
 
 			$user = new User($id);
-            $user_info=$user->get_info();
+			$user_info=$user->get_info();
 			if (intval($user_info["public"])==0){
 			    //l'utilisateur que l'on veut afficher est privé
-                if ($_SESSION["grade"]==0){
-                    //un patient veut voir un compte privé qui n'est pas à lui
-                    header("Location: /");
-                    return "";
-                }
-                if ($_SESSION["grade"]==1){
-                    //le médecin peut voir le profil uniquement si c'est son patient
-                    if ($_SESSION["id"]==$user_info["parent"]){
-                        //C'est ok
+							if ($_SESSION["grade"]==0){
+									//un patient veut voir un compte privé qui n'est pas à lui
+									header("Location: /");
+									return "";
+							}
+							if ($_SESSION["grade"]==1){
+									//le médecin peut voir le profil uniquement si c'est son patient
+									if ($_SESSION["id"]==$user_info["parent"]){
+											//C'est ok
 
-                    }else{
-                        //ce n'est pas le médecin du patient
-                        header("Location: /");
-                        return "";
-                    }
-                }
-            }
+									}else{
+											//ce n'est pas le médecin du patient
+											header("Location: /");
+											return "";
+									}
+							}
+					}
 
 			global $twig;
 			$twig_array=$user->get_info();
