@@ -28,8 +28,6 @@ function getNewTokenForDoctor($len){
 }
 
 
-
-
 class RegisterController extends Controller
 {
 	static public function get(){

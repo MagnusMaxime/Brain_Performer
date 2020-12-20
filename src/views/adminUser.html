@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/"/>
+{% endblock style %}
+{% block content %}
+
+<div class="container">
+	<ul>
+	{% for user in users %}
+	<li>
+		<div class="admin-user">
+			<form>
+				<input type="text" value="{{user.name}}" placeholder="nom">
+				<input type="text" value="{{user.token}}" placeholder="token">
+				<button marc="supprimer"></button>
+				<button marc="créer"></button>
+			</form>
+		</div>
+	</li>
+
+	{% endfor %}
+	</ul>
+
+
+
+</div>
+
+{% endblock content %}
