@@ -30,6 +30,19 @@ class User {
 	}
 
 	/**
+	 * Renvoie un tableau d'informations sur tout les utilisateurs.
+	 */
+	public static function get_all_info() {
+		$users = self::get_all();
+		$users_info = [];
+		foreach ($users as $user) {
+			array_push($users_info, $user->get_info());
+		}
+		return $users_info;
+
+	}
+
+	/**
 	 * Vérifie si un utilisateur existe dans la base de données sql
 	 * étant donné un tableau de conditions.
 	 */

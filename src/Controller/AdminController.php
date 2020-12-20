@@ -23,9 +23,9 @@ class AdminUserController extends Controller
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			$users_array = User::get_all();
-			var_dump($users_array);
-			return $twig->render('admin/users.html', ["users" => $users_array]);
+			$users_info = User::get_all_info();
+			/* var_dump($users_info); */
+			return $twig->render('admin/users.html', ["users" => $users_info]);
 		}
 
 		/**
