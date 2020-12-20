@@ -128,7 +128,7 @@ $router->post("/connexion", "Connection#post");
 $router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#show");
 $router->get("/contact", "Contact#show");
-$router->post("/contact", "Contact#send");
+$router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 

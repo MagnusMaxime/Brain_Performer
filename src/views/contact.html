@@ -11,7 +11,7 @@
 					<form action="" method="post">
 		<label for = "ask"> Dîtes-nous tout:</label><br>
 		<textarea cols="60" rows="17" name="message" id="ask"></textarea><!--NE PAS CHANGER LE NAME DU TEXTAREA-->
-						<div class="g-recaptcha" data-sitekey="6LfaqQcaAAAAAET55-9GYdOzE7dKZAuEaNxROBvp"></div>
+
 	<div class = "buttons">
 		<button type="submit" class ="button">Envoyer</button>
 
@@ -33,6 +33,22 @@
 							<div class ="mailto">Contactez-nous !</div>
 						</a>
 					</div>
+					<form action="" method="post">
+
+						<label for="name">Votre nom :</label>
+						<input type="text" name="name" maxlength="100" placeholder="Votre nom" id="name" required>
+
+
+						<label for="objet-message">Objet de votre message :</label>
+						<input type="text" name="objet-message" maxlength="100" placeholder="Objet du message" id="objet-message" required>
+
+
+						<label for = "message-mail">Votre message :</label><br>
+						<textarea name="message" id="message-mail" required></textarea>
+						<div class="g-recaptcha" data-sitekey="6LfaqQcaAAAAAET55-9GYdOzE7dKZAuEaNxROBvp"></div>
+						<button type="submit" class="button">Envoyer le mail</button>
+
+					</form>
 				</div>
 			</div>
 		</section>
