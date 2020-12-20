@@ -2,27 +2,42 @@
 
 
 namespace App\Controller;
+use App\Model\User;
 
+class AdminController extends Controller {
 
-class AdminController extends Controller
-{
     static public function index() {
 			global $twig;
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('admin.html', []);
+			return $twig->render('admin/index.html', []);
     }
+}
 
+
+class AdminUserController extends Controller
+{
 		static public function users() {
 			global $twig;
 			if (self::needToBeAdmin()) {
 				return "";
 			}
-			return $twig->render('adminUsers.html')
+			return $twig->render('admin/user.html')
 		}
 
-		static public function user() {
+		/**
+		 * Update a user.
+		 */
+		static public function update(id) {
+			$_POST['id']
+			global $twig;
+			if (self::needToBeAdmin()) {
+				return "";
+			}
+		}
+
+		static public function user(id) {
 			global $twig;
 			if (self::needToBeAdmin()) {
 				return "";
@@ -53,5 +68,5 @@ class AdminController extends Controller
 		/* 	} */
 		/* 	return $twig->render('adminUserNew.html') */
 		/* } */
-
 }
+
