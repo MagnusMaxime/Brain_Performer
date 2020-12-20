@@ -28,19 +28,6 @@ function getNewTokenForDoctor($len){
 }
 
 
-function isAGoodPassword($pass){
-    if(preg_match('/[A-Z]/', $pass)){
-        // Il y a une majuscule dans le mot de passe
-        if(preg_match('/[a-z]/', $pass)){
-            // Il y a une minuscule dans le mot de passe
-            if(preg_match('/[0-9]/', $pass)){
-                // Il y a un nombre dans le mot de passe
-                return strlen($pass)>=5;//il faut au moins 5 caractère dans le mot de passe
-            }
-        }
-    }
-    return false;
-}
 
 
 class RegisterController extends Controller
@@ -68,7 +55,8 @@ class RegisterController extends Controller
 			return $twig->render('register.html',
 				["title"=>"Inscription", "alert"=>"Ce mail est déjà utilisé."]);
 		}
-		if (!isAGoodPassword($_POST["password"])){
+
+		if (!self::isAGoodPassword($_POST["password"])){
             return $twig->render('register.html',
                 ["title"=>"Inscription", "alert"=>"Votre mot de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule et un nombre."]);
         }
@@ -113,7 +101,7 @@ class RegisterController extends Controller
 		if (!$user){
 		//il y a eu un problème dans l'inscripition
 				return $twig->render('register.html',
-						["title"=>"Inscription", "alert"=>"Erreur inconnue"]);
+						["title"=>"Inscription", "alert"=>"Erreur inconnue."]);
 		}
 		/* return $twig->render("message.html", ["message"=>"vous êtes inscrit et votre id est ".$user->id]); */
 

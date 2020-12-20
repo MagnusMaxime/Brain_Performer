@@ -4,6 +4,12 @@ namespace App\Controller;
 
 use App\Model\User;
 
+
+function canEditProfil($id){
+    //retourne si l'utilsateur connecté peut editer le profil
+    return $_SESSION["grade"]>=2  or $_SESSION["id"]==$id;
+}
+
 class UserController extends Controller
 {
     /* protected $viewPath; */
@@ -53,8 +59,79 @@ class UserController extends Controller
 
         $twig_array=["title"=>"Mon compte", "USER"=>isset($_SESSION['user']) ? $_SESSION['user'] : false];
         $twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
-       
+
         return $twig->render('myAccount.html', $twig_array);
+    }
+
+    public function displayEditPage ($id){
+        //affiche la page pour modifier le compte d'id $id
+        global $twig;
+
+        if (self::needToBeConnected()){
+            //l'utilisateur est pas connecté et a besoin d'être connecté
+            return "";
+        }
+        if (!canEditProfil($id)){
+            //l'utilisateur est pas un admin et essaye de modifier un compte qui n'est pas à lui
+            header("Location: /");
+            return "";
+        }
+        $user = new User($id);
+        $twig_array=$user->get_info();
+        $twig_array["title"]="Modifier le profil";
+        return $twig->render('editAccount.html', $twig_array);
+
+    }
+
+    public function modifyAccount($id){
+        global $twig;
+        if (self::needToBeConnected()){
+            //l'utilisateur est pas connecté et a besoin d'être connecté
+            return "";
+        }
+        if (!canEditProfil($id)){
+            //l'utilisateur est pas un admin et essaye de modifier un compte qui n'est pas à lui
+            header("Location: /");
+            return "";
+        }
+        $user = new User($id);
+        $twig_array=$user->get_info();
+        $twig_array["title"]="Modifier le profil";
+
+        if (User::does_exist(["mail" => $_POST["mail"]]) and $_SESSION["mail"]!=$_POST["mail"]) {
+            //l'utilisateur a modifié son mail mais ce dernier est utilisé par un autre compte
+            $twig_array["alert"]="Ce mail est déjà utilisé.";
+            return $twig->render('editAccount.html', $twig_array);
+        }
+
+        if ($_POST["password"]==""){
+            //l'utilisateur ne compte pas modifier son mot de passe
+
+            $_POST["password"]= $_SESSION["user"]["password"];//on remet l'ancien hash de mot de passe
+
+        } else if ($_POST["password"]!==$_POST["password-repeat"]) {
+            $twig_array["alert"]="Les mots de passe doivent correspondre.";
+            return $twig->render('editAccount.html', $twig_array);
+
+        }else if (!self::isAGoodPassword($_POST["password"])){
+            $twig_array["alert"]="Votre nouveau mot de passe doit contenir au moins 5 caractères dont une minuscule, une majuscule et un nombre.";
+            return $twig->render('editAccount.html', $twig_array);
+        }else{
+            //Tout est bon
+            $_POST["password"]=password_hash($_POST["password"], PASSWORD_DEFAULT);
+        }
+
+        $success=$user->update($_POST);
+        if ($success){
+            header("Location: /profil/".$user->get_id());
+            return "";
+        }else{
+            $twig_array["alert"]="Erreur inconnue.";
+            return $twig->render('editAccount.html', $twig_array);
+        }
+
+
+
     }
 
     /* public function render($id) { */

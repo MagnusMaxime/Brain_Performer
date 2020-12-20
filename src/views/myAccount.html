@@ -19,10 +19,13 @@
 				{% endif %}
 
 
-				<h1>{{USER.firstname}} {{USER.lastname}}</h1>
+				<h1>{{USER.sex ? "Madame" : "Monsieur"}} {{USER.firstname}} {{USER.lastname | upper}}</h1>
 
 				<p>Age : {{USER.age}} ans</p>
 				<p>Date de naissance : {{USER.birthdate}}</p>
+				<p>Compte de {{USER.grade_name}} {{USER.public ? "public" : "privé"}}</p>
+
+
 				<p class="mail">Mail : {{USER.mail}}</p>
 				<footer>
 					<p>Crée le {{USER.created}}</p>
@@ -31,6 +34,8 @@
 			</div>
 		</div>	
 	</div>
+	<button onclick="window.location.href = '/modifierprofil/{{USER.id}}';">Modifier mon profil</button>
+
 	<div id="eff">
 	<h1>Derniers exercices éffectués</h1>
 	</div>

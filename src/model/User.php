@@ -58,10 +58,11 @@ class User {
 					"urlavatar"=>$data["urlavatar"],
                     "grade"=>$data["grade"],
                     "parent"=>$data["parent"],
+                    "public"=>$data["publicuser"]
 			];
 
 			$req = $DB->prepare(
-					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`, `grade`, `parent`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar, :grade, :parent);");
+					"INSERT INTO `user` (`firstname`, `lastname`, `mail`, `sex`, `birthdate`, `token`, `password`, `language`, `urlavatar`, `grade`, `parent`, `public`) VALUES (:firstname, :lastname, :mail, :sex, :birthdate, :token, :password, :language, :urlavatar, :grade, :parent, :public);");
 			$req->execute($user_row);
 			error_log($user_row["urlavatar"]);
 			$user = self::connect($data["mail"], $data["password"]);//Après l'inscription on connecte l'utilisateur d'office
@@ -112,6 +113,7 @@ class User {
 	*/
 	public function __construct($id) {
 				$this->id = $id;
+
 				/* $user_row = $results[0]; */
 				/* $this->id = $id; */
 				/* $this->firstname = $user_row["firstname"]; */
@@ -152,9 +154,10 @@ class User {
 
 		/* error_log($grade); */
         $result=$row;//todo faire une copie
-        $result["grade"]=(self::$grades)[$grade];
+        $result["grade"]=(int) $grade;
+        $result["grade_name"]=(self::$grades)[$grade];
         $result["age"]=date_diff(date_create($result["birthdate"]) , date_create('now'))->y;
-		return $result;
+        return $result;
 	}
 
 	/*
@@ -173,9 +176,34 @@ class User {
 		$_SESSION['updated'] = $info['updated'];
 		$_SESSION['created'] = $info['created'];
         $_SESSION['grade'] = $info['grade'];
-        //$_SESSION['user'] = ['id' => $info['id'], 'firstname' => $info['firstname'], 'lastname' => $info['lastname'], 'mail' => $info['mail'], 'sex' => $info['sex'], 'language' => $info['language'], 'urlavatar' => $info['urlavatar'], 'updated' => $info['updated'], 'created' => $info['created'], 'grade' => $info['grade']];
+        $_SESSION['public'] = $info['public'];
         $_SESSION['user'] = $info;
 	}
+
+	public function update($data){
+	    global $DB;
+
+        $user_row = [
+            "id"=>$this->id,
+            "firstname"=>$data["firstname"],
+            "lastname"=>$data["lastname"],
+            "mail"=>$data["mail"],
+            "sex"=>$data["sex"]=="man" ? 0 : 1,
+            "birthdate"=>$data["birthdate"],
+            "password"=>$data["password"],//ne hash le mot de passe ici, car il est déjà hash
+            "language"=>"fr",//todo
+            "urlavatar"=>$data["urlavatar"],
+            "public"=>  $data["publicuser"]=="on" ? 1 :0
+        ];
+        var_dump($user_row);
+        $req = $DB->prepare(//todo faire plus propre
+            "UPDATE `user` SET `mail` = :mail, `firstname` = :firstname, `lastname` = :lastname, `sex`= :sex, `birthdate`= :birthdate, `password`= :password, `urlavatar` = :urlavatar, `public` = :public, `language`= :language  WHERE `user`.`id` = :id;");
+
+        $result = $req->execute($user_row);
+        $this->setup_session();
+        return $result;
+    }
+
 }
 
 //["first-name"]=> string(2) "ze" ["last-name"]=> string(2) "ze"

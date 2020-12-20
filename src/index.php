@@ -135,8 +135,10 @@ $router->get('/home', "Home#show"); #Pour appeler le controller HomeController e
 
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
+$router->get("/modifierprofil/:id", "User#displayEditPage");
+$router->post("/modifierprofil/:id", "User#modifyAccount");
 
-$router->get('/posts/:id', function ($id){echo 'article '.$id;});
+//$router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 
 $router->get("/mentions-legales", "LegalMentions#show");

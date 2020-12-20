@@ -30,4 +30,18 @@ class Controller
         return false;
     }
 
+    static public function isAGoodPassword($pass){
+        if(preg_match('/[A-Z]/', $pass)){
+            // Il y a une majuscule dans le mot de passe
+            if(preg_match('/[a-z]/', $pass)){
+                // Il y a une minuscule dans le mot de passe
+                if(preg_match('/[0-9]/', $pass)){
+                    // Il y a un nombre dans le mot de passe
+                    return strlen($pass)>=5;//il faut au moins 5 caractère dans le mot de passe
+                }
+            }
+        }
+        return false;
+    }
+
 }

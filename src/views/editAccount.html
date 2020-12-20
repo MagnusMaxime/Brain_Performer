@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block content %}
+<div class="user">
+	<div class="info">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<div id="box">
+			<form action="" method="post">
+			
+			<label for="firstname"><b>Prénom : </b></label>
+			<input type="text" name="firstname" maxlength="100" placeholder="prénom" id="firstname" value="{{firstname}}" required>
+
+			<label for="lastname"><b>Nom : </b></label>
+			<input type="text" name="lastname" maxlength="100" placeholder="nom" id="lastname" value="{{lastname}}" required>
+
+			<label for="urlavatar"><b>URL avatar (optionnel) : </b></label>
+			<input type="url" name="urlavatar" maxlength="200" placeholder="url" value="{{urlavatar}}" id="urlavatar">
+
+			<label for="sex">Vous êtes :</label>
+			<select name="sex" id="sex" required>
+				<option value="man">un homme</option>
+				<option value="woman" {{ sex ? "selected" : ""}}>une femme</option>
+			</select>
+
+			<label for="birthdate">Date de naissance : </label>
+			<input type="date" id="birthdate" name="birthdate" value="{{birthdate}}" required>
+
+			<label for="mail"><b>Mail : </b></label>
+			<input type="email" name="mail" maxlength="50" placeholder="email" value="{{mail}}" id="mail" required>
+
+			<label for="password"><b>Entrez un nouveau mot de passe : </b></label>
+			<input type="password" name="password" maxlength="50" placeholder="mot de passe" id="password">
+
+			<label for="password-repeat"><b>Répétez le mot de passe : </b></label>
+			<input type="password" name="password-repeat" maxlength="50" placeholder="mot de passe" id="password-repeat">
+
+			
+			<label for ="publicuser">
+				<input type="checkbox" name="publicuser" id="publicuser" {{ public ? "checked" : ""}}> Montrer mon compte et mes excercies publiquement
+			</label>
+			<button type="submit" class="signupbtn">Modifier mes informations</button>
+			</form>
+		</div>	
+	</div>
+	
+{% endblock %}
