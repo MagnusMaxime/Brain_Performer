@@ -5,8 +5,34 @@
 {% endblock style %}
 
 {% block content %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Sexe</th>
+        <th>Mail</th>
+        <th>Date de naissance</th>
+        <th>Langue</th>
+        <th>Jeton</th>
+        <th>Bannir</th>
+    </tr>
 
+    {% for user in users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{ user.sex ? 'Femme' : 'Homme' }}</td>
+        <td>{{user.mail}}</td>
+        <td>{{user.birthdate}}</td>
+        <td>{{user.language}}</td>
+        <td>{{user.token}}</td>
+        <td><input type="checkbox" id="ban" name="bannir"/></td>
+    </tr>
+    {% endfor %}
 
-
+</table>
+<input class="valid" type="button" value="Valider">
 
 {% endblock content %}

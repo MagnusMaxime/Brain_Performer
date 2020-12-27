@@ -1,0 +1,15 @@
+table
+{
+    margin-left: 5%;
+    border-collapse: collapse;
+    margin-bottom: 1%;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+}
+
+.valid
+{
+    margin-left: 30%;
+}
