@@ -67,6 +67,7 @@ require_once('./Controller/IncidentController.php');
 require_once ("./Controller/FaqController.php");
 require_once ("./Controller/DeconnectionController.php");
 require_once ("./Controller/AdminController.php");
+require_once ("./Controller/userListAdminController.php");
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -151,5 +152,7 @@ $router->post('/admin/profil/:id', "AdminUser#user");
 /* $router->get('/admin/faq', "AdminFaq#get"); */
 /* $router->post('/admin/faq', "AdminFaq#post"); */
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
+
+$router->get("/listeutilisateur", "userListAdmin#show");
 
 echo $router->run();
