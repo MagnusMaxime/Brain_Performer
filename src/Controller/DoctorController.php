@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-class LegalMentionsController extends Controller
+class DoctorController extends Controller
 {
     static public function show(){
         global $twig;
