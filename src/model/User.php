@@ -204,6 +204,7 @@ class User {
 		$_SESSION['created'] = $info['created'];
         $_SESSION['grade'] = $info['grade'];//int
         $_SESSION['public'] = $info['public'];
+        $_SESSION['token'] = $info['token'];
         $_SESSION['user'] = $info;
 	}
 
