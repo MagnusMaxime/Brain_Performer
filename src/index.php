@@ -67,6 +67,7 @@ require_once('./Controller/IncidentController.php');
 require_once ("./Controller/FaqController.php");
 require_once ("./Controller/DeconnectionController.php");
 require_once ("./Controller/AdminController.php");
+require_once ("./Controller/DoctorController.php");
 require_once ("./Controller/userListAdminController.php");
 
 session_start();
@@ -143,6 +144,10 @@ $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
 
+# Doctor
+$router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
+$router->post("/medecin/envoyer-un-lien", "Doctor#sendToken");
+
 
 # Admin
 $router->get('/admin', "Admin#index");
@@ -151,8 +156,6 @@ $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");
 $router->get('/admin/faq', "Faq#manage");
 $router->post('/admin/faq', "Faq#post");
-//$router->get('/posts/:id', function ($id){echo 'article '.$id;});
-
 $router->get("/admin/listeutilisateur", "userListAdmin#show");
 
 echo $router->run();

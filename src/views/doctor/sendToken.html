@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/assets/css/" /><!--TODO : Faire le CSS-->
+<!--<script src="/assets/js/sendToken.js"></script>-->
+<div class="signin">
+    <form action="" method="post">
+        <label for="mail">Entrez l'adresse mail de votre patient :</label>
+        <input type="email" name="mail" maxlength="50" placeholder="email" id="mail" value="{{mail}}" required>
+        <button type="submit" class="signupbtn">Envoyer un lien d'inscription</button>
+
+    </form>
+
+</div>
+{% endblock %}

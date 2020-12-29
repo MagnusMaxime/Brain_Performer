@@ -14,14 +14,15 @@ class Controller
     /* global $twig; */
     /* static $twig = $GLOBALS["twig"]; */
     static public function checkRecaptcha($captcha){
-    $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.urlencode(RECAPTCHA_SECRET_KEY).'&response=' . urlencode($captcha);
-    $response = file_get_contents($url);
-    $responseKeys = json_decode($response, true);
-    // should return JSON with success as true
-    return $responseKeys["success"];
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.urlencode(RECAPTCHA_SECRET_KEY).'&response=' . urlencode($captcha);
+        $response = file_get_contents($url);
+        $responseKeys = json_decode($response, true);
+        // should return JSON with success as true
+        return $responseKeys["success"];
     }
 
     static public function needToBeConnected(){
+        //Retourne true s'il l'utilisateur n'est pas connecté, false sinon
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
             header("Location: /");//on le redirige à l'accueil
@@ -30,16 +31,29 @@ class Controller
         return false;
     }
 
-		static public function needToBeDev() {
-			if (!self::needToBeConnected()) {
-				return false;
-			}
-			if ($_SESSION["grade"]<=2) {
-				header("Location: /");
-				return true;
-			}
-			return false;
-		}
+    static public function needToBeDev() {
+        if (self::needToBeConnected()) {
+            return true;
+        }
+        if ($_SESSION["grade"]<=2) {
+            header("Location: /");
+            return true;
+        }
+        return false;
+    }
+
+    static public function needToBeDoctor(){
+        //Retourne true s'il l'utilisateur n'est pas connecté pas connecté en tant que doctor, false sinon
+        if (self::needToBeConnected()) {
+            return true;
+        }
+        if ($_SESSION["grade"]!=1) {
+            //l'utilisateur est connecté mais ce n'est pas un médecin
+            header("Location: /");
+            return true;
+        }
+        return false;
+    }
 
     static public function needToBeAdmin(){
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
