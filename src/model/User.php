@@ -235,16 +235,6 @@ class User {
         global $DB;
         $users = $DB->query('SELECT * FROM user');
         return $users;
-
-        global $DB;
-        $req = $DB->prepare("SELECT firstname FROM user");//id,question, answer, created, updated
-        $results = $req->execute();
-        if (!$results){
-            //Il y a eu un souci dans la requête de la BDD
-            return false;
-        }
-        $firstNames = $req->fetchAll();
-        return $firstNames;
         }
 }
 

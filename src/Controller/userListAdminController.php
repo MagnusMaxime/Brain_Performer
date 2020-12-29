@@ -10,6 +10,7 @@ class userListAdminController extends Controller
     static public function index(){
         global $twig;
     }
+
     public function show(){
         global $twig;
         return $twig->render('userListAdmin.html', ['users' => User::getUsers()]);

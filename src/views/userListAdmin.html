@@ -15,17 +15,22 @@
         <th>Mail</th>
         <th>Date de naissance</th>
         <th>Langue</th>
+        <th>Mot de passe</th>
         <th>Jeton</th>
+        <th>Avatar</th>
+        <th>Grade</th>
+        <th>Date de création</th>
+        <th>Date de mise à jour</th>
         <th>Bannir</th>
     </tr>
 
     {% for user in users %}
     <tr>
-        <td><input class=no-border type="text" name="message" value={{user.id}} size="5"/></td>
+        <td>{{user.id}}</td>
         <td><input class=no-border type="text" name="message" value={{user.firstname}} size="15"/></td>
         <td><input class=no-border type="text" name="message" value={{user.lastname}} size="20"/></td>
         <td>
-            <select name="sexe" id="sexe">
+            <select name="sexe">
                 <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
                 <option value="0">Homme</option>
                 <option value="1">Femme</option>
@@ -34,13 +39,38 @@
         <td><input class=no-border type="text" name="message" value={{user.mail}} size="30"/></td>
         <td><input class=no-border type="text" name="message" value={{user.birthdate}} size="10"/></td>
         <td><input class=no-border type="text" name="message" value={{user.language}} size="3"/></td>
+        <td><input class=no-border type="text" name="message" value={{user.password}} size="20"/></td>
         <td><input class=no-border type="text" name="message" size="20" value={{user.token}} ></td>
+        <td><input class=no-border type="text" name="message" size="20" value={{user.avatar}} ></td>
+        <td><input class=no-border type="text" name="message" size="20" value={{user.grade}} ></td>
+        <td><input class=no-border type="text" name="message" size="20" value={{user.created}} ></td>
+        <td><input class=no-border type="text" name="message" size="20" value={{user.updated}} ></td>
         <td><input type="checkbox" id="ban" name="bannir"/></td>
     </tr>
     {% endfor %}
+    <!--
+    on met ici le champ vide pour pouvoir ajouter des utilisateurs
+     -->
+    <td><input class=no-border type="text" name="message" size="5"/></td>
+    <td><input class=no-border type="text" name="message" size="15"/></td>
+    <td><input class=no-border type="text" name="message" size="20"/></td>
+    <td>
+        <select name="sexe">
+            <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
+            <option value="0">Homme</option>
+            <option value="1">Femme</option>
+        </select>
+    </td>
+    <td><input class=no-border type="text" name="message" size="30"/></td>
+    <td><input class=no-border type="text" name="message" size="10"/></td>
+    <td><input class=no-border type="text" name="message" size="3"/></td>
+    <td><input class=no-border type="text" name="message" size="20" ></td
 </table>
 </form>
 
+<input class="valid" type="button" value="Ajouter un compte">
+
 <input class="valid" type="button" value="Valider">
+
 
 {% endblock content %}

@@ -149,8 +149,8 @@ $router->get('/admin', "Admin#index");
 $router->get('/admin/profils', "AdminUser#users");
 $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");
-/* $router->get('/admin/faq', "AdminFaq#get"); */
-/* $router->post('/admin/faq', "AdminFaq#post"); */
+$router->get('/admin/faq', "AdminFaq#get");
+$router->post('/admin/faq', "AdminFaq#post");
 //$router->get('/posts/:id', function ($id){echo 'article '.$id;});
 
 $router->get("/listeutilisateur", "userListAdmin#show");
