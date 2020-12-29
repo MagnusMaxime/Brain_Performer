@@ -7,3 +7,7 @@ Nom BDD : freedbtech_brainperformer
 Nom Utilisateur : freedbtech_brainperformer
 Mdp : uKTCaSPWVi
 Host : freedb.tech
+
+Compte Admin :
+mail : contact.brainperformer@gmail.com
+mdp : admin

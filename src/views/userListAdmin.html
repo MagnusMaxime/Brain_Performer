@@ -5,6 +5,7 @@
 {% endblock style %}
 
 {% block content %}
+<form method="post" action="userListAdmin.php">
 <table>
     <tr>
         <th>ID</th>
@@ -20,19 +21,26 @@
 
     {% for user in users %}
     <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.firstname}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{ user.sex ? 'Femme' : 'Homme' }}</td>
-        <td>{{user.mail}}</td>
-        <td>{{user.birthdate}}</td>
-        <td>{{user.language}}</td>
-        <td>{{user.token}}</td>
+        <td><input class=no-border type="text" name="message" value={{user.id}} size="5"/></td>
+        <td><input class=no-border type="text" name="message" value={{user.firstname}} size="15"/></td>
+        <td><input class=no-border type="text" name="message" value={{user.lastname}} size="20"/></td>
+        <td>
+            <select name="sexe" id="sexe">
+                <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
+                <option value="0">Homme</option>
+                <option value="1">Femme</option>
+            </select>
+        </td>
+        <td><input class=no-border type="text" name="message" value={{user.mail}} size="30"/></td>
+        <td><input class=no-border type="text" name="message" value={{user.birthdate}} size="10"/></td>
+        <td><input class=no-border type="text" name="message" value={{user.language}} size="3"/></td>
+        <td><input class=no-border type="text" name="message" size="20" value={{user.token}} ></td>
         <td><input type="checkbox" id="ban" name="bannir"/></td>
     </tr>
     {% endfor %}
-
 </table>
+</form>
+
 <input class="valid" type="button" value="Valider">
 
 {% endblock content %}
