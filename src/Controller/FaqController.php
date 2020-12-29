@@ -25,9 +25,9 @@ class FaqController extends Controller
         $data = Faq::getFaq();
         if (!$data){
             //Il y a eu un souci dans la requête de la BDD
-            return $twig->render('manageFaq.html', ["title"=>"noFAQ", "faq"=>[["question"=>"PK la BDD est pas ouf ?", "answer"=>"JSP", "id"=>1]]]);
+            return $twig->render('admin/manageFaq.html', ["title"=>"noFAQ", "faq"=>[["question"=>"PK la BDD est pas ouf ?", "answer"=>"JSP", "id"=>1]]]);
         }
-        return $twig->render('manageFaq.html', ["title"=>"FAQ", "faq"=>$data]);
+        return $twig->render('admin/manageFaq.html', ["title"=>"FAQ", "faq"=>$data]);
     }
 
     static public function post(){

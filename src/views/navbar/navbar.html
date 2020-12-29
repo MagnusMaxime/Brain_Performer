@@ -1,0 +1,9 @@
+{% if USER is defined and USER %}
+	{% if USER.grade >=2 %}
+		{% include 'navbar/navadmin.html' %}
+	{% else %}
+		{% include 'navbar/navuser.html' %}
+	{% endif %}
+{% else %}
+	{% include 'navbar/nav.html' %}
+{% endif %}

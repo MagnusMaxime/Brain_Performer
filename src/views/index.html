@@ -17,15 +17,8 @@
 					</div>
 				</div>
 			</div>
-		{% if USER is defined and USER %}
+		{% include 'navbar/navbar.html' %}
 
-		{% include 'navuser.html' %}
-
-		{% else %}
-
-		{% include 'nav.html' %}
-
-		{% endif %}
 			<div class="articles">
 					<div class="article-wrapper">
 							<div class="article">

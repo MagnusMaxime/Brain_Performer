@@ -7,15 +7,7 @@
 </head>
 
 <body>
-{% if USER is defined and USER %}
-    {% if USER.grade >=2 %}
-        {% include 'navadmin.html' %}
-    {% else %}
-        {% include 'navuser.html' %}
-    {% endif %}
-{% else %}
-    {% include 'nav.html' %}
-{% endif %}
+{% include 'navbar/navbar.html' %}
 
 {% if alert %}
     {% include 'alert.html' %}
