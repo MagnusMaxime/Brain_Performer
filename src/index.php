@@ -49,25 +49,28 @@ $app->run();*/
 
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
-require_once  ('./model/User.php');
-require_once ('./model/Faq.php');
-require_once ('./model/Ticket.php');
-require_once ("./model/Token.php");
+require_once('./model/User.php');
+require_once('./model/Faq.php');
+require_once('./model/Ticket.php');
+require_once("./model/Token.php");
+require_once("./model/UserListAdmin.php");
+
 require_once('./Router/Router.php');
+
 require_once('./Controller/Controller.php');
-require_once ('./Controller/HomeController.php');
-require_once ('./Controller/UserController.php');
-require_once ('./Controller/TestController.php');
-require_once ('./Controller/ConnectionController.php');
-require_once ('./Controller/RegisterController.php');
-require_once ('./Controller/ContactController.php');
-require_once ('./Controller/ExerciseController.php');
+require_once('./Controller/HomeController.php');
+require_once('./Controller/UserController.php');
+require_once('./Controller/TestController.php');
+require_once('./Controller/ConnectionController.php');
+require_once('./Controller/RegisterController.php');
+require_once('./Controller/ContactController.php');
+require_once('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
 require_once('./Controller/IncidentController.php');
-require_once ("./Controller/FaqController.php");
-require_once ("./Controller/DeconnectionController.php");
-require_once ("./Controller/AdminController.php");
-require_once ("./Controller/DoctorController.php");
+require_once("./Controller/FaqController.php");
+require_once("./Controller/DeconnectionController.php");
+require_once("./Controller/AdminController.php");
+require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 
 session_start();
