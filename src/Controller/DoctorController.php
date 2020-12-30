@@ -25,7 +25,7 @@ class DoctorController extends Controller
         }
         if ((!isset($_SESSION['token']) or $_SESSION['token']=="")){
             //le token du médecin est étrange
-            $twig_array["alert"]="Vous n'avez pas de jeton médecin. Contactez un administrateur.";
+            $twig_array["alert"] = "Vous n'avez pas de jeton médecin. Contactez un administrateur.";
             return $twig->render('doctor/sendToken.html', $twig_array);
         }
 
@@ -56,12 +56,12 @@ class DoctorController extends Controller
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
             echo "-->";
-            $twig_array["alert"]="Le mail a bien été envoyé à ".'"'.$_POST["mail"].'"';
+            $twig_array["danger"]="Le mail a bien été envoyé à ".'"'.$_POST["mail"].'"';
             return $twig->render('doctor/sendToken.html', $twig_array);
 
         } catch (Exception $e) {
             echo "-->";
-            $twig_array["alert"]="Erreur dans l'envoi du mail ".$mail->ErrorInfo.".";
+            $twig_array["danger"]="Erreur dans l'envoi du mail ".$mail->ErrorInfo.".";
             return $twig->render('doctor/sendToken.html', $twig_array);
         }
     }
@@ -80,7 +80,6 @@ class DoctorController extends Controller
 				if (empty($context)) {
 					$context["info"] = "Vous n'avez aucun patient.";
 				}
-				var_dump($context);
 				return $twig->render('doctor/patients.html', $context);
 		}
 }

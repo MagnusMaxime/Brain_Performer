@@ -9,7 +9,7 @@
 <body>
 {% include 'navbar/navbar.html' %}
 
-{% if alert %}
+{% if alert or primary or secondary or success or danger or warning or info or light or dark %}
     {% include 'alert.html' %}
 {% endif %}
 
