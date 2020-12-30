@@ -65,9 +65,11 @@
 }
 
 .article-wrapper {
-    background-color: #A7DBD8;
+
     padding: 2%;
     margin: 2%;
+    border:double 9px #A7DBD8;
+
 }
 
 .article {
