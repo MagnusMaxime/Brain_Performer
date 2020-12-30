@@ -4,13 +4,19 @@
 
 form {
     border: 3px solid #f1f1f1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .container>*{
     display: block;
+    width: 50%;
     margin-top:5px;
     margin-left: auto;
     margin-right: auto;
     text-align:center;
+
 }
 div.signin input[type=email], div.signin input[type=password] {
     width: 20%;
@@ -24,17 +30,39 @@ div.signin input[type=email], div.signin input[type=password] {
 {
     vertical-align: bottom;
     text-align: center;
+    border:#A7DBD8 5px double;
+    margin-left:6.5%;
+    margin-top:1%;
+    margin-bottom: 2%;
 
-    margin-left: 37.5%;
-    margin-top:2%;
-    margin-bottom: 15%;
-    border-radius: 15px;
 
-    background:linear-gradient(90deg,white,#A7DBD8,#36c0ee,#045a68);
+    /*border:black 3px solid;*/
     justify-content: space-between;
 
     top: 0px;
-    left: 150px;
-    width: 350px;
-    padding-bottom: 10px;
+    left: 0px;
+    width: 40%;
+
+}
+.left{
+    width: 30%;
+    height: 20%;
+    margin-left: 37%;
+}
+.g-recaptcha{
+    margin-left: 18%;
+    
+}
+.bouton{
+    width: 80px;
+    height: 23px;
+
+    margin-left: 20px;
+    margin-top: 4%;
+}
+.button{
+    margin-left: 20px;
+}
+.accept{
+    margin-left: 12%;
 }

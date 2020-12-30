@@ -10,10 +10,12 @@
 <script src="/assets/js/register.js"></script>
 <div class="signup">
     <form action="" method="post">
-        <div class="container">
-            <h1>Inscription</h1>
+        <div class="left">
+            <img src="/assets/img/minilogo.png" alt="logo" class="logo-big">
+        </div>
 
-            <hr>
+        <div class="container">
+
 
             <label for="firstname"><b>Prénom : </b></label>
             <input type="text" name="firstname" maxlength="100" placeholder="prénom" id="firstname" value="{{firstname}}" required>
@@ -24,6 +26,7 @@
             <label for="urlavatar"><b>URL avatar (optionnel) : </b></label>
             <input type="url" name="urlavatar" maxlength="200" placeholder="url" id="urlavatar" value="{{urlavatar}}">
 
+
             <label for="sex">Vous êtes :</label>
             <select name="sex" id="sex" required>
                 <option value="man">un homme</option>
@@ -32,7 +35,8 @@
 
             <label for="birthdate">Date de naissance : </label>
             <input type="date" id="birthdate" name="birthdate" value="{{birthdate}}" required>
-
+            </div>
+            <div class="container">
             <label for="mail"><b>Mail : </b></label>
             <input type="email" name="mail" maxlength="50" placeholder="email" id="mail" value="{{mail}}" required>
 
@@ -41,29 +45,32 @@
 
             <label for="password-repeat"><b>Répétez votre mot de passe : </b></label>
             <input type="password" name="password-repeat" maxlength="50" placeholder="mot de passe" id="password-repeat" required>
-
             <label for="token" id="token-label"><b>Entrez votre clée BrainPerformer : </b></label>
             <input type="text" name="token" maxlength="50" placeholder="" id="token" value="{{token}}" required>
             <p id="hasToken">Votre token a été pris en compte</p>
             <label for ="publicuser">
                 <input type="checkbox" name="publicuser" id="publicuser" {{publicuser=="on" ? "checked='checked'" : ""}}> Montrer mon compte et mes excercies publiquement
             </label>
+            </div>
 
             <!--
             <label>
                 <input type="checkbox" checked="checked" name="rememberme" id="rememberme"> Se souvenir de moi
             </label>
             -->
+        <div class="accept">
+            <p>En créant votre compte vous acceptez notre <a href="/cgu">CGU</a></p></div>
             <div class="g-recaptcha" data-sitekey="6LfaqQcaAAAAAET55-9GYdOzE7dKZAuEaNxROBvp"></div>
             <div class="clearfix">
-
-                    <button type="submit" class="signupbtn">S'inscrire</button>
-
             </div>
-
-            <p>En créant votre compte vous acceptez notre <a href="/cgu">CGU</a></p>
-
+        <div class="bouton">
+            <button type="submit" class="signupbtn"><span>S'inscrire</span></button>
         </div>
+
+
+
+</div>
+
     </form>
 
     <script>
