@@ -12,7 +12,7 @@
      display: flex;
      flex-direction: column;
      margin-bottom: 1px;
-     border: 10px solid #A7DBDB;
+     border: 10px double #A7DBDB;
 
 
 }
@@ -63,7 +63,7 @@
 .exercices
 
 {
-	border:solid 6px #A7DBDB;
+	border:double 6px #A7DBDB;
 
 	height: 47.15%;
 	width: 45%;

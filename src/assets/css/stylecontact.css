@@ -10,7 +10,7 @@
 .cadre
 {
 	width: 100%;
-	border: #A7DBD8 solid 4px;
+	border: #A7DBD8 double 4px;
 	height: 80%;
 	margin-top: 2%;
 	font-size: 0.9em;
@@ -18,7 +18,7 @@
 }
 h1
 {
-	border-bottom:solid #A7DBD8 4px;
+	border-bottom:double #A7DBD8 4px;
 	padding-bottom: 20px;
 }
 form
@@ -76,7 +76,7 @@ ul
 {
 	
 	height: 100%;
-	border:solid #A7DBD8 3px;
+	border:double #A7DBD8 3px;
 	border-radius: 6px;
 	text-align: center;
 	
