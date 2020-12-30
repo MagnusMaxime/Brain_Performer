@@ -162,5 +162,6 @@ $router->post('/admin/faq', "Faq#post");
 $router->get("/admin/gestion-utilisateurs", "UserListAdmin#get");
 $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser', "UserListAdmin#postupdate");
+$router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
 
 echo $router->run();

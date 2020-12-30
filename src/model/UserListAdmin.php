@@ -10,8 +10,8 @@ class UserListAdmin
     {
         global $DB;
         $insert_user = $DB->prepare("INSERT INTO user(firstname, lastname, sex, mail, birthdate, language,
-                 password, token, urlavatar, grade) VALUES(:firstname, :lastname, :sex, :mail, :birthdate, :language,
-                :password, :token, :urlavatar, :grade)"); //On importe toute la table des users
+                 password, token, urlavatar, grade, parent) VALUES(:firstname, :lastname, :sex, :mail, :birthdate, :language,
+                :password, :token, :urlavatar, :grade, :parent)"); //On importe toute la table des users
         $insert_user ->execute($info_add);
         return 'ça marche ?';
     }
@@ -20,8 +20,11 @@ class UserListAdmin
     {
     }
 
-    public static function RemoveAccount()
+    public static function RemoveAccount($id_del)
     {
+        global $DB;
+        $delete_users = $DB->prepare("DELETE FROM user WHERE id=:id_del");
+        $delete_users->execute(array("id_del" => $id_del));
     }
 
     public static function ModifieAccount()

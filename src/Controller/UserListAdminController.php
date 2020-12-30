@@ -15,10 +15,6 @@ class UserListAdminController extends Controller
     public function get()
     {
         global $twig;
-        if (self::needToBeAdmin()) {
-            //ça redirige sur la page d'accueil ça ?
-            return "";
-        }
         return $twig->render('userListAdmin.html', ["title" => "Gérer les utilisateurs",
             'users' => User::getUsers()]);
     }
@@ -26,7 +22,8 @@ class UserListAdminController extends Controller
     public function postadd()
     {
         global $twig;
-        if (self::addrequired()) {
+        if (self::addrequired())
+        {
             echo "les champs sont remplis";
             //si le bouton "Ajouter un utilsateur est enclenché et que les champs minimums sont défini (mail, mdp, prénom, nom, date de de naissance, sexe, clé, grade ?)
 
@@ -40,17 +37,31 @@ class UserListAdminController extends Controller
                 'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),//à hacher
                 'token' => $_POST['token'],
                 'urlavatar' => $_POST['urlavatar'],
-                'grade' => $_POST['grade'] //à mettre sous forme de numéro
+                'grade' => $_POST['grade'], //à mettre sous forme de numéro
+                'parent' => $_SESSION['id']
             );
             UserListAdmin::AddAccount($info_add);
             //var_dump($info_add);
             header("Location: /admin/gestion-utilisateurs");
-
         }
+        else
+        {
+            var_dump($_POST);
+            echo "ëtes-vous certain d'être un administrateur ?";
+                    //header("Location: /connexion");
+        }
+
     }
 
     public function postupdate()
     {
+    }
+
+    static public function delete($id)
+    {
+        echo "je suis là";
+        UserListAdmin::RemoveAccount($id);
+        header("Location: /admin/gestion-utilisateurs");
     }
 
     static public function addrequired()
