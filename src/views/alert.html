@@ -19,33 +19,44 @@
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ success }}
 </div>
+{% endif %}
 
-{% elseif warning %}
+{% if warning %}
 <div style="background-color: #fff3cd; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ warning }}
 </div>
-{% elseif primary %}
+{% endif %}
+
+{% if primary %}
 <div style="background-color: #cce5ff; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ primary }}
 </div>
-{% elseif secondary %}
+{% endif %}
+
+{% if secondary %}
 <div style="background-color: #e2e3e5; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ secondary }}
 </div>
-{% elseif info %}
+{% endif %}
+
+{% if info %}
 <div style="background-color: #d1ecf1; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ info }}
 </div>
-{% elseif light %}
+{% endif %}
+
+{% if light %}
 <div style="background-color: #fefefe; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ light }}
 </div>
-{% elseif dark %}
+{% endif %}
+
+{% if dark %}
 <div style="background-color: #d6d8d9; padding: 20px; color: white; margin-bottom: 15px" class="alert">
 	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	{{ dark }}
