@@ -30,18 +30,14 @@ div.signin input[type=email], div.signin input[type=password] {
 {
     vertical-align: bottom;
     text-align: center;
-    border:#A7DBD8 5px double;
-    margin-left:6.5%;
+    /*border:#A7DBD8 5px double;*/
+    margin-left:auto;
+    margin-right: auto;
     margin-top:1%;
     margin-bottom: 2%;
 
 
-    /*border:black 3px solid;*/
-    justify-content: space-between;
 
-    top: 0px;
-    left: 0px;
-    width: 40%;
 
 }
 .left{
@@ -51,7 +47,7 @@ div.signin input[type=email], div.signin input[type=password] {
 }
 .g-recaptcha{
     margin-left: 18%;
-    
+
 }
 .bouton{
     width: 80px;
@@ -65,4 +61,9 @@ div.signin input[type=email], div.signin input[type=password] {
 }
 .accept{
     margin-left: 12%;
+    margin-top: 2%;
+}
+.bigbox{
+    /*border:black 2px solid;*/
+    width: 100%;
 }
