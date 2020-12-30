@@ -68,7 +68,7 @@ require_once ("./Controller/FaqController.php");
 require_once ("./Controller/DeconnectionController.php");
 require_once ("./Controller/AdminController.php");
 require_once ("./Controller/DoctorController.php");
-require_once ("./Controller/userListAdminController.php");
+require_once("./Controller/UserListAdminController.php");
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -156,6 +156,8 @@ $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");
 $router->get('/admin/faq', "Faq#manage");
 $router->post('/admin/faq', "Faq#post");
-$router->get("/admin/gestion-utilisateurs", "userListAdmin#show");
+$router->get("/admin/gestion-utilisateurs", "UserListAdmin#get");
+$router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
+$router->post('/admin/gestion-utilisateurs-actualiser', "UserListAdmin#postupdate");
 
 echo $router->run();
