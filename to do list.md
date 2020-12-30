@@ -1,6 +1,7 @@
 Fait :
 
 - Supprimer des comptes dans l'interface
+- Ajouter l'attribut public en modifier et créer un profil
 
 A faire :
 
