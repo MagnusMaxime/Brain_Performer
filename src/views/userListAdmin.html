@@ -10,6 +10,7 @@
     <tr>
         <th>ID</th>
         <th>Bannir</th>
+        <th>Sauvegarder</th>
         <th>Prénom</th>
         <th>Nom</th>
         <th>Sexe</th>
@@ -28,19 +29,20 @@
         <tr>
             <td>{{user.id}}</td>
             <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" id="ban" name="Bannir" value="Supprimer"/></a></td>
-            <td><input class=no-border type="text" name="message" value={{user.firstname}} size="15"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.lastname}} size="20"/></td>
+            <td><input class="valid" type="submit" value="Valider"></td>
+            <td><input class=no-border type="text" name="firstname" value={{user.firstname}} size="15"/></td>
+            <td><input class=no-border type="text" name="lastname" value={{user.lastname}} size="20"/></td>
             <td>
                 <select name="sex">
                     <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
                     <option value={{ user.sex ? 'Homme' : 'Femme' }} > {{ user.sex ? 'Homme' : 'Femme' }}</option>
                 </select>
             </td>
-            <td><input class=no-border type="email" name="message" value={{user.mail}} size="30"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.birthdate}} size="10"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.language}} size="3"/></td>
-            <td><input class=no-border type="text" name="message" size="20" value={{user.token}} ></td>
-            <td><input class=no-border type="text" name="message" size="20" value={{user.urlavatar}} ></td>
+            <td><input class=no-border type="email" name="mail" value={{user.mail}} size="30"/></td>
+            <td><input class=no-border type="text" name="birthdate" value={{user.birthdate}} size="10"/></td>
+            <td><input class=no-border type="text" name="language" value={{user.language}} size="3"/></td>
+            <td><input class=no-border type="text" name="token" size="20" value={{user.token}} ></td>
+            <td><input class=no-border type="text" name="urlavatar" size="20" value={{user.urlavatar}} ></td>
             <!-- <td><input class=no-border type="text" name="message" size="1" value={{user.grade}} ></td> -->
             <td>
                 <select name="grade" required>
@@ -58,7 +60,7 @@
 
 </table>
 
-    <input class="valid" type="button" type="submit" value="Valider">
+
 
 
 <form method="post" action="/admin/gestion-utilisateurs-ajouter">

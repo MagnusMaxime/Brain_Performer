@@ -53,10 +53,25 @@ class UserListAdminController extends Controller
 
     }
 
-    public function postupdate()
+    /* public function postupdate() //on modifie les champs avec les infos récupérés
     {
+        $update_user = array(
+            'firstname' => $_POST['firstname'],
+            'lastname' => $_POST['lastname'],
+            'sex' => $_POST['sex'],
+            'mail' => $_POST['mail'],
+            'birthdate' => $_POST['birthdate'],
+            'langue' => $_POST['language'],
+            'token'=> password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'urlavatar'
+            'grade'
+            'public'
+            'updated'
+        );
+        var_dump($update_user);
     }
-
+    */
+    
     static public function delete($id)
     {
         echo "je suis là";
