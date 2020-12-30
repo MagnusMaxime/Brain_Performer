@@ -156,6 +156,6 @@ $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");
 $router->get('/admin/faq', "Faq#manage");
 $router->post('/admin/faq', "Faq#post");
-$router->get("/admin/listeutilisateur", "userListAdmin#show");
+$router->get("/admin/gestion-utilisateurs", "userListAdmin#show");
 
 echo $router->run();
