@@ -8,7 +8,7 @@ class User {
 	public static $grades = [//NE PAS CHANGER CE TABLEAU
 		"patient",
 		"médecin",
-        "gestionnaire",
+		"gestionnaire",
 		"admin",
 		"dev",
 	];
@@ -50,9 +50,9 @@ class User {
 		global $DB;
 		$conditions_query_array = [];
 		foreach($conditions as $key => $value) {
-            array_push($conditions_query_array, "`".$key."`= :".$key);
+			array_push($conditions_query_array, "`".$key."`=:".$key);
 		}
-		$conditions_query = join(", ", $conditions_query_array);
+		$conditions_query = join(" AND ", $conditions_query_array);
 		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
 		error_log($query);
 		/* error_log(json_encode($conditions)); */
@@ -64,6 +64,29 @@ class User {
 		/* error_log(!$results); */
 		error_log($req->rowCount());
 		return $req->rowCount()>=1;
+	}
+
+	/**
+	 * Filtre les utilisateurs.
+	 */
+	static public function filter($conditions) {
+		global $DB;
+		$conditions_query_array = [];
+		foreach($conditions as $key => $value) {
+            array_push($conditions_query_array, "`".$key."`=:".$key);
+		}
+		$conditions_query = join(" AND ", $conditions_query_array);
+		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
+		var_dump($conditions);
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute($conditions);
+		$results = $req->fetch();
+		if ($results) {
+			return $results;
+		} else {
+			return [];
+		}
 	}
 
 

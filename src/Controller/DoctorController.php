@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
+use App\Model\User;
 
 class DoctorController extends Controller
 {
@@ -63,7 +64,24 @@ class DoctorController extends Controller
             $twig_array["alert"]="Erreur dans l'envoi du mail ".$mail->ErrorInfo.".";
             return $twig->render('doctor/sendToken.html', $twig_array);
         }
-
     }
+
+		/*
+		 * Affiche la liste des patients d'un médecin.
+		 */
+		public function patients() {
+        global $twig;
+        if (self::needToBeDoctor()){
+            return "";
+        }
+				error_log('token');
+				error_log(strval($_SESSION['token']));
+				$context = User::filter(['grade' => 0, 'token' => $_SESSION['token']]);
+				if (empty($context)) {
+					$context["info"] = "Vous n'avez aucun patient.";
+				}
+				var_dump($context);
+				return $twig->render('doctor/patients.html', $context);
+		}
 }
 

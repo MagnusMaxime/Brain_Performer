@@ -30,15 +30,6 @@ class UserController extends Controller
 				http_response_code(200);
 			}
 
-			if (isset($_SESSION["id"])){
-				//l'utilisateur est conecté
-				if ($_SESSION['id']==$id){
-					//l'utilisateur regarde son propre profil, on redirige vers /moncompte
-					header("Location: /moncompte");
-					return true;
-				}
-			}
-
 
 			$user = new User($id);
 			$user_info = $user->get_info();

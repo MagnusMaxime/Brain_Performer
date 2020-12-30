@@ -1,5 +1,32 @@
 <link type="text/css" rel="stylesheet" href="assets/css/alert.css">
 <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-	{{alert}}
+	{% if alert %}
+  <span style="background-color: #f44336" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ alert }}
+	{% elseif danger %}
+  <span style="background-color: #f8d7da" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ danger }}
+	{% elseif success %}
+		<span style="background-color: #d4edda" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ success }}
+	{% elseif warning %}
+		<span style="background-color: #fff3cd" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ warning }}
+	{% elseif primary %}
+		<span style="background-color: #cce5ff" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ primary }}
+	{% elseif secondary %}
+		<span style="background-color: #e2e3e5" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ secondary }}
+	{% elseif info %}
+		<span style="background-color: #d1ecf1" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ info }}
+	{% elseif light %}
+		<span style="background-color: #fefefe" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ light }}
+	{% elseif dark %}
+		<span style="background-color: #d6d8d9" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{ dark }}
+	{% endif %}
+
 </div>

@@ -150,7 +150,7 @@ $router->post("/profil/:id/modifier", "User#modifyAccount");
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
 $router->post("/medecin/envoyer-un-lien", "Doctor#sendToken");
-
+$router->get('/patients', "Doctor#patients");
 
 # Admin
 $router->get('/admin', "Admin#index");
