@@ -9,6 +9,7 @@
 <table>
     <tr>
         <th>ID</th>
+        <th>Bannir</th>
         <th>Prénom</th>
         <th>Nom</th>
         <th>Sexe</th>
@@ -20,13 +21,13 @@
         <th>Grade</th>
         <th>Date de création</th>
         <th>Date de mise à jour</th>
-        <th>Bannir</th>
     </tr>
 
     {% for user in users %}
     <form method="post" action="/admin/gestion-utilisateurs-actualiser">
         <tr>
             <td>{{user.id}}</td>
+            <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" id="ban" name="Bannir" value="Supprimer"/></a></td>
             <td><input class=no-border type="text" name="message" value={{user.firstname}} size="15"/></td>
             <td><input class=no-border type="text" name="message" value={{user.lastname}} size="20"/></td>
             <td>
@@ -51,7 +52,6 @@
             </td>
             <td>{{user.created}}</td>
             <td>{{user.updated}}</td>
-            <td><input type="checkbox" id="ban" name="bannir" /></td>
         </tr>
     </form>
     {% endfor %}
@@ -86,7 +86,7 @@
                 <option value="1">Femme</option>
             </select>
         </td>
-        <td><input class=no-border id="mail" type="text" name="mail" size="30" required/></td>
+        <td><input class=no-border id="mail" type="email" name="mail" size="30" required/></td>
         <td><input class=no-border id="birthdate" type="date" name="birthdate" required/></td>
         <td>
             <select name="language" id="language" required>
@@ -106,7 +106,7 @@
             </select>
         </td>
     </table>
-<input type="submit" class="valid" name="add-count" type="button" value="Ajouter le compte">
+<input type="submit" class="valid" name="add-count" value="Ajouter le compte">
 </form>
 
 {% endblock content %}
