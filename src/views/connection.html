@@ -6,13 +6,13 @@
 <div class="signin">
     <form action="" method="post">
         <div class="center">
-            <img src="/assets/img/logo.png" alt="logo" class="logo-big">
+            <img src="/assets/img/minilogo.png" alt="logo" class="logo-big">
         </div>
 
         <div class="container">
             <label for="mail"><input type="email" name="mail" placeholder="Entrez votre adresse mail" id="mail" required></label>
 
-            <br>
+
             <label for="password"><input type="password" name="password" placeholder="Entrez votre mot de passe" id="password" required></label>
             <!--
             <br>
@@ -20,19 +20,20 @@
                 <input type="checkbox" checked="checked" id="rememberme"> Se souvenir de moi
             </label>
             -->
-            <button type="submit" class="btn">Se connecter</button>
-
+            <span><button type="submit" class="btn">Se connecter</button>
+            </span>
         </div>
 
 
     </form>
 
     <div class="container">
-        <button type="button" class="btn" onclick="window.location.href = '/inscription';" >S'inscrire</button>
+        <span><button type="button" class="btn" onclick="window.location.href = '/inscription';" >S'inscrire</button>
         <!-- On ne met pas le bouton mdp oublié pour l'instant-->
         <!--
         <button type="button" onclick="forgottenPassword()">Mot de passe oublié ?</button>
         -->
+        </span>
     </div>
 
     <script>
