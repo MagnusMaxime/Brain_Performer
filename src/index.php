@@ -117,7 +117,8 @@ try {
 $router =  new \App\Router\Router($url);
 
 #Toujours mettre les routes les plus précises en premier
-#$router->get('/test/:id', "Test#test");
+$router->get('/test', "Test#index");
+$router->get('/test/alert', "Test#alert");
 
 /*function() use ($twig) {
          return $twig->render("connection.html");
