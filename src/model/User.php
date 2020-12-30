@@ -21,10 +21,11 @@ class User {
 		$query = "SELECT `id` FROM `user`";
 		$req = $DB->prepare($query);
 		$req->execute();
-		$ids = $req->fetch();
+		$ids = $req->fetchAll();
+		//var_dump(json_encode($ids));
 		$users = [];
-		foreach ($ids as $id) {
-			array_push($users, new self($id));
+		foreach ($ids as $id_array) {
+		    $users[]=new self($id_array["id"]);
 		}
 		return $users;
 	}
@@ -257,7 +258,8 @@ class User {
         global $DB;
         $users = $DB->query('SELECT * FROM user');
         return $users;
-        }
+	}
+
 }
 
 //["first-name"]=> string(2) "ze" ["last-name"]=> string(2) "ze"

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/assets/css/" /><!-- TODO faire css -->
+{% endblock style %}
+
+{% block script %}
+<!--<script src="/assets/js/connection.js"></script>-->
+{% endblock script %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>Avatar</th>
+        <th>Nom</th>
+        <th>Mail</th>
+        <th>Date de naissance</th>
+        <th>Titre</th>
+        <th>Date de création</th>
+        <th>Date de mise à jour</th>
+    </tr>
+
+    {% for user in users %}
+        <tr>
+            <td>
+                <a href="/profil/{{user.id}}">
+                    <img src="{{user.urlavatar}}" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                </a>
+            </td>
+            <td>{{user.sex ? "Mme." : "M."}} {{user.firstname}} {{user.lastname |upper }}</td>
+            <td><a class="mail" href="mailto:{{user.mail}}">{{user.mail}}</a></td>
+            <td>{{user.birthday}}</td>
+            <td>{{user.grade_name}}</td>
+            <td>{{user.created}}</td>
+            <td>{{user.updated}}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock %}

@@ -72,6 +72,8 @@ require_once("./Controller/DeconnectionController.php");
 require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
+require_once("./Controller/SearchController.php");
+
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -129,6 +131,10 @@ $router->get('/cgu', function() use ($twig) {
      echo $twig->render("CGU.html", ["title"=>"CGU"]);
 });
 
+$router->get('/test', "Test#index");
+$router->get('/test/alert', "Test#alert");
+
+
 $router->get("/faq", "Faq#show");
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");
@@ -148,6 +154,7 @@ $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
 
+
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
 $router->post("/medecin/envoyer-un-lien", "Doctor#sendToken");
@@ -164,5 +171,10 @@ $router->get("/admin/gestion-utilisateurs", "UserListAdmin#get");
 $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser', "UserListAdmin#postupdate");
 $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
+
+
+# API
+
+$router->get("/api/search", "Search#api");
 
 echo $router->run();
