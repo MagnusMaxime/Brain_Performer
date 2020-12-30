@@ -37,14 +37,14 @@ class UserListAdminController extends Controller
                 'mail' => $_POST['mail'],
                 'birthdate' => $_POST['birthdate'],
                 'language' => $_POST['language'],
-                'password' => $_POST['password'], //à hacher
+                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),//à hacher
                 'token' => $_POST['token'],
                 'urlavatar' => $_POST['urlavatar'],
                 'grade' => $_POST['grade'] //à mettre sous forme de numéro
             );
             UserListAdmin::AddAccount($info_add);
             //var_dump($info_add);
-            echo "vérifie dans la table qu'il est bien ajouté";
+            header("Location: /admin/gestion-utilisateurs");
 
         }
     }
