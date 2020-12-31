@@ -11,6 +11,7 @@
         <th>ID</th>
         <th>Bannir</th>
         <th>Sauvegarder</th>
+        <th>Nouveau mdp</th>
         <th>Prénom</th>
         <th>Nom</th>
         <th>Sexe</th>
@@ -20,27 +21,29 @@
         <th>Jeton</th>
         <th>Avatar</th>
         <th>Grade</th>
+        <th>Public</th>
         <th>Date de création</th>
         <th>Date de mise à jour</th>
     </tr>
 
     {% for user in users %}
-    <form method="post" action="/admin/gestion-utilisateurs-actualiser">
+    <form method="post" action="/admin/gestion-utilisateurs-actualiser/{{user.id}}">
         <tr>
             <td>{{user.id}}</td>
-            <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" id="ban" name="Bannir" value="Supprimer"/></a></td>
-            <td><input class="valid" type="submit" value="Valider"></td>
-            <td><input class=no-border type="text" name="firstname" value={{user.firstname}} size="15"/></td>
-            <td><input class=no-border type="text" name="lastname" value={{user.lastname}} size="20"/></td>
+            <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" id="ban" name="Bannir" value="Supprimer" required/></a></td>
+            <td><input class="valid" type="submit" value="Valider" required></td>
+            <td><input class=no-border type="text" name="password" value="" size="10"></td>
+            <td><input class=no-border type="text" name="firstname" value={{user.firstname}} size="15" required/></td>
+            <td><input class=no-border type="text" name="lastname" value={{user.lastname}} size="20"required/></td>
             <td>
-                <select name="sex">
+                <select name="sex" required>
                     <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
-                    <option value={{ user.sex ? 'Homme' : 'Femme' }} > {{ user.sex ? 'Homme' : 'Femme' }}</option>
+                    <option value={{1 - user.sex}} > {{ user.sex ? 'Homme' : 'Femme' }}</option>
                 </select>
             </td>
-            <td><input class=no-border type="email" name="mail" value={{user.mail}} size="30"/></td>
-            <td><input class=no-border type="text" name="birthdate" value={{user.birthdate}} size="10"/></td>
-            <td><input class=no-border type="text" name="language" value={{user.language}} size="3"/></td>
+            <td><input class=no-border type="email" name="mail" value={{user.mail}} size="30" required/></td>
+            <td><input class=no-border type="text" name="birthdate" value={{user.birthdate}} size="10" required/></td>
+            <td><input class=no-border type="text" name="language" value={{user.language}} size="3" required/></td>
             <td><input class=no-border type="text" name="token" size="20" value={{user.token}} ></td>
             <td><input class=no-border type="text" name="urlavatar" size="20" value={{user.urlavatar}} ></td>
             <!-- <td><input class=no-border type="text" name="message" size="1" value={{user.grade}} ></td> -->
@@ -50,6 +53,12 @@
                     <option value="1" {{ user.grade=="1" ? "selected" : "" }} >Médecin</option>
                     <option value="2" {{ user.grade=="2" ? "selected" : "" }} >Gestionnaire</option>
                     <option value="3" {{ user.grade=="3" ? "selected" : "" }} >Administrateur</option>
+                </select>
+            </td>
+            <td>
+                <select name="public" required>
+                    <option value={{user.public}} selected>{{ user.public ? 'Oui' : 'Non' }}</option>
+                    <option value={{1 - user.public }} > {{ user.public ? 'Non' : 'Oui' }} </option>
                 </select>
             </td>
             <td>{{user.created}}</td>
@@ -79,6 +88,7 @@
             <th>Jeton</th>
             <th>Avatar</th>
             <th>Grade</th>
+            <th>Public</th>
         </tr>
         <td><input class=no-border id="firstname" type="text" name="firstname" size="15" required/></td>
         <td><input class=no-border id="lastname" type="text" name="lastname" size="20" required/></td>
@@ -105,6 +115,12 @@
                 <option value="1">Médecin</option>
                 <option value="2">Gestionnaire</option>
                 <option value="3">Administrateur</option>
+            </select>
+        </td>
+        <td>
+            <select name="public" required>
+                <option value="0">Non</option>
+                <option value="1">Oui</option>
             </select>
         </td>
     </table>
