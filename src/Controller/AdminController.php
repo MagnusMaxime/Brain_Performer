@@ -13,6 +13,14 @@ class AdminController extends Controller {
 			}
 			return $twig->render('admin/index.html', []);
     }
+
+		/*
+		 * Affiche tout les tokens.
+		 */
+		static public function token_index() {
+			/* $context = Token */
+
+		}
 }
 
 

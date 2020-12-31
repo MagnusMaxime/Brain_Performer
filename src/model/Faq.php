@@ -4,7 +4,7 @@
 namespace App\Model;
 
 
-class Faq {
+class Faq extends SQLTable {
     public static function getFaq(){//retourne un array avec les questions et les réponses
         global $DB;
         $req = $DB->prepare("SELECT * FROM `faq`");//id,question, answer, created, updated

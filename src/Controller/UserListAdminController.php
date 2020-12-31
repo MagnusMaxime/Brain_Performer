@@ -38,7 +38,8 @@ class UserListAdminController extends Controller
                 'token' => $_POST['token'],
                 'urlavatar' => $_POST['urlavatar'],
                 'grade' => $_POST['grade'], //à mettre sous forme de numéro
-                'parent' => $_SESSION['id']
+                'parent' => $_SESSION['id'],
+                'public' => $_POST['public']
             );
             UserListAdmin::AddAccount($info_add);
             //var_dump($info_add);
@@ -53,7 +54,7 @@ class UserListAdminController extends Controller
 
     }
 
-    /* public function postupdate() //on modifie les champs avec les infos récupérés
+    public function postupdate($id) //on modifie les champs avec les infos récupérés
     {
         $update_user = array(
             'firstname' => $_POST['firstname'],
@@ -61,17 +62,20 @@ class UserListAdminController extends Controller
             'sex' => $_POST['sex'],
             'mail' => $_POST['mail'],
             'birthdate' => $_POST['birthdate'],
-            'langue' => $_POST['language'],
-            'token'=> password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'urlavatar'
-            'grade'
-            'public'
-            'updated'
+            'language' => $_POST['language'],
+            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            'token' => $_POST['token'],
+            'urlavatar' => $_POST['urlavatar'],
+            'grade' => $_POST['grade'],
+            'public' => $_POST['public'],
+            'id' => $id
         );
         var_dump($update_user);
+        UserListAdmin::ModifieAccount($update_user);
+        header("Location: /admin/gestion-utilisateurs");
+
     }
-    */
-    
+
     static public function delete($id)
     {
         echo "je suis là";
@@ -82,7 +86,7 @@ class UserListAdminController extends Controller
     static public function addrequired()
     {
         return (isset($_POST['firstname'], $_POST['lastname'], $_POST['sex'], $_POST['mail'], $_POST['birthdate'],
-            $_POST['language'], $_POST['password'], $_POST['grade']));
+            $_POST['language'], $_POST['password'], $_POST['grade'], $_POST['public']));
     }
 }
 

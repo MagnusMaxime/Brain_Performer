@@ -4,7 +4,7 @@
 namespace App\Model;
 
 
-class User {
+class User extends SQLTable {
 	public static $grades = [//NE PAS CHANGER CE TABLEAU
 		"patient",
 		"médecin",
@@ -17,17 +17,7 @@ class User {
 	 * Récupère tout les utilisateurs.
 	 */
 	public static function get_all() {
-		global $DB;
-		$query = "SELECT `id` FROM `user`";
-		$req = $DB->prepare($query);
-		$req->execute();
-		$ids = $req->fetchAll();
-		//var_dump(json_encode($ids));
-		$users = [];
-		foreach ($ids as $id_array) {
-		    $users[]=new self($id_array["id"]);
-		}
-		return $users;
+		return self::all();
 	}
 
 	/**
@@ -48,44 +38,14 @@ class User {
 	 * étant donné un tableau de conditions.
 	 */
 	static public function does_exist($conditions) {
-		global $DB;
-		$conditions_query_array = [];
-		foreach($conditions as $key => $value) {
-			array_push($conditions_query_array, "`".$key."`=:".$key);
-		}
-		$conditions_query = join(" AND ", $conditions_query_array);
-		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
-		error_log($query);
-		/* error_log(json_encode($conditions)); */
-
-		$req = $DB->prepare($query);
-		$req->execute($conditions);
-		/* $results = $req->fetch(); */
-		/* error_log(json_encode($results)); */
-		/* error_log(!$results); */
-		error_log($req->rowCount());
-		return $req->rowCount()>=1;
+		return self::exist($conditions);
 	}
 
 	/**
 	 * Filtre les utilisateurs.
 	 */
 	static public function filter($conditions) {
-		global $DB;
-		$conditions_query_array = [];
-		foreach($conditions as $key => $value) {
-			array_push($conditions_query_array, "`".$key."`=:".$key);
-		}
-		$conditions_query = join(" AND ", $conditions_query_array);
-		$query = "SELECT * FROM `user` WHERE (".$conditions_query.")";
-		$req = $DB->prepare($query);
-		$req->execute($conditions);
-		$results = $req->fetch();
-		if ($results) {
-			return $results;
-		} else {
-			return [];
-		}
+		return self::rows($conditions);
 	}
 
 
@@ -161,16 +121,7 @@ class User {
 	 * On suppose que l'utilisateur existe.
 	*/
 	public function __construct($id) {
-				$this->id = $id;
-
-				/* $user_row = $results[0]; */
-				/* $this->id = $id; */
-				/* $this->firstname = $user_row["firstname"]; */
-				/* $this->lastname = $user_row["lastname"]; */
-				/* $this->mail = $user_row["mail"]; */
-				/* $this->created = $user_row["created"]; */
-				/* $this->updated = $user_row["updated"]; */
-				/* $this->grade = $user_row["grade"]; */
+		$this->id = $id;
 	}
 
 
@@ -224,10 +175,10 @@ class User {
 		$_SESSION['urlavatar'] = $info['urlavatar'];
 		$_SESSION['updated'] = $info['updated'];
 		$_SESSION['created'] = $info['created'];
-        $_SESSION['grade'] = $info['grade'];//int
-        $_SESSION['public'] = $info['public'];
-        $_SESSION['token'] = $info['token'];
-        $_SESSION['user'] = $info;
+		$_SESSION['grade'] = $info['grade'];//int
+		$_SESSION['public'] = $info['public'];
+		$_SESSION['token'] = $info['token'];
+		$_SESSION['user'] = $info;
 	}
 
 	public function update($data){
@@ -255,9 +206,7 @@ class User {
     }
 
     public static function getUsers(){
-        global $DB;
-        $users = $DB->query('SELECT * FROM user');
-        return $users;
+			return self::rows();
 	}
 
 }
