@@ -49,6 +49,7 @@ $app->run();*/
 
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
+require_once('./model/SQLTable.php');
 require_once('./model/User.php');
 require_once('./model/Faq.php');
 require_once('./model/Ticket.php');
@@ -73,7 +74,6 @@ require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 require_once("./Controller/SearchController.php");
-
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -131,10 +131,6 @@ $router->get('/cgu', function() use ($twig) {
      echo $twig->render("CGU.html", ["title"=>"CGU"]);
 });
 
-$router->get('/test', "Test#index");
-$router->get('/test/alert', "Test#alert");
-
-
 $router->get("/faq", "Faq#show");
 $router->get("/connexion", "Connection#get");
 $router->post("/connexion", "Connection#post");
@@ -149,11 +145,12 @@ $router->post("/inscription", "Register#post");
 $router->get("/mentions-legales", "LegalMentions#show");
 $router->get("/incident", "Incident#show");
 
+$router->get("/rechercher", "Search#show");
+
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
-
 
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
@@ -162,6 +159,7 @@ $router->get('/patients', "Doctor#patients");
 
 # Admin
 $router->get('/admin', "Admin#index");
+$router->get('admin/token', "Admin#token");
 $router->get('/admin/profils', "AdminUser#users");
 $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");
@@ -172,9 +170,7 @@ $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser/:id', "UserListAdmin#postupdate");
 $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
 
-
 # API
-
 $router->get("/api/search", "Search#api");
 
 echo $router->run();

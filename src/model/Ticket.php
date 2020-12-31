@@ -4,7 +4,7 @@
 namespace App\Model;
 
 
-class Ticket{
+class Ticket extends SQLTable {
     public static function getTickets(){//retourne un array avec les questions et les réponses
         global $DB;
         $req = $DB->prepare("SELECT * FROM `ticket`");//id,question, answer, created, updated

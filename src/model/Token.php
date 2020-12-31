@@ -2,7 +2,7 @@
 namespace App\Model;
 
 
-class Token{
+class Token extends SQLTable {
     public static function isDoctorToken($token){
         global $DB;
         $req = $DB->prepare("SELECT * FROM `token` WHERE `id` = :token");

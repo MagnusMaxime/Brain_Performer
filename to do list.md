@@ -23,3 +23,4 @@ A faire :
 - Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
         -la page donne un tableau avec tous les utilisateurs listés par token
   - Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton
+  - AJouter le back-office de la messagerie interne
