@@ -5,6 +5,9 @@ Fait :
 - Modifier les comptes par validation
 
 A faire :
+    
+    MESSAGERIE INTERNE:
+    - définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
 
     MOTEUR DE RECHERCHE :
     -Retourner un résultat de recherche sous forme de tableaux URGENT
