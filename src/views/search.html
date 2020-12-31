@@ -5,12 +5,36 @@
 {% endblock style %}
 
 {% block script %}
-<!--<script src="/assets/js/connection.js"></script>-->
+<script>USERS_JSON={{json|raw}}</script>
+<script src="/assets/js/search.js"></script>
 {% endblock script %}
 
 {% block content %}
 
-<table>
+<label for="search-input">Rechercher :</label>
+<input type="text" name="search-input" maxlength="100" placeholder="Faites une recherche" id="search-input" value="">
+
+
+<label for="statut-filter">Filtre par rapport au statut :</label>
+<select name="statut-filter" id="statut-filter">
+    <option value="-1">Filtrez par rapport au statut</option>
+    <option value="0">Patient</option>
+    <option value="1">Médecin</option>
+    <!--<option value="2">Gestionnaire</option>
+    <option value="3">Administrateur</option>-->
+</select>
+
+<label for="sex-filter">Vous chercher :</label>
+<select name="sex-filter" id="sex-filter">
+    <option value="-1">Filtrez par rapport au sexe</option>
+    <option value="0">un homme</option>
+    <option value="1">une femme</option>
+</select>
+
+
+
+
+<table id="main-table">
     <tr>
         <th>Avatar</th>
         <th>Nom</th>
@@ -22,15 +46,20 @@
     </tr>
 
     {% for user in users %}
-        <tr>
+        <tr id="user-{{user.id}}">
             <td>
                 <a href="/profil/{{user.id}}">
-                    <img src="{{user.urlavatar}}" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                    {% if user.urlavatar %}
+                        <img src="{{user.urlavatar}}" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                    {% else %}
+                    <!-- Si l'utilisateur n'a pas d'avatar -->
+                        <img src="https://img.icons8.com/fluent/344/user-male.png" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                    {% endif %}
                 </a>
             </td>
             <td>{{user.sex ? "Mme." : "M."}} {{user.firstname}} {{user.lastname |upper }}</td>
             <td><a class="mail" href="mailto:{{user.mail}}">{{user.mail}}</a></td>
-            <td>{{user.birthday}}</td>
+            <td>{{user.birthdate}}</td>
             <td>{{user.grade_name}}</td>
             <td>{{user.created}}</td>
             <td>{{user.updated}}</td>
@@ -38,6 +67,7 @@
     {% endfor %}
 
 </table>
+
 
 
 {% endblock %}

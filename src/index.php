@@ -149,6 +149,8 @@ $router->post("/inscription", "Register#post");
 $router->get("/mentions-legales", "LegalMentions#show");
 $router->get("/incident", "Incident#show");
 
+$router->get("/rechercher", "Search#show");
+
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
@@ -174,7 +176,6 @@ $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete")
 
 
 # API
-
 $router->get("/api/search", "Search#api");
 
 echo $router->run();
