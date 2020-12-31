@@ -73,6 +73,7 @@ require_once("./Controller/DeconnectionController.php");
 require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
+require_once("./Controller/SearchController.php");
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -171,4 +172,5 @@ $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete")
 
 # API
 $router->get("/api/search", "Search#api");
+
 echo $router->run();

@@ -83,9 +83,16 @@ class SQLTable {
 		$req->execute($conditions);
 		$ids = $req->fetchAll();
 		$objects = [];
-		foreach ($ids as $ids) {
+
+		if (self::lower_class_name()=="user"){//TODO pour marc : faire un truc plus propre
+            foreach ($ids as $ids) {
+                $objects[] = new User($ids["id"]);
+            }
+        }else{
+		    foreach ($ids as $ids) {
 			$objects[] = new self($ids["id"]);
-		}
+		    }
+        }
 		return $objects;
 	}
 
