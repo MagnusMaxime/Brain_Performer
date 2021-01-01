@@ -20,7 +20,7 @@ class Ticket extends SQLTable {
         global $DB;
         $req = $DB->prepare(
             "INSERT INTO `ticket` (`user`, `message`) VALUES (:id_user , :message);");
-        $result=$req->execute(["id_user"=>$user_id,"message"=>$message]);
+        $result=$req->execute(["id_user" => $user_id, "message" => $message]);
         //var_dump($DB->errorInfo());
         return $result;
     }
