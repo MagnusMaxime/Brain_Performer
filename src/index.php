@@ -74,6 +74,7 @@ require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 require_once("./Controller/SearchController.php");
+require_once("./Controller/TicketController.php");
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -111,9 +112,10 @@ if (isset($_GET["url"])){
 }
 
 try {
-    $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+	$DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
 } catch (\Exception $e){
-    die('Erreur : ' . $e->getMessage());
+	$DB = False;
+    /* die('Erreur : ' . $e->getMessage()); */
 }
 
 $router =  new \App\Router\Router($url);
@@ -141,16 +143,15 @@ $router->get("/contact", "Contact#show");
 $router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
-
 $router->get("/mentions-legales", "LegalMentions#show");
 $router->get("/incident", "Incident#show");
-
 $router->get("/rechercher", "Search#show");
-
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
+$router->post("/ticket", "Ticket#index");
+$router->post("/ticket/add", "Ticket#one");
 
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
