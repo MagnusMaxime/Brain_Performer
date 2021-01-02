@@ -2,6 +2,7 @@
 
 
 namespace App\Controller;
+use App\Model\Ticket;
 
 
 class TicketController extends Controller
@@ -11,7 +12,9 @@ class TicketController extends Controller
 	 */
     static public function index() {
         global $twig;
-        return $twig->render('ticket-index.html', []);
+				$subjects_number = 20;
+				$context = TicketSubject::get_context($subjects_number);
+        return $twig->render('ticket.html', $context);
     }
 
 		/*
@@ -19,9 +22,10 @@ class TicketController extends Controller
 		 * ainsi que les réponses d'un administrateur à
 		 * celui-ci.
 		 */
-		static public function render($id) {
+		static public function subject($title) {
 			global $twig;
-			return $twig->render('ticket-render.html', []);
+			$context = TicketMessage::get_context();
+			return $twig->render('ticket-subject.html', $context);
 		}
 }
 

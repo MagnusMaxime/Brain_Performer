@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Model;
 
 
@@ -30,7 +29,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -51,7 +50,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -59,7 +58,7 @@ class SQLTable {
 		if (!$id) {
 			return false;
 		} else {
-			return new self($id);
+			return new static($id);
 		}
 	}
 
@@ -77,22 +76,22 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
 		$ids = $req->fetchAll();
 		$objects = [];
 
-		if (self::lower_class_name()=="user"){//TODO pour marc : faire un truc plus propre
-            foreach ($ids as $ids) {
-                $objects[] = new User($ids["id"]);
-            }
-        }else{
-		    foreach ($ids as $ids) {
-			$objects[] = new self($ids["id"]);
-		    }
-        }
+		/* if (static::lower_class_name() == "user"){ //TODO pour marc : faire un truc plus propre */
+		/* 	foreach ($ids as $ids) { */
+		/* 		$objects[] = new User($ids["id"]); */
+		/* 	} */
+		/* } else { */
+		foreach ($ids as $ids) {
+			$objects[] = new static($ids["id"]);
+		}
+		/* } */
 		return $objects;
 	}
 
@@ -109,7 +108,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -130,11 +129,25 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
 
 		return $req->fetchAll();
+	}
+
+	/**
+	 * Renvoie la ligne SQL d'un objet.
+	 */
+	public function get_row() {
+		global $DB;
+		$req = $DB->prepare(
+			"SELECT * FROM `user` WHERE (`id` = :id)"
+		);
+		$req->execute(["id" => $this->id]);
+		$results = $req->fetch();
+		/* var_dump($results); */
+		return $results;
 	}
 }

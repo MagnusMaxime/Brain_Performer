@@ -3,13 +3,25 @@
 
 namespace App\Controller;
 
+use App\Model\ForumSubject;
+use App\Model\ForumMessage;
 
-class forumController extends Controller
+
+class ForumController extends Controller
 {
-    static public function show()
+    static public function index()
     {
         global $twig;
-        return $twig->render('forum.html', []);
+				$subjects_number = 20;
+				$context = ForumSubject::get_context($subjects_number);
+        return $twig->render('forum.html', $context);
+    }
+
+    static public function subject($title)
+    {
+        global $twig;
+				$context = ForumMessage::get_context();
+        return $twig->render('forum-subject.html', $context);
     }
 
 }

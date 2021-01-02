@@ -52,9 +52,11 @@ $app->run();*/
 require_once('./model/SQLTable.php');
 require_once('./model/User.php');
 require_once('./model/Faq.php');
-require_once('./model/Ticket.php');
 require_once("./model/Token.php");
 require_once("./model/UserListAdmin.php");
+require_once('./model/Thread.php');
+require_once('./model/Ticket.php');
+require_once("./model/Forum.php");
 
 require_once('./Router/Router.php');
 
@@ -67,13 +69,14 @@ require_once('./Controller/RegisterController.php');
 require_once('./Controller/ContactController.php');
 require_once('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
-require_once('./Controller/ForumController.php');
 require_once("./Controller/FaqController.php");
 require_once("./Controller/DeconnectionController.php");
 require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 require_once("./Controller/SearchController.php");
+
+require_once('./Controller/ForumController.php');
 require_once("./Controller/TicketController.php");
 
 session_start();
@@ -145,13 +148,16 @@ $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 $router->get("/mentions-legales", "LegalMentions#show");
 
+$router->get("/forum", "Forum#index");
+$router->get("/forum/:title","Forum#subject");
+$router->post("/ticket", "Ticket#index");
+$router->post("/ticket/:title", "Ticket#subject");
+
 $router->get("/rechercher", "Search#show");
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
-$router->post("/ticket", "Ticket#index");
-$router->post("/ticket/add", "Ticket#one");
 
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
@@ -171,8 +177,6 @@ $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser/:id', "UserListAdmin#postupdate");
 $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
 
-#Tout le monde
-$router->get('/forum',"Forum#show");
 
 
 # API
