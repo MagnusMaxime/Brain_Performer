@@ -4,12 +4,12 @@
 namespace App\Controller;
 
 
-class IncidentController extends Controller
+class forumController extends Controller
 {
     static public function show()
     {
         global $twig;
-        return $twig->render('incident.html', []);
+        return $twig->render('forum.html', []);
     }
 
 }
