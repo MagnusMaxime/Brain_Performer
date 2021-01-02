@@ -6,5 +6,25 @@
 
 {% block content %}
 
-Page Forum
+
+<table>
+    <tr>
+        <th>Sujet</th>
+        <th>Auteur</th>
+        <th>Vues</th>
+        <th>Dernier message</th>
+        <th>Date création</th>
+    </tr>
+
+        {{for subject in subjects}}
+    <tr>
+        <th>{{subject.title}}<hr>{{subject.description}}</th>
+        <th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
+        <th>{{subject.views}}</th>
+        <th>{{subject.updated}}</th>
+        <th>{{subject.created}}</th>
+    </tr>
+        {% endfor %}
+</table>
+
 {% endblock content %}
