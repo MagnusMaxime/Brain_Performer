@@ -67,7 +67,7 @@ require_once('./Controller/RegisterController.php');
 require_once('./Controller/ContactController.php');
 require_once('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
-require_once('./Controller/IncidentController.php');
+require_once('./Controller/ForumController.php');
 require_once("./Controller/FaqController.php");
 require_once("./Controller/DeconnectionController.php");
 require_once("./Controller/AdminController.php");
@@ -143,7 +143,6 @@ $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
 
 $router->get("/mentions-legales", "LegalMentions#show");
-$router->get("/incident", "Incident#show");
 
 $router->get("/rechercher", "Search#show");
 
@@ -169,6 +168,10 @@ $router->get("/admin/gestion-utilisateurs", "UserListAdmin#get");
 $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser/:id', "UserListAdmin#postupdate");
 $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
+
+#Tout le monde
+$router->get('/forum',"Forum#show");
+
 
 # API
 $router->get("/api/search", "Search#api");
