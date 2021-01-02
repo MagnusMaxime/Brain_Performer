@@ -1,26 +1,24 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="container">
-	<ul>
-		<table>
-			<tr>
-				<th>Ticket</th>
-				<th>Auteur</th>
-				<th>Vues</th>
-				<th>Dernier message</th>
-				<th>Date création</th>
-			</tr>
-			{% for ticket in tickets %}
-			<tr>
-				<th>{{ticket.title}}<hr>{{ticket.description}}</th>
-				<th>{{ticket.user.firstname}} {{ticket.user.lastname}}</th>
-				<th>{{ticket.views}}</th>
-				<th>{{ticket.updated}}</th>
-				<th>{{ticket.created}}</th>
-			</tr>
-			{% endfor %}
-		</table>
-	</ul>
-</div>
+
+<table>
+	<tr>
+		<th>Ticket</th>
+		<th>Auteur</th>
+		<th>Vues</th>
+		<th>Dernier message</th>
+		<th>Date création</th>
+	</tr>
+	{% for ticket in tickets %}
+	<tr>
+		<th>{{ticket.title}}<hr>{{ticket.description}}</th>
+		<th>{{ticket.user.firstname}} {{ticket.user.lastname}}</th>
+		<th>{{ticket.views}}</th>
+		<th>{{ticket.updated}}</th>
+		<th>{{ticket.created}}</th>
+	</tr>
+	{% endfor %}
+</table>
+
 {% endblock content %}
