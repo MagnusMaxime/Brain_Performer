@@ -3,8 +3,8 @@
 namespace App\Model;
 
 
-class Ticket extends ThreadSubject {
+class TicketSubject extends ThreadSubject {
 }
 
-class Ticket extends ThreadSubject {
+class TicketMessage extends ThreadMessage {
 }

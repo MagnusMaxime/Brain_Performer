@@ -5,6 +5,16 @@ namespace App\Model;
 
 class SQLTable {
 
+	/*
+	 * Retrouve les noms des tables à partir telles définies dans la base de données,
+	 * en effectuant une conversion de CamelCase à snake_case.
+	 */
+	static protected function get_name() {
+		$array = explode('\\', get_called_class());
+		$class_name = end($array);
+		return strtolower(preg_replace('/\B([A-Z])/', '_$1', $class_name));
+	}
+
 	public function __construct($id) {
 			$this->id = $id;
 	}
