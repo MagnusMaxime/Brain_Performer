@@ -33,7 +33,6 @@ class ForumController extends ThreadController {
 	 */
 	static public function subject($title) {
 			global $twig;
-			$title = urldecode($_POST["title"]);
 			$context = ForumMessage::get_context($title);
 			return $twig->render('forum-subject.html', $context);
 	}
@@ -45,7 +44,7 @@ class ForumController extends ThreadController {
 	 */
 	static public function add_subject() {
 		$user_id = $_SESSION["id"];
-		ForumMessage::add($user_id, $_POST["title"], $_POST["description"]);
+		ForumSubject::add($user_id, $_POST["title"], $_POST["description"]);
 		$title = urlencode($_POST["title"]);
 		header("Location: /forum/".$title);
 	}
@@ -55,7 +54,7 @@ class ForumController extends ThreadController {
 	 */
 	static public function update_subject() {
 		$user_id = $_SESSION["id"];
-		ForumMessage::update($user_id, $_POST["title"], $_POST["description"]);
+		ForumSubject::update($user_id, $_POST["title"], $_POST["description"]);
 		$title = urlencode($_POST["title"]);
 		header("Location: /forum/".$title);
 	}
@@ -65,7 +64,7 @@ class ForumController extends ThreadController {
 	 * Supprime un sujet.
 	 */
 	static public function delete_subject() {
-		ForumMessage::delete($_POST["title"]);
+		ForumSubject::delete($_POST["title"]);
 		/* $title = urlencode($_POST["title"]); */
 		header("Location: /forum");
 	}

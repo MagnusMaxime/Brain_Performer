@@ -42,7 +42,7 @@ class ThreadSubject extends SQLTable {
 	 * Ajoute un sujet.
 	 */
 	static public function add($user_id, $title, $description) {
-        global $DB;
+		global $DB;
 
 	}
 
@@ -85,10 +85,9 @@ class ThreadSubject extends SQLTable {
 	 * Met à jour le nombre de vues.
 	 */
 	public function increment_views() {
-	    global $DB;
-        $DB->exec('UPDATE views SET views = view + 1 FROM forum_subject');
-    }
-
+		global $DB;
+		$DB->exec('UPDATE views SET views = view + 1 FROM forum_subject');
+	}
 }
 
 
@@ -97,9 +96,9 @@ class ThreadMessage extends SQLTable {
 	/*
 	 * Retourne le tableau twig en fonction du titre du sujet.
 	 */
-	public function get_context($title) {
+	static public function get_context($title) {
 		global $DB;
-
+		return [];
 	}
 
 	/*
