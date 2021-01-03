@@ -66,21 +66,28 @@ class DoctorController extends Controller
         }
     }
 
-		/*
-		 * Affiche la liste des patients d'un médecin.
-		 */
-		public function patients() {
+    /*
+	* Affiche la liste des patients d'un médecin.
+	*/
+    public function patients() {
         global $twig;
         if (self::needToBeDoctor()){
             return "";
         }
-				error_log('token');
-				error_log(strval($_SESSION['token']));
-				$context = User::filter(['grade' => 0, 'token' => $_SESSION['token']]);
-				if (empty($context)) {
-					$context["info"] = "Vous n'avez aucun patient.";
-				}
-				return $twig->render('doctor/patients.html', $context);
+        error_log('token');
+		error_log(strval($_SESSION['token']));
+		//$context = User::filter(['grade' => 0, 'token' => $_SESSION['token']]);
+        $context=['title'=>"Mes patients"];
+        $users = User::filter(['grade' => 0, 'parent' => $_SESSION['id']]);//tableau des patients du médecin
+        foreach ($users as $key => $value){
+            $users[$key]["age"]=date_diff(date_create($value["birthdate"]) , date_create('now'))->y;
+        }
+        $context["users"]=$users;
+        //var_dump($context);
+		if (empty($context)) {
+		    $context["info"] = "Vous n'avez aucun patient.";
+		}
+		return $twig->render('doctor/patients.html', $context);
 		}
 }
 
