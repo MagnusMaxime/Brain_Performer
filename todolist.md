@@ -3,6 +3,9 @@ Fait :
 - Supprimer des comptes dans l'interface
 - Ajouter l'attribut public en modifier et créer un profil
 - Modifier les comptes par validation
+-Retourner un résultat de recherche sous forme de tableaux URGENT
+-Retourner un utilisateur par une recherche simple URGENT
+-Retrouver un utilisateur par une recherche multicritère URGENT
 
 A faire :
     
@@ -10,9 +13,6 @@ A faire :
     - définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
 
     MOTEUR DE RECHERCHE :
-    -Retourner un résultat de recherche sous forme de tableaux URGENT
-    -Retourner un utilisateur par une recherche simple URGENT
-    -Retrouver un utilisateur par une recherche multicritère URGENT
     -Retourner un résultat de recherche sous forme de graphiques (statistiques) IMPORTANT
 
     

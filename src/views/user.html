@@ -11,12 +11,12 @@
 		<div id="box">
 			<div class="card">
 
-				{% if urlavatar %}
+				{% if USER.urlavatar %}
 				<!-- Si l'utilisateur a un avatar -->
 				<img src="{{USER.urlavatar}}" alt="{{USER.firstname}}" style="width:100%">
 				{% else %}
 				<!-- Si l'utilisateur n'a pas d'avatar -->
-				<img src="https://img.icons8.com/fluent/344/user-male.png" alt="{{USER.firstname}}" style="width:100%">
+				<img src="{{USER.sex ? AVATAR_FEMALE_PLACEHOLDER : AVATAR_MALE_PLACEHOLDER}}" alt="avatar de {{USER.firstname}}" style="width:100%">
 				{% endif %}
 
 
@@ -30,7 +30,7 @@
 				<p>Mail associé :
 					<span class="mail"> {{USER.mail}}</span>
 				</p>
-				<button onclick="window.location.href = '/modifierprofil/{{USER.id}}';">Modifier mon profil</button>
+
 				<footer>
 					<p>Crée le {{USER.created}}</p>
 					<p>Modifié le {{USER.updated}}</p>
@@ -38,8 +38,5 @@
 			</div>
 		</div>
 	</div>
-
-
-	</section>
 </div>
 {% endblock %}

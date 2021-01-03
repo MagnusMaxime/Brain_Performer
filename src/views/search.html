@@ -17,7 +17,7 @@
 <div> <!--La div des filtres-->
 <label for="statut-filter">Filtrer par rapport au statut :</label>
 <select name="statut-filter" id="statut-filter">
-    <option value="-1">Pas de filtre selon le statut :</option>
+    <option value="-1">Pas de filtre selon le statut</option>
     <option value="0">filtrez les patients</option>
     <option value="1">filtres les médecins</option>
     <!--<option value="2">Gestionnaire</option>
@@ -58,11 +58,7 @@
                         <img src="{{user.urlavatar}}" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
                     {% else %}
                     <!-- Si l'utilisateur n'a pas d'avatar -->
-                        {% if user.sex %}
-                            <img src="https://img.icons8.com/fluent/344/user-female.png" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
-                        {% else %}
-                            <img src="https://img.icons8.com/fluent/344/user-male.png" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
-                        {% endif %}
+                    <img src="{{user.sex ? AVATAR_FEMALE_PLACEHOLDER : AVATAR_MALE_PLACEHOLDER}}" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
                     {% endif %}
                 </a>
             </td>

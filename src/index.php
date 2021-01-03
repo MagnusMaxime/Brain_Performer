@@ -88,6 +88,9 @@ $twig = new \Twig\Environment($loader, []);
 $USER = isset($_SESSION['user']) ? $_SESSION['user'] : false;
 $twig->addGlobal('USER', $USER);
 
+$twig->addGlobal("AVATAR_FEMALE_PLACEHOLDER", "https://img.icons8.com/fluent/344/user-female.png");
+$twig->addGlobal("AVATAR_MALE_PLACEHOLDER", "https://img.icons8.com/fluent/344/user-male.png");
+
 $DB = null;
 /* try */
 /* { */

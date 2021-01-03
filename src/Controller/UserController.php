@@ -54,8 +54,9 @@ class UserController extends Controller
 					}
 
 			global $twig;
-			$twig_array = $user->get_info();
-			$twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
+			$user_info=$user->get_info();
+			$twig_array = $user_info;
+			$twig_array["USER"]=$user_info; //isset($_SESSION['user']) ? $_SESSION['user'] : false;
 			//var_dump(isset($_SESSION['user']) ? $_SESSION['user'] : false);
 			return $twig->render('user.html', $twig_array);
     }
@@ -69,10 +70,12 @@ class UserController extends Controller
         } else{
             //echo 'vous êtes co '+$_SESSION["id"];
         }
-
-        $twig_array=["title"=>"Mon compte", "USER"=>isset($_SESSION['user']) ? $_SESSION['user'] : false];
-        $twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
-
+        $user = new User($_SESSION["id"]);
+        $user_info=$user->get_info();
+        $twig_array = $user_info;
+        $twig_array["title"]="Mon compte";
+        //$twig_array["USER"]=isset($_SESSION['user']) ? $_SESSION['user'] : false;
+        $twig_array["USER"]=$user_info;
         return $twig->render('myAccount.html', $twig_array);
     }
 
