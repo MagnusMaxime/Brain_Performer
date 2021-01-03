@@ -152,12 +152,20 @@ $router->post("/inscription", "Register#post");
 $router->get("/mentions-legales", "LegalMentions#show");
 
 $router->get("/forum", "Forum#index");
-$router->get("/forum/sujet/ajouter", "Forum#update_subject");
-$router->get("/forum/message/ajouter", "Forum#update_message");
+$router->post("/forum/sujet/ajouter", "Forum#add_subject");
+$router->post("/forum/sujet/actualiser", "Forum#update_subject");
+$router->post("/forum/sujet/supprimer", "Forum#delete_subject");
+$router->post("/forum/message/ajouter", "Forum#add_message");
+$router->post("/forum/message/actualiser", "Forum#update_message");
+$router->post("/forum/message/supprimer", "Forum#delete_message");
 $router->get("/forum/:title","Forum#subject");
 $router->post("/ticket", "Ticket#index");
-$router->get("/ticket/sujet/ajouter", "Ticket#update_subject");
-$router->get("/ticket/message/ajouter", "Ticket#update_message");
+$router->post("/ticket/sujet/ajouter", "Forum#add_message");
+$router->post("/ticket/sujet/actualiser", "Ticket#update_subject");
+$router->post("/ticket/sujet/supprimer", "Forum#delete_subject");
+$router->post("/ticket/message/ajouter", "Ticket#add_message");
+$router->post("/ticket/message/actualiser", "Forum#update_message");
+$router->post("/ticket/message/supprimer", "Forum#delete_message");
 $router->post("/ticket/:title", "Ticket#subject");
 
 $router->get("/rechercher", "Search#show");
@@ -165,6 +173,10 @@ $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
+
+//pour le forum :
+$router->post('/forum', "Forum#add_subject");
+
 
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
