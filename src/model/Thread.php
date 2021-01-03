@@ -5,18 +5,20 @@ use PDO;
 
 
 class ThreadSubject extends SQLTable {
+
 	/*
-	 * Renvoie le tableau twig des sujets récents.
+	 * Instancie sujet avec son titre.
 	 */
-	static public function get_context($n) {
-		$context = ["subjects" => []];
-		$subjects = self::select_recent($n);
-		foreach ($subjects as $subject) {
-			$context["subjects"][] = $subject->info();
-		}
-		/* var_dump($context); */
-		return $context;
+	static public function from_title($title) {
+		global $DB;
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`title`=:title)";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute(["title" => $title]);
+		$id = $req->fetch(PDO::FETCH_ASSOC);
+		return new static($id);
 	}
+
 
 	/*
 	 * Renvoie le tableau des threads.
@@ -43,13 +45,21 @@ class ThreadSubject extends SQLTable {
 	 */
 	static public function add($user_id, $title, $description) {
 		global $DB;
-
+		$query = "INSERT INTO `".static::get_name()."` (`user`, `title`, `description`) VALUES (:user, :title, :description)";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute([
+			"user" => $user_id,
+			"title" => $title,
+			"description" => $description
+		]);
 	}
 
 	/*
 	 * Actualise un sujet.
 	 */
 	static public function update($user_id, $title, $description) {
+		global $DB;
 
 	}
 
@@ -57,6 +67,7 @@ class ThreadSubject extends SQLTable {
 	 * Supprime un sujet.
 	 */
 	static public function delete($user_id) {
+		global $DB;
 
 	}
 
@@ -94,19 +105,11 @@ class ThreadSubject extends SQLTable {
 class ThreadMessage extends SQLTable {
 
 	/*
-	 * Retourne le tableau twig en fonction du titre du sujet.
-	 */
-	static public function get_context($title) {
-		global $DB;
-		return [];
-	}
-
-	/*
 	 * Renvoie le tableau des threads.
 	 */
 	static function messages($id) {
 		global $DB;
-		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC LIMIT ".strval($n);
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC";
 		/* error_log($query); */
 		$req = $DB->prepare($query);
 		$req->execute(["subject"=>$subject]);

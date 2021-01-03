@@ -5,42 +5,49 @@
 {% endblock style %}
 
 {% block content %}
-<h1>Forum Brain Performer</h1>
-<h2>Discutez avec la communauté Brain Performer</h2>
+<div class="container">
+	<h1>Forum Brain Performer</h1>
+	<hr>
+	<h2>Discutez avec la communauté Brain Performer</h2>
 
-<table>
-    <tr>
-        <th>Sujet</th>
-        <th>Description</th>
-        <th>Auteur</th>
-        <th>Vues</th>
-        <th>Dernier message</th>
-        <th>Date création</th>
-    </tr>
+	<table>
+			<tr>
+					<th>Sujet</th>
+					<th>Description</th>
+					<th>Auteur</th>
+					<th>Vues</th>
+					<th>Dernier message</th>
+					<th>Date création</th>
+			</tr>
 
-		{% for subject in subjects %}
-    <tr>
-        <th>{{subject.title}}</th>
-        <th>{{subject.description}}</th>
-        <th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
-        <th>{{subject.views}}</th>
-        <th>{{subject.updated}}</th>
-        <th>{{subject.created}}</th>
-    </tr>
+			{% for subject in subjects %}
+			<tr>
+					<th>{{subject.title}}</th>
+					<th>{{subject.description}}</th>
+					<th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
+					<th>{{subject.views}}</th>
+					<th>{{subject.updated}}</th>
+					<th>{{subject.created}}</th>
+			</tr>
 
-		{% endfor %}
-</table>
+			{% endfor %}
+	</table>
 
 
-<form method="post" action="/forum/sujet/ajouter">
-    <label>Titre du sujet :</label>
-    <input id="title" type="text" name="title" size="15" required/></br>
-    <label>Descriptif du sujet :</label>
-    <input id="description" type="text" name="description" size="15" required/></br>
-    <label>Votre message :</label>
-    <input id="message" type="text" name="message" size="15" required/></br>
-
-    <input type="submit" class="valid" value="Créer le sujet">
-</form>
+	<div class="form-container">
+		<form method="post" action="/forum/sujet/ajouter">
+				<label>Titre du sujet :</label>
+				<input id="title" type="text" name="title" size="15" required/></br>
+				<hr>
+				<label>Descriptif du sujet :</label>
+				<input id="description" type="text" name="description" size="15" required/></br>
+				<hr>
+				<label>Votre message :</label>
+				<input id="message" type="text" name="message" size="15" required/></br>
+				<hr>
+				<input type="submit" class="valid" value="Créer le sujet">
+		</form>
+	</div>
+</div>
 
 {% endblock content %}

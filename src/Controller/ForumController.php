@@ -23,7 +23,11 @@ class ForumController extends ThreadController {
 	static public function index() {
 			global $twig;
 			$subjects_number = 20;
-			$context = ForumSubject::get_context($subjects_number);
+			$context = ["subjects" => []];
+			$subjects = ForumSubject::select_recent($subjects_number);
+			foreach ($subjects as $subject) {
+				$context["subjects"][] = $subject->info();
+			}
 			return $twig->render('forum.html', $context);
 	}
 
@@ -33,7 +37,13 @@ class ForumController extends ThreadController {
 	 */
 	static public function subject($title) {
 			global $twig;
-			$context = ForumMessage::get_context($title);
+			$context = [];
+			$subject = ForumSubject::from_title($title);
+			$context["subject"] = $subject->info();
+			$context["messages"] = [];
+			foreach ($subject->get_messages() as $message) {
+				$context["messages"][] = $message->info();
+			}
 			return $twig->render('forum-subject.html', $context);
 	}
 

@@ -30,3 +30,30 @@ td, th /* Mettre une bordure sur les td ET les th */
     -webkit-appearance: none;
     border: 1px solid #ffffff;
 }
+
+.container {
+	padding: 5vw;
+	margin: 2vw;
+  box-shadow:
+		0 -3em 3em rgba(0,0,0,0.1),
+		0 0  0 2px rgb(255,255,255),
+		0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.form-container {
+	margin: 10%;
+	padding: 5%;
+	line-height: 150%;
+  box-shadow:
+		0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.form-container input {
+	width: 100%;
+	padding: 2%;
+	margin: 0%;
+	border: none;
+}
+.form-container hr {
+	margin-bottom: 5%;
+}
