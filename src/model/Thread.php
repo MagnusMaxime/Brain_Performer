@@ -58,9 +58,9 @@ class ThreadSubject extends SQLTable {
 	 * Met à jour le nombre de vues.
 	 */
 	public function increment_views() {
-
-
-	}
+	    global $DB;
+        $DB->exec('UPDATE views SET views = view + 1 FROM forum_subject');
+    }
 }
 
 
