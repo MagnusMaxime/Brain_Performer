@@ -25,10 +25,14 @@ class ThreadSubject extends SQLTable {
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute();
-		$ids = $req->fetchAll();
+		$results = $req->fetchAll();
+		$ids = $results[0];
+		var_dump($ids);
 		$subjects = [];
-		foreach ($ids as $id) {
-			$subjects[] = new static($id);
+		foreach ($ids as $id => $value) {
+			/* echo 'id:'.$id; */
+			/* echo 'value:'.$value; */
+			$subjects[] = new static($value);
 		}
 		return $subjects;
 	}
@@ -45,6 +49,8 @@ class ThreadSubject extends SQLTable {
 	 */
 	public function info() {
 		$row = $this->get_row();
+		var_dump($row);
+		var_dump($row["user"]);
 		$user = new User($row["user"]);
 		$user_row = $user->get_info();
 
@@ -57,7 +63,6 @@ class ThreadSubject extends SQLTable {
 			"created" => $row["created"],
 			"updated" => $row["updated"]
 		];
-		return $row;
 	}
 
 	/*
