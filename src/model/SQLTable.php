@@ -151,14 +151,13 @@ class SQLTable {
 	 * Renvoie la ligne SQL d'un objet.
 	 */
 	public function get_row() {
-		echo $this->id;
 		global $DB;
 		$req = $DB->prepare(
 			"SELECT * FROM `".static::get_name()."` WHERE (`id` = :id)"
 		);
 		$req->execute(["id" => strval($this->id)]);
 		$results = $req->fetch();
-		/* var_dump($results); */
+		var_dump($results);
 		return $results;
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+use PDO;
 
 
 class ThreadSubject extends SQLTable {
@@ -20,15 +21,14 @@ class ThreadSubject extends SQLTable {
 	/*
 	 * Renvoie le tableau des threads.
 	 */
-	static function select_recent($n) {
+	static public function select_recent($n) {
 		global $DB;
 		$query = "SELECT `id` FROM `".static::get_name()."` ORDER BY `created` DESC LIMIT ".strval($n);
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute();
-		$results = $req->fetchAll();
+		$results = $req->fetchAll(PDO::FETCH_ASSOC);
 		$ids = $results[0];
-		/* var_dump($ids); */
 		$subjects = [];
 		foreach ($ids as $id => $value) {
 			/* echo 'id:'.$id; */
@@ -42,6 +42,20 @@ class ThreadSubject extends SQLTable {
 	 * Ajoute un sujet.
 	 */
 	static public function add($user_id, $title, $description) {
+
+	}
+
+	/*
+	 * Actualise un sujet.
+	 */
+	static public function update($user_id, $title, $description) {
+
+	}
+
+	/*
+	 * Supprime un sujet.
+	 */
+	static public function delete($user_id) {
 
 	}
 
