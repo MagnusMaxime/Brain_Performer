@@ -5,9 +5,6 @@ namespace App\Controller;
 
 use App\Model\User;
 
-function a($array){
-
-}
 
 function removeNumericKeys($array)
 {
@@ -43,12 +40,31 @@ class SearchController extends Controller
             $data[$key]=removeNumericKeys($value);
         }
         $result = [];
-        //var_dump($data);
         foreach ($data as $key => $user_info) {
+
             if ($user_info["public"]=="1"){
                 //l'utilisateur $user est public, on l'affiche
                 $result[]=removeSensibleInfo($user_info);
+                continue;
             }
+            if (isset($_SESSION['id'])){
+                if ($_SESSION["id"]==$user_info["id"]){
+                    //Un utilisateur peut voir son propre profil
+                    $result[]=removeSensibleInfo($user_info);
+                    continue;
+                }
+                if (intval($user_info["grade"])==0 and $user_info["parent"]==$_SESSION["id"]){
+                    //un utilisateur peut voir ses enfants même s'ils sont privés.
+                    $result[]=removeSensibleInfo($user_info);
+                    continue;
+                }
+                if ($_SESSION["grade"]>=2){
+                    //Un admin peut voir tout le monde
+                    $result[]=removeSensibleInfo($user_info);
+                    continue;
+                }
+            }
+
         }
         return $result;
     }

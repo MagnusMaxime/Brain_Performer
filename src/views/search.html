@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link rel="stylesheet" type="text/css" href="/assets/css/" /><!-- TODO faire css -->
+<link rel="stylesheet" type="text/css" href="/assets/css/search.css" /><!-- TODO améliorer css -->
 {% endblock style %}
 
 {% block script %}
@@ -14,24 +14,28 @@
 <label for="search-input">Rechercher :</label>
 <input type="text" name="search-input" maxlength="100" placeholder="Faites une recherche" id="search-input" value="">
 
-
-<label for="statut-filter">Filtre par rapport au statut :</label>
+<div> <!--La div des filtres-->
+<label for="statut-filter">Filtrer par rapport au statut :</label>
 <select name="statut-filter" id="statut-filter">
-    <option value="-1">Filtrez par rapport au statut</option>
-    <option value="0">Patient</option>
-    <option value="1">Médecin</option>
+    <option value="-1">Pas de filtre selon le statut :</option>
+    <option value="0">filtrez les patients</option>
+    <option value="1">filtres les médecins</option>
     <!--<option value="2">Gestionnaire</option>
     <option value="3">Administrateur</option>-->
 </select>
 
-<label for="sex-filter">Vous chercher :</label>
+<label for="sex-filter">Filtrer par rapport au sexe :</label>
 <select name="sex-filter" id="sex-filter">
-    <option value="-1">Filtrez par rapport au sexe</option>
-    <option value="0">un homme</option>
-    <option value="1">une femme</option>
+    <option value="-1">Pas de filtre selon le sexe</option>
+    <option value="0">filtrez les hommes</option>
+    <option value="1">filtrez les femmes</option>
 </select>
+<div>
+    <span>Afficher les utilisateurs ayant un âge compris entre <input type="number" id="minage-filter" min="5" max="150" step="1" value=""> et <input type="number" id="maxage-filter" min="5" max="150" step="1" value=""></span>
+</div>
 
 
+</div>
 
 
 <table id="main-table">
@@ -40,6 +44,7 @@
         <th>Nom</th>
         <th>Mail</th>
         <th>Date de naissance</th>
+        <th>Âge</th>
         <th>Titre</th>
         <th>Date de création</th>
         <th>Date de mise à jour</th>
@@ -50,16 +55,21 @@
             <td>
                 <a href="/profil/{{user.id}}">
                     {% if user.urlavatar %}
-                        <img src="{{user.urlavatar}}" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                        <img src="{{user.urlavatar}}" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
                     {% else %}
                     <!-- Si l'utilisateur n'a pas d'avatar -->
-                        <img src="https://img.icons8.com/fluent/344/user-male.png" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                        {% if user.sex %}
+                            <img src="https://img.icons8.com/fluent/344/user-female.png" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                        {% else %}
+                            <img src="https://img.icons8.com/fluent/344/user-male.png" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                        {% endif %}
                     {% endif %}
                 </a>
             </td>
-            <td>{{user.sex ? "Mme." : "M."}} {{user.firstname}} {{user.lastname |upper }}</td>
+            <td><a href="/profil/{{user.id}}">{{user.sex ? "Mme." : "M."}} {{user.firstname}} {{user.lastname |upper }}</a></td>
             <td><a class="mail" href="mailto:{{user.mail}}">{{user.mail}}</a></td>
             <td>{{user.birthdate}}</td>
+            <td>{{user.age}} ans</td>
             <td>{{user.grade_name}}</td>
             <td>{{user.created}}</td>
             <td>{{user.updated}}</td>
