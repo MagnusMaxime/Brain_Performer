@@ -42,6 +42,11 @@ class SearchController extends Controller
         $result = [];
         foreach ($data as $key => $user_info) {
 
+            if (intval($user_info["grade"])>=2){
+                //on affiche pas les comptes de gestionnaire, admin ou dev
+                continue;
+            }
+
             if ($user_info["public"]=="1"){
                 //l'utilisateur $user est public, on l'affiche
                 $result[]=removeSensibleInfo($user_info);
