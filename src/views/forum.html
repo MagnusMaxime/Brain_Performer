@@ -40,7 +40,7 @@
 				<input id="title" type="text" name="title" size="15" required/></br>
 				<hr>
 				<label>Descriptif du sujet :</label>
-				<input id="description" type="text" name="description" size="15" required/></br>
+				<textarea contenteditable id="description" type="text" name="description" size="15" required/></textarea></br>
 				<hr>
 				<label>Votre message :</label>
 				<input id="message" type="text" name="message" size="15" required/></br>
@@ -51,3 +51,17 @@
 </div>
 
 {% endblock content %}
+
+{% block script %}
+<script>
+	$('textarea').on('paste input', function () {
+    if ($(this).outerHeight() > this.scrollHeight){
+        $(this).height(1)
+    }
+    while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
+        $(this).height($(this).height() + 1)
+    }
+});
+</script>
+
+{% endblock script %}
