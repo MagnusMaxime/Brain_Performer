@@ -10,7 +10,7 @@ class ThreadSubject extends SQLTable {
 	static public function get_context($n) {
 		$context = [];
 		$subjects = self::select_recent($n);
-		foreach ($subject as $subjects) {
+		foreach ($subjects as $subject) {
 			$context[] = $subject->info();
 		}
 		return $context;
@@ -21,7 +21,7 @@ class ThreadSubject extends SQLTable {
 	 */
 	static function select_recent($n) {
 		global $DB;
-		$query = "SELECT `id` FROM `".static::get_name()." ORDER BY `created` DESC ` LIMIT ".strval($n);
+		$query = "SELECT `id` FROM `".static::get_name()."` ORDER BY `created` DESC LIMIT ".strval($n);
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute();
@@ -71,13 +71,13 @@ class ThreadMessage extends SQLTable {
 	 */
 	static function recent($n) {
 		global $DB;
-		$query = "SELECT `id` FROM `".static::get_name()."` LIMIT ".strval($n)." ORDER BY `created` DESC";
+		$query = "SELECT `id` FROM `".static::get_name()."` ORDER BY `created` DESC LIMIT ".strval($n);
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute();
 		$ids = $req->fetchAll();
 		$objects = [];
-		foreach ($ids as $ids) {
+		foreach ($ids as $id) {
 			$objects[] = new static($ids["id"]);
 		}
 		return $objects;

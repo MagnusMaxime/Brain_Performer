@@ -16,7 +16,7 @@
         <th>Date création</th>
     </tr>
 
-        {{for subject in subjects}}
+		{% for subject in subjects %}
     <tr>
         <th>{{subject.title}}<hr>{{subject.description}}</th>
         <th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
@@ -24,7 +24,7 @@
         <th>{{subject.updated}}</th>
         <th>{{subject.created}}</th>
     </tr>
-        {% endfor %}
+		{% endfor %}
 </table>
 
 {% endblock content %}
