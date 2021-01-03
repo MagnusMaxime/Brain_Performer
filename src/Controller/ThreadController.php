@@ -6,6 +6,15 @@ namespace App\Controller;
 
 class ThreadController extends Controller {
 
+	/* Sujet */
+
+	/*
+	 * Ajoute un sujet.
+	 */
+	/* static public function add_subject($title) { */
+
+	/* } */
+
 	/*
 	 * Actualise un sujet.
 	 */
@@ -19,6 +28,8 @@ class ThreadController extends Controller {
 	static public function delete_subject($title) {
 
 	}
+
+	/* Message */
 
 	/*
 	 * Actualise un message.
