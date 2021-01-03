@@ -15,7 +15,10 @@ class ThreadSubject extends SQLTable {
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute(["title" => $title]);
-		$id = $req->fetch(PDO::FETCH_ASSOC);
+		$result = $req->fetch();
+		/* var_dump($result); */
+		$id = $result["id"];
+		error_log($id);
 		return new static($id);
 	}
 
