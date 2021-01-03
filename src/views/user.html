@@ -11,6 +11,7 @@
 		<div id="box">
 			<div class="card">
 
+				{% if urlavatar %}
 				<!-- Si l'utilisateur a un avatar -->
 				<img src="{{USER.urlavatar}}" alt="{{USER.firstname}}" style="width:100%">
 				{% else %}

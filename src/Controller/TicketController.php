@@ -2,7 +2,8 @@
 
 
 namespace App\Controller;
-use App\Model\Ticket;
+use App\Model\TicketSubject;
+use App\Model\TicketMessage;
 
 
 class TicketController extends Controller
@@ -24,7 +25,7 @@ class TicketController extends Controller
 		 */
 		static public function subject($title) {
 			global $twig;
-			$context = TicketMessage::get_context();
+			$context = TicketMessage::get_context($title);
 			return $twig->render('ticket-subject.html', $context);
 		}
 }
