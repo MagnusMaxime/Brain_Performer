@@ -48,17 +48,14 @@ td, th /* Mettre une bordure sur les td ET les th */
 		0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
-.form-container input {
+.form-container input, .form-container textarea {
 	width: 100%;
 	padding: 1%;
 	margin: 0%;
 	border: none;
 	font-size: 150%;
 }
+
 .form-container hr {
 	margin-bottom: 5%;
 }
-
-/* .form-container label { */
-/* 	text-decoration: underline; */
-/* } */
