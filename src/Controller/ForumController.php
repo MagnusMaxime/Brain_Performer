@@ -7,7 +7,7 @@ use App\Model\ForumSubject;
 use App\Model\ForumMessage;
 
 
-class ForumController extends Controller
+class ForumController extends ThreadController
 {
 	/*
 	 * Permet d'afficher la liste des sujets du forum.
@@ -18,6 +18,7 @@ class ForumController extends Controller
 			$context = ForumSubject::get_context($subjects_number);
 			return $twig->render('forum.html', $context);
 	}
+
 
 	/*
 	 * Permet d'afficher des messages pour un sujet du forum.

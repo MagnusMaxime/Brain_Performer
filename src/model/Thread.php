@@ -67,14 +67,23 @@ class ThreadSubject extends SQLTable {
 class ThreadMessage extends SQLTable {
 
 	/*
+	 * Retourne le tableau twig en fonction du titre du sujet.
+	 */
+	public function get_context($title) {
+		global $DB;
+
+
+	}
+
+	/*
 	 * Renvoie le tableau des threads.
 	 */
-	static function recent($n) {
+	static function all($id) {
 		global $DB;
-		$query = "SELECT `id` FROM `".static::get_name()."` ORDER BY `created` DESC LIMIT ".strval($n);
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC LIMIT ".strval($n);
 		error_log($query);
 		$req = $DB->prepare($query);
-		$req->execute();
+		$req->execute(["subject"=>$subject]);
 		$ids = $req->fetchAll();
 		$objects = [];
 		foreach ($ids as $id) {
@@ -90,8 +99,6 @@ class ThreadMessage extends SQLTable {
 		$row = $this->get_row();
 		$user= new User($row["user"]);
 		$user_row = $user->get_info();
-
-		$this->increment_views();
 		return [
 			"id" => $row["id"],
 			"message" => $row["message"],
