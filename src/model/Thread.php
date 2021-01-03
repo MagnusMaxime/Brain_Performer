@@ -8,11 +8,12 @@ class ThreadSubject extends SQLTable {
 	 * Renvoie le tableau twig des sujets récents.
 	 */
 	static public function get_context($n) {
-		$context = [];
+		$context = ["subjects" => []];
 		$subjects = self::select_recent($n);
 		foreach ($subjects as $subject) {
-			$context[] = $subject->info();
+			$context["subjects"][] = $subject->info();
 		}
+		/* var_dump($context); */
 		return $context;
 	}
 
@@ -27,7 +28,7 @@ class ThreadSubject extends SQLTable {
 		$req->execute();
 		$results = $req->fetchAll();
 		$ids = $results[0];
-		var_dump($ids);
+		/* var_dump($ids); */
 		$subjects = [];
 		foreach ($ids as $id => $value) {
 			/* echo 'id:'.$id; */
@@ -49,8 +50,8 @@ class ThreadSubject extends SQLTable {
 	 */
 	public function info() {
 		$row = $this->get_row();
-		var_dump($row);
-		var_dump($row["user"]);
+		/* var_dump($row); */
+		/* var_dump($row["user"]); */
 		$user = new User($row["user"]);
 		$user_row = $user->get_info();
 
@@ -92,7 +93,7 @@ class ThreadMessage extends SQLTable {
 	static function messages($id) {
 		global $DB;
 		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC LIMIT ".strval($n);
-		error_log($query);
+		/* error_log($query); */
 		$req = $DB->prepare($query);
 		$req->execute(["subject"=>$subject]);
 		$ids = $req->fetchAll();
@@ -118,6 +119,5 @@ class ThreadMessage extends SQLTable {
 			"created" => $row["created"],
 			"updated" => $row["updated"]
 		];
-		return $row;
 	}
 }
