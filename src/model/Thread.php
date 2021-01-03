@@ -42,6 +42,7 @@ class ThreadSubject extends SQLTable {
 	 * Ajoute un sujet.
 	 */
 	static public function add($user_id, $title, $description) {
+        global $DB;
 
 	}
 

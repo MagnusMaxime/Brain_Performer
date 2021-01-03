@@ -174,6 +174,10 @@ $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");
 $router->post("/profil/:id/modifier", "User#modifyAccount");
 
+//pour le forum :
+$router->post('/forum', "Forum#add_subject");
+
+
 # Doctor
 $router->get("/medecin/envoyer-un-lien", "Doctor#sendToken");
 $router->post("/medecin/envoyer-un-lien", "Doctor#sendToken");
