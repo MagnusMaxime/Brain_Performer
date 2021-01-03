@@ -6,107 +6,39 @@
 
 {% block content %}
 
-<table>
+<table id="main-table">
     <tr>
-        <th>ID</th>
-        <th>Prénom</th>
+        <th>Avatar</th>
         <th>Nom</th>
-        <th>Sexe</th>
         <th>Mail</th>
         <th>Date de naissance</th>
-        <th>Langue</th>
-        <th>Jeton</th>
-        <th>Avatar</th>
-        <th>Grade</th>
+        <th>Âge</th>
         <th>Date de création</th>
         <th>Date de mise à jour</th>
-        <th>Bannir</th>
     </tr>
 
     {% for user in users %}
-    <form method="post" action="/admin/gestion-utilisateurs-actualiser">
-        <tr>
-            <td>{{user.id}}</td>
-            <td><input class=no-border type="text" name="message" value={{user.firstname}} size="15"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.lastname}} size="20"/></td>
-            <td>
-                <select name="sex">
-                    <option value={{user.sex}} selected>{{ user.sex ? 'Femme' : 'Homme' }}</option>
-                    <option value={{ user.sex ? 'Homme' : 'Femme' }} > {{ user.sex ? 'Homme' : 'Femme' }}</option>
-                </select>
-            </td>
-            <td><input class=no-border type="email" name="message" value={{user.mail}} size="30"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.birthdate}} size="10"/></td>
-            <td><input class=no-border type="text" name="message" value={{user.language}} size="3"/></td>
-            <td><input class=no-border type="text" name="message" size="20" value={{user.token}} ></td>
-            <td><input class=no-border type="text" name="message" size="20" value={{user.urlavatar}} ></td>
-            <!-- <td><input class=no-border type="text" name="message" size="1" value={{user.grade}} ></td> -->
-            <td>
-                <select name="grade" required>
-                    <option value="0" {{ user.grade=="0" ? "selected" : "" }} >Patient</option>
-                    <option value="1" {{ user.grade=="1" ? "selected" : "" }} >Médecin</option>
-                    <option value="2" {{ user.grade=="2" ? "selected" : "" }} >Gestionnaire</option>
-                    <option value="3" {{ user.grade=="3" ? "selected" : "" }} >Administrateur</option>
-                </select>
-            </td>
-            <td>{{user.created}}</td>
-            <td>{{user.updated}}</td>
-            <td><input type="checkbox" id="ban" name="bannir" /></td>
-        </tr>
-    </form>
+    <tr id="user-{{user.id}}">
+        <td>
+            <a href="/profil/{{user.id}}">
+                {% if user.urlavatar %}
+                <img src="{{user.urlavatar}}" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                {% else %}
+                <!-- Si l'utilisateur n'a pas d'avatar -->
+                <img src="{{user.sex ? AVATAR_FEMALE_PLACEHOLDER : AVATAR_MALE_PLACEHOLDER}}" class="avatar" alt="avatar de {{user.firstname}} {{user.lastname|upper}}">
+                {% endif %}
+            </a>
+        </td>
+        <td><a href="/profil/{{user.id}}">{{user.sex ? "Mme." : "M."}} {{user.firstname}} {{user.lastname |upper }}</a></td>
+        <td><a class="mail" href="mailto:{{user.mail}}">{{user.mail}}</a></td>
+        <td>{{user.birthdate}}</td>
+        <td>{{user.age}} ans</td>
+        <td>{{user.created}}</td>
+        <td>{{user.updated}}</td>
+    </tr>
     {% endfor %}
 
 </table>
 
-    <input class="valid" type="button" type="submit" value="Valider">
-
-
-<form method="post" action="/admin/gestion-utilisateurs-ajouter">
-    <!--
-    on met ici le champ vide pour pouvoir ajouter des utilisateurs
-     -->
-    <table>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Sexe</th>
-            <th>Mail</th>
-            <th>Date de naissance</th>
-            <th>Langue</th>
-            <th>Mot de passe</th>
-            <th>Jeton</th>
-            <th>Avatar</th>
-            <th>Grade</th>
-        </tr>
-        <td><input class=no-border id="firstname" type="text" name="firstname" size="15" required/></td>
-        <td><input class=no-border id="lastname" type="text" name="lastname" size="20" required/></td>
-        <td>
-            <select name="sex" id="sex" required>
-                <option value="0" selected>Homme</option>
-                <option value="1">Femme</option>
-            </select>
-        </td>
-        <td><input class=no-border id="mail" type="text" name="mail" size="30" required/></td>
-        <td><input class=no-border id="birthdate" type="date" name="birthdate" required/></td>
-        <td>
-            <select name="language" id="language" required>
-                <option value="fr">Français</option>
-                <option value="en">Anglais</option>
-            </select>
-        </td>
-        <td><input class=no-border id="password" type="text" name="password" size="20" required/></td>
-        <td><input class=no-border id="token" type="text" name="token" size="20" /></td>
-        <td><input class=no-border id="urlavatar" type="text" name="urlavatar" size="20" /></td>
-        <td>
-            <select name="grade" id="grade" required>
-                <option value="0">Patient</option>
-                <option value="1">Médecin</option>
-                <option value="2">Gestionnaire</option>
-                <option value="3">Administrateur</option>
-            </select>
-        </td>
-    </table>
-<input type="submit" class="valid" name="add-count" type="button" value="Ajouter le compte">
-</form>
 
 {% endblock content %}
