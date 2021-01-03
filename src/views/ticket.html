@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+	<ul>
+		<table>
+			<tr>
+				<th>subject</th>
+				<th>Auteur</th>
+				<th>Vues</th>
+				<th>Dernier message</th>
+				<th>Date création</th>
+			</tr>
+			{% for subject in subjects %}
+			<tr>
+				<th>{{subject.title}}<hr>{{subject.description}}</th>
+				<th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
+				<th>{{subject.views}}</th>
+				<th>{{subject.updated}}</th>
+				<th>{{subject.created}}</th>
+			</tr>
+			{% endfor %}
+		</table>
+
+		<a href="/forum/ticket/ajouter"><input type="submit" class="valid" name="add-count" value="Ajouter un ticket"></a>
+
+	</ul>
+</div>
+{% endblock content %}

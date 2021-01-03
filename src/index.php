@@ -49,15 +49,18 @@ $app->run();*/
 
 /* echo __DIR__ . "/views"; */
 /* require_once('./config.php'); */
+
+/* Models */
 require_once('./model/SQLTable.php');
 require_once('./model/User.php');
 require_once('./model/Faq.php');
-require_once('./model/Ticket.php');
 require_once("./model/Token.php");
 require_once("./model/UserListAdmin.php");
+require_once('./model/Thread.php');
+require_once('./model/Ticket.php');
+require_once("./model/Forum.php");
 
-require_once('./Router/Router.php');
-
+/* Controllers */
 require_once('./Controller/Controller.php');
 require_once('./Controller/HomeController.php');
 require_once('./Controller/UserController.php');
@@ -67,13 +70,17 @@ require_once('./Controller/RegisterController.php');
 require_once('./Controller/ContactController.php');
 require_once('./Controller/ExerciseController.php');
 require_once('./Controller/LegalMentionsController.php');
-require_once('./Controller/IncidentController.php');
 require_once("./Controller/FaqController.php");
 require_once("./Controller/DeconnectionController.php");
 require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 require_once("./Controller/SearchController.php");
+require_once('./Controller/ThreadController.php');
+require_once('./Controller/ForumController.php');
+require_once("./Controller/TicketController.php");
+
+require_once('./Router/Router.php');
 
 session_start();
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/views");
@@ -111,9 +118,10 @@ if (isset($_GET["url"])){
 }
 
 try {
-    $DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+	$DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
 } catch (\Exception $e){
-    die('Erreur : ' . $e->getMessage());
+	$DB = False;
+    /* die('Erreur : ' . $e->getMessage()); */
 }
 
 $router =  new \App\Router\Router($url);
@@ -141,12 +149,18 @@ $router->get("/contact", "Contact#show");
 $router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
 $router->post("/inscription", "Register#post");
-
 $router->get("/mentions-legales", "LegalMentions#show");
-$router->get("/incident", "Incident#show");
+
+$router->get("/forum", "Forum#index");
+$router->get("/forum/sujet/ajouter", "Forum#update_subject");
+$router->get("/forum/message/ajouter", "Forum#update_message");
+$router->get("/forum/:title","Forum#subject");
+$router->post("/ticket", "Ticket#index");
+$router->get("/ticket/sujet/ajouter", "Ticket#update_subject");
+$router->get("/ticket/message/ajouter", "Ticket#update_message");
+$router->post("/ticket/:title", "Ticket#subject");
 
 $router->get("/rechercher", "Search#show");
-
 $router->get('/profil/:id', "User#publicDisplay");
 $router->get('/moncompte', "User#privateDisplay");
 $router->get("/profil/:id/modifier", "User#displayEditPage");

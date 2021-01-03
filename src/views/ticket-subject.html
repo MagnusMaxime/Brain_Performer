@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block style %}
+<link href="/assets/css/ticket-subject.css" rel="stylesheet">
+{% endblock style %}
+
+{% block content %}
+
+<h1>{{ticket.title}}<hr>{{ticket.description}}</h1>
+
+<table>
+    <tr>
+        <th>Auteur</th>
+        <th>Message</th>
+        <th>Date création</th>
+    </tr>
+    {% for ticket-message in ticket-messages %}
+    <tr>
+        <th>{{ticket.user.firstname}} {{ticket.user.lastname}}</th>
+        <th>{{ticket.description}}</th>
+        <th>{{ticket.created}}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

@@ -1,10 +1,19 @@
 <?php
 
-
 namespace App\Model;
 
 
 class SQLTable {
+
+	/*
+	 * Retrouve les noms des tables à partir telles définies dans la base de données,
+	 * en effectuant une conversion de CamelCase à snake_case.
+	 */
+	static protected function get_name() {
+		$array = explode('\\', get_called_class());
+		$class_name = end($array);
+		return strtolower(preg_replace('/\B([A-Z])/', '_$1', $class_name));
+	}
 
 	public function __construct($id) {
 			$this->id = $id;
@@ -30,7 +39,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -51,7 +60,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -59,7 +68,7 @@ class SQLTable {
 		if (!$id) {
 			return false;
 		} else {
-			return new self($id);
+			return new static($id);
 		}
 	}
 
@@ -77,22 +86,22 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
 		$ids = $req->fetchAll();
 		$objects = [];
 
-		if (self::lower_class_name()=="user"){//TODO pour marc : faire un truc plus propre
-            foreach ($ids as $ids) {
-                $objects[] = new User($ids["id"]);
-            }
-        }else{
-		    foreach ($ids as $ids) {
-			$objects[] = new self($ids["id"]);
-		    }
-        }
+		/* if (static::lower_class_name() == "user"){ //TODO pour marc : faire un truc plus propre */
+		/* 	foreach ($ids as $ids) { */
+		/* 		$objects[] = new User($ids["id"]); */
+		/* 	} */
+		/* } else { */
+		foreach ($ids as $ids) {
+			$objects[] = new static($ids["id"]);
+		}
+		/* } */
 		return $objects;
 	}
 
@@ -109,7 +118,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -130,11 +139,25 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".self::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
 
 		return $req->fetchAll();
+	}
+
+	/**
+	 * Renvoie la ligne SQL d'un objet.
+	 */
+	public function get_row() {
+		global $DB;
+		$req = $DB->prepare(
+			"SELECT * FROM `".static::get_name()."` WHERE (`id` = :id)"
+		);
+		$req->execute(["id" => strval($this->id)]);
+		$results = $req->fetch();
+		var_dump($results);
+		return $results;
 	}
 }
