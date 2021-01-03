@@ -15,8 +15,13 @@ class ThreadController extends Controller {
 	 * Ajoute un sujet.
 	 */
 	static public function add_subject() {
+	    if (self::addsubjectrequired())
+        {
+            echo "les champs sont remplis";
+        }
 		$user_id = $_SESSION["id"];
-		ThreadMessage::add($user_id, $_POST["title"], $_POST["description"]);
+	    echo "on a les bonnes infos";
+		//ThreadMessage::add($user_id, $_POST["title"], $_POST["description"]);
 	}
 
 
@@ -39,7 +44,12 @@ class ThreadController extends Controller {
 	/*
 	 * Supprime un message.
 	 */
-	static public function delete_message() {
+	static public function delete_message()
+    {}
 
-	}
+
+    static public function addsubjectrequired()
+    {
+        return (isset($_POST['title'], $_POST['description'], $_POST['message']));
+    }
 }
