@@ -7,25 +7,29 @@
 
 {% block content %}
 <div class="container">
-	<h1>{{subject.title}}</h1>
+	<h1 id="title">{{subject.title}}</h1>
 	<hr>
-	<h3>{{subject.description}}</h3>
-	<p>Auteur: {{subject.user.firstname}} {{subject.user.lastname}} le {{subject.created}} et modifié le {{subject.updated}}</p>
+	<h3>Description:</h3>
+	<div style="margin: 2%">
+		<h4 id="description">{{subject.description}}</h4>
+	</div>
+	<p id="meta">Auteur: {{subject.user.firstname}} {{subject.user.lastname}} le {{subject.created}} et modifié le {{subject.updated}}</p>
 	<br/><br/>
 
-	<table>
-			<!-- <tr> -->
-			<!-- 		<th>Auteur</th> -->
-			<!-- 		<th>Message</th> -->
-			<!-- 		<th>Date création</th> -->
-			<!-- </tr> -->
-			{% for message in messages %}
-			<tr>
-					<th>{{message.user.firstname}} {{message.user.lastname}}</th>
-					<th>{{message.description}}</th>
-					<th>{{message.created}}</th>
-			</tr>
-			{% endfor %}
-	</table>
+
+	<div class="message-container">
+		{% for message in messages %}
+		<div class="message">
+			<img src="{{message.user.urlavatar}}"></img>
+			<p>{{message.message}}</p>
+			<small>de {{message.user.firstname}} {{message.user.lastname}} à {{message.created}}</small>
+		</div>
+		<br/>
+		{% endfor %}
+		<form method="post" action="/forum/{{subject.title}}/message/ajouter">
+				<input id="message" type="text" name="message" size="15" required/></br>
+				<input style="display: none" type="submit" hidden>
+		</form>
+	</div>
 </div>
 {% endblock content %}

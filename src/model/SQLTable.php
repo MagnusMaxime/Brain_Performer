@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model;
+use PDO;
 
 
 class SQLTable {
@@ -90,7 +91,7 @@ class SQLTable {
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
-		$ids = $req->fetchAll();
+		$ids = $req->fetchAll(PDO::FETCH_ASSOC);
 		$objects = [];
 
 		/* if (static::lower_class_name() == "user"){ //TODO pour marc : faire un truc plus propre */

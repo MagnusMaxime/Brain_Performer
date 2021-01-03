@@ -42,10 +42,10 @@ class ForumController extends ThreadController {
 			$context["subject"] = $subject->info();
 			$context["messages"] = [];
 			$messages = ForumMessage::all(["subject" => $subject->id]);
-			foreach ($messages as $message) {
+			var_dump($messages);
+			foreach ($messages as $key => $message) {
 				$context["messages"][] = $message->info();
 			}
-			var_dump($context);
 			return $twig->render('forum-subject.html', $context);
 	}
 
@@ -82,6 +82,18 @@ class ForumController extends ThreadController {
 	}
 
 	/* Message */
+
+	/*
+	 * Ajoute un message.
+	 */
+	static public function add_message($title) {
+		$user_id = $_SESSION["id"];
+		$subject = ForumSubject::from_title($title);
+		$subject_id = $subject->id;
+		ForumMessage::add($user_id, $_POST["message"], $subject_id);
+		$title = urlencode($title);
+		header("Location: /forum/".$title);
+	}
 
 	/*
 	 * Actualise un message.

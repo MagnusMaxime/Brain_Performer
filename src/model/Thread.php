@@ -125,6 +125,22 @@ class ThreadMessage extends SQLTable {
 	}
 
 	/*
+	 * Ajoute un message.
+	 */
+	static public function add($user_id, $message, $subject_id) {
+		error_log($message);
+		global $DB;
+		$query = "INSERT INTO `".static::get_name()."` (`user`, `message`, `subject`) VALUES (:user, :message, :subject)";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute([
+			"user" => $user_id,
+			"message" => $message,
+			"subject" => $subject_id
+		]);
+	}
+
+	/*
 	 * Retourne le tableau pour twig.
 	 */
 	public function info() {
