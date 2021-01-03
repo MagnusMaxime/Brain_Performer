@@ -39,7 +39,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::get_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -60,7 +60,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -86,7 +86,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT `id` FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -118,7 +118,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::get_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -139,7 +139,7 @@ class SQLTable {
 		if (!$conditions_query) {
 			$conditions_query = "1";
 		}
-		$query = "SELECT * FROM `".static::lower_class_name()."` WHERE (".$conditions_query.")";
+		$query = "SELECT * FROM `".static::get_name()."` WHERE (".$conditions_query.")";
 		error_log($query);
 		$req = $DB->prepare($query);
 		$req->execute($conditions);
@@ -157,7 +157,6 @@ class SQLTable {
 		);
 		$req->execute(["id" => strval($this->id)]);
 		$results = $req->fetch();
-		var_dump($results);
 		return $results;
 	}
 }

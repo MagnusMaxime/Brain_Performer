@@ -1,10 +1,31 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link href="/assets/css/sujet-ticket.css" rel="stylesheet">
+<link href="/assets/css/forum-subject.css" rel="stylesheet">
+<link href="/assets/css/forum.css" rel="stylesheet">
 {% endblock style %}
 
 {% block content %}
+<div class="container">
+	<h1>{{subject.title}}</h1>
+	<hr>
+	<h3>{{subject.description}}</h3>
+	<p>Auteur: {{subject.user.firstname}} {{subject.user.lastname}} le {{subject.created}} et modifié le {{subject.updated}}</p>
+	<br/><br/>
 
-Page forum-subject
+	<table>
+			<!-- <tr> -->
+			<!-- 		<th>Auteur</th> -->
+			<!-- 		<th>Message</th> -->
+			<!-- 		<th>Date création</th> -->
+			<!-- </tr> -->
+			{% for message in messages %}
+			<tr>
+					<th>{{message.user.firstname}} {{message.user.lastname}}</th>
+					<th>{{message.description}}</th>
+					<th>{{message.created}}</th>
+			</tr>
+			{% endfor %}
+	</table>
+</div>
 {% endblock content %}

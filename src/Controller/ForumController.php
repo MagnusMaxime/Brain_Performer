@@ -41,9 +41,11 @@ class ForumController extends ThreadController {
 			$subject = ForumSubject::from_title($title);
 			$context["subject"] = $subject->info();
 			$context["messages"] = [];
-			foreach ($subject->get_messages() as $message) {
+			$messages = ForumMessage::all(["subject" => $subject->id]);
+			foreach ($messages as $message) {
 				$context["messages"][] = $message->info();
 			}
+			var_dump($context);
 			return $twig->render('forum-subject.html', $context);
 	}
 
