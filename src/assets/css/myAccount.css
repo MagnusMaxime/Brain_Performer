@@ -88,10 +88,11 @@
 
 #eff
 {
-  border:3px #A7DBDB outset;
+  border: solid 3px #A7DBDB;
 
   top: 110px;
-  margin-left: 15%;
+  margin-left: 12%;
+  margin-right: 3%;
   margin-bottom: 3%;
   display: flex;
   flex-direction: column;

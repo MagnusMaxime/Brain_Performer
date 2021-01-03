@@ -22,6 +22,9 @@ function update(){
 
     satut_filter=parseInt(document.querySelector("#statut-filter").value)
     sex_filter=parseInt(document.querySelector("#sex-filter").value)
+
+    search_input=document.querySelector("#search-input").value.trim().toLowerCase()
+
     for (const user of USERS_JSON) {
         var html_element=document.querySelector("#user-"+user.id)
         html_element.hidden=false
@@ -32,6 +35,25 @@ function update(){
         if (sex_filter!=-1){
             html_element.hidden=html_element.hidden || (sex_filter!=user.sex)
         }
+        if(search_input!=""){
+            var fullName = ((user.sex=="0" ? "M. " : "Mme. ") + user.firstname+" "+user.lastname).toLowerCase()
+            if (fullName.includes(search_input)){
+                //la recherche correspond au nom du l'utilisateur
+            }else{
+                html_element.hidden=true
+            }
+        }
+
+
+        if(document.querySelector("#minage-filter").value!=""){
+            html_element.hidden=html_element.hidden || user.age<parseInt(document.querySelector("#minage-filter").value)
+        }
+
+        if(document.querySelector("#maxage-filter").value!=""){
+            html_element.hidden=html_element.hidden || user.age>parseInt(document.querySelector("#maxage-filter").value)
+        }
+
+
     }
 
 
@@ -43,10 +65,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelector("#search-input").value=$_GET["q"]
 
     }
-    console.log(USERS_JSON)
+    console.log(USERS_JSON);
 
     document.querySelector("#statut-filter").addEventListener("change", update);
     document.querySelector("#sex-filter").addEventListener("change", update);
+    document.querySelector("#search-input").addEventListener("change", update);
 
+    document.querySelector("#minage-filter").addEventListener("change",function (evt) {
+        if (parseInt(document.querySelector("#minage-filter").value)>parseInt(document.querySelector("#maxage-filter").value)){
+            document.querySelector("#maxage-filter").value=document.querySelector("#minage-filter").value
+        }
+        update()
+    });
 
+    document.querySelector("#maxage-filter").addEventListener("change",function (evt) {
+        if (parseInt(document.querySelector("#minage-filter").value)>parseInt(document.querySelector("#maxage-filter").value)){
+            document.querySelector("#minage-filter").value=document.querySelector("#maxage-filter").value
+        }
+        update()
+    });
+
+    update()
 });
