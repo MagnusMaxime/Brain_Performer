@@ -5,11 +5,13 @@
 {% endblock style %}
 
 {% block content %}
-
+<h1>Forum Brain Performer</h1>
+<h2>Discutez avec la communauté Brain Performer</h2>
 
 <table>
     <tr>
         <th>Sujet</th>
+        <th>Description</th>
         <th>Auteur</th>
         <th>Vues</th>
         <th>Dernier message</th>
@@ -18,7 +20,8 @@
 
 		{% for subject in subjects %}
     <tr>
-        <th>{{subject.title}}<hr>{{subject.description}}</th>
+        <th>{{subject.title}}</th>
+        <th>{{subject.description}}</th>
         <th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
         <th>{{subject.views}}</th>
         <th>{{subject.updated}}</th>
