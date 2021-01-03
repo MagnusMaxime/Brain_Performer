@@ -3,6 +3,9 @@
 
 namespace App\Controller;
 
+use App\Model\ThreadMessage;
+use App\Model\ThreadSubject;
+
 
 class ThreadController extends Controller {
 
@@ -11,21 +14,16 @@ class ThreadController extends Controller {
 	/*
 	 * Ajoute un sujet.
 	 */
-	/* static public function add_subject($title) { */
-
-	/* } */
-
-	/*
-	 * Actualise un sujet.
-	 */
-	static public function update_subject($title) {
-
+	static public function add_subject() {
+		$user_id = $_SESSION["id"];
+		ThreadMessage::add($user_id, $_POST["title"], $_POST["description"]);
 	}
+
 
 	/*
 	 * Supprime un sujet.
 	 */
-	static public function delete_subject($title) {
+	static public function delete_subject() {
 
 	}
 
@@ -34,14 +32,14 @@ class ThreadController extends Controller {
 	/*
 	 * Actualise un message.
 	 */
-	static public function update_message($title) {
+	static public function update_message() {
 
 	}
 
 	/*
 	 * Supprime un message.
 	 */
-	static public function delete_message($title) {
+	static public function delete_message() {
 
 	}
 }

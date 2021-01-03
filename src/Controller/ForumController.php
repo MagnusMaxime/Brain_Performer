@@ -8,6 +8,7 @@ use App\Model\ForumMessage;
 
 
 class ForumController extends ThreadController {
+
 	/*
 	 * Permet d'afficher la liste des sujets du forum.
 	 */
