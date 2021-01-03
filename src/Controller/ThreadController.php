@@ -4,23 +4,33 @@
 namespace App\Controller;
 
 
-class ThreadController extends Controller
-{
+class ThreadController extends Controller {
 
-	public function recent($n) {
-
-
+	/*
+	 * Actualise un sujet.
+	 */
+	static public function update_subject($title) {
 
 	}
-    /* static public function index() */
-    /* { */
-    /*     global $twig; */
-    /*     return $twig->render('forum.html', []); */
-    /* } */
 
-    /* static public function subject($title) */
-    /* { */
-    /*     global $twig; */
-    /*     return $twig->render('forum-subject.html', []); */
-    /* } */
+	/*
+	 * Supprime un sujet.
+	 */
+	static public function delete_subject($title) {
+
+	}
+
+	/*
+	 * Actualise un message.
+	 */
+	static public function update_message($title) {
+
+	}
+
+	/*
+	 * Supprime un message.
+	 */
+	static public function delete_message($title) {
+
+	}
 }

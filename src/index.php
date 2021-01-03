@@ -151,8 +151,12 @@ $router->post("/inscription", "Register#post");
 $router->get("/mentions-legales", "LegalMentions#show");
 
 $router->get("/forum", "Forum#index");
+$router->get("/forum/sujet/ajouter", "Forum#update_subject");
+$router->get("/forum/message/ajouter", "Forum#update_message");
 $router->get("/forum/:title","Forum#subject");
 $router->post("/ticket", "Ticket#index");
+$router->get("/ticket/sujet/ajouter", "Ticket#update_subject");
+$router->get("/ticket/message/ajouter", "Ticket#update_message");
 $router->post("/ticket/:title", "Ticket#subject");
 
 $router->get("/rechercher", "Search#show");
