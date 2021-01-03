@@ -28,6 +28,16 @@
 		{% endfor %}
 </table>
 
-<a href="/forum/sujet/ajouter"><input type="submit" class="valid" name="add-count" value="Ajouter le sujet"></a>
+
+<form method="post" action="/forum/sujet/ajouter">
+    <label>Titre du sujet :</label>
+    <input id="title" type="text" name="title" size="15" required/></br>
+    <label>Descriptif du sujet (optionnel) :</label>
+    <input id="description" type="text" name="description" size="15" /></br>
+    <label>Votre message :</label>
+    <input id="message" type="text" name="message" size="15" required/></br>
+
+    <input type="submit" class="valid" value="Créer le sujet">
+</form>
 
 {% endblock content %}
