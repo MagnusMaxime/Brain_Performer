@@ -72,13 +72,12 @@ class ThreadMessage extends SQLTable {
 	public function get_context($title) {
 		global $DB;
 
-
 	}
 
 	/*
 	 * Renvoie le tableau des threads.
 	 */
-	static function all($id) {
+	static function messages($id) {
 		global $DB;
 		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC LIMIT ".strval($n);
 		error_log($query);

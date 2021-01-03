@@ -76,6 +76,7 @@ require_once("./Controller/AdminController.php");
 require_once("./Controller/DoctorController.php");
 require_once("./Controller/UserListAdminController.php");
 require_once("./Controller/SearchController.php");
+require_once('./Controller/ThreadController.php');
 require_once('./Controller/ForumController.php');
 require_once("./Controller/TicketController.php");
 
