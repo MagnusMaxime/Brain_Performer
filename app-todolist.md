@@ -2,22 +2,30 @@
 
 
 # A faire
-Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/todolist)
+Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
 
     
 ## Messagerie interne
-- [ ] définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
+- [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
+- [ ] Contacter l'administrateur par messagerie interne
 
 ## Moteur de recherche
 - [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) IMPORTANT
 
+## Ticket
 - [ ] Signaler un incident en envoyant un ticket à l'administrateur (SAV)
-- [ ] Contacter l'administrateur par messagerie interne
+
+## Admin
 - [ ] Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
 	- [ ] la page donne un tableau avec tous les utilisateurs listés par token
   - [ ] Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton
   - [ ] Ajouter le back-office de la messagerie interne
+
+## Forum
+- [ ] Ajouter page administration forum
+- [ ] Ajouter bouton modifier + supprimer message
  
+## Fait
 - [x] Supprimer des comptes dans l'interface
 - [x] Ajouter l'attribut public en modifier et créer un profil
 - [x] Modifier les comptes par validation
