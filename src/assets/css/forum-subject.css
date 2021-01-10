@@ -1,0 +1,9 @@
+.urlavatar {
+	width: 4%;
+	height: 4%;
+	border-radius: 50%;
+}
+
+.message {
+	vertical-align: baseline;
+}
