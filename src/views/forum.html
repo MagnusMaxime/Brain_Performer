@@ -10,28 +10,34 @@
 	<hr>
 	<h2>Discutez avec la communauté Brain Performer</h2>
 
-	<table>
-			<tr>
-					<th>Sujet</th>
-					<th>Description</th>
-					<th>Auteur</th>
-					<th>Vues</th>
-					<th>Dernier message</th>
-					<th>Date création</th>
-			</tr>
+	<!-- <table> -->
+			<!-- <tr> -->
+					<!-- <th>Sujet</th> -->
+					<!-- <th>Description</th> -->
+					<!-- <th>Auteur</th> -->
+					<!-- <th>Vues</th> -->
+					<!-- <th>Dernier message</th> -->
+					<!-- <th>Date création</th> -->
+			<!-- </tr> -->
 
-			{% for subject in subjects %}
-			<tr>
-					<th>{{subject.title}}</th>
-					<th>{{subject.description}}</th>
-					<th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
-					<th>{{subject.views}}</th>
-					<th>{{subject.updated}}</th>
-					<th>{{subject.created}}</th>
-			</tr>
+	<div class="form-container">
+			<ul class="menu-vertical">
 
-			{% endfor %}
-	</table>
+				{% for subject in subjects %}
+				<!-- <tr> -->
+				<li class="mv-item"><a href="/forum/{{subject.title}}">{{subject.title}}</a></li>
+					<!-- <th>{{subject.title}}</th> -->
+					<!-- <th>{{subject.description}}</th> -->
+					<!-- <th>{{subject.user.firstname}} {{subject.user.lastname}}</th> -->
+					<!-- <th>{{subject.views}}</th> -->
+					<!-- <th>{{subject.updated}}</th> -->
+					<!-- <th>{{subject.created}}</th> -->
+				<!-- </tr> -->
+
+				{% endfor %}
+			</ul>
+	</div>
+	<!-- </table> -->
 
 
 	<div class="form-container">

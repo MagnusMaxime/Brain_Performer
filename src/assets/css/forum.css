@@ -41,7 +41,7 @@ td, th /* Mettre une bordure sur les td ET les th */
 }
 
 .form-container {
-	margin: 10%;
+	margin: 3%;
 	padding: 5%;
 	line-height: 150%;
   box-shadow:
@@ -58,4 +58,48 @@ td, th /* Mettre une bordure sur les td ET les th */
 
 .form-container hr {
 	margin-bottom: 5%;
+}
+
+/* style du bloc ul */
+.menu-vertical {
+	/* margin: 10%; */
+	/* padding: 5%; */
+  width: 100%; /* optionnel, c'est pour la démo */
+  list-style: none; /* supprime les puces de liste */
+  padding: 4px; /* on fait un peu de place autour des liens */
+  margin: 0; /* on annule les marges */
+  background: #F2F2F2;
+	box-shadow:
+		0.3em 0.3em 1em rgba(0,0,0,0.3);
+
+}
+
+/* styles des liens et éléments de liste */
+.mv-item,
+.mv-item a {
+  /* les liens et item deviennent des blocs */
+  /* suffit théoriquement à virer les puces de liste */
+  display: block;
+}
+
+/* styles des liens */
+.mv-item a {
+  margin: 1px 0; /* espace les liens d'1 px */
+  padding: 8px 20px; /* marges internes pour aérer */ 
+  color: #666;
+  background: #FFF;
+  text-decoration: none; /* on vire le soulignement */
+
+  /* on définit la transition pour les navigateurs */
+  -webkit-transition: all .3s; /* Chrome/Safari */
+  -moz-transition: all .3s; /* Firefox (plus trop nécessaire) */
+  transition: all .3s; /* syntaxe officielle */
+}
+
+/* styles changeants au survol et focus */
+.mv-item a:hover,
+.mv-item a:focus {
+  background: #69D2E7;
+  color: #FFF;
+  padding-left: 30px; /* décalage du contenu de 10px vers la droite (30-20 = 10) */
 }
