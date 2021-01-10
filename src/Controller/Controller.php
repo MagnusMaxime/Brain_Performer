@@ -25,7 +25,7 @@ class Controller
         //Retourne true s'il l'utilisateur n'est pas connecté, false sinon
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
-            header("Location: /");//on le redirige à l'accueil
+            header("Location: /connexion");//on le redirige à l'accueil
             return true;
         }
         return false;
@@ -36,7 +36,7 @@ class Controller
             return true;
         }
         if ($_SESSION["grade"]<=2) {
-            header("Location: /");
+            header("Location: /connexion");
             return true;
         }
         return false;
@@ -49,7 +49,7 @@ class Controller
         }
         if ($_SESSION["grade"]!=1) {
             //l'utilisateur est connecté mais ce n'est pas un médecin
-            header("Location: /");
+            header("Location: /connexion");
             return true;
         }
         return false;

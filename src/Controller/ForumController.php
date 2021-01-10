@@ -22,6 +22,10 @@ class ForumController extends ThreadController {
 	 */
 	static public function index() {
 			global $twig;
+			if (!self::needToBeConnected()) {
+				/* header("Location: /connexion"); */
+				return "";
+			}
 			$subjects_number = 20;
 			$context = ["subjects" => []];
 			$subjects = ForumSubject::select_recent($subjects_number);
@@ -37,6 +41,10 @@ class ForumController extends ThreadController {
 	 */
 	static public function subject($title) {
 			global $twig;
+			if (!self::needToBeConnected()) {
+				/* header("Location: /connexion"); */
+				return "";
+			}
 			$context = [];
 			$subject = ForumSubject::from_title($title);
 			$context["subject"] = $subject->info();
