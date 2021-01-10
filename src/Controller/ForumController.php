@@ -47,8 +47,8 @@ class ForumController extends ThreadController {
 			$subject = ForumSubject::from_title($title);
 			$context["subject"] = $subject->info();
 			$context["messages"] = [];
+			$context["user"] = $_SESSION["user"];
 			$messages = ForumMessage::all(["subject" => $subject->id]);
-			var_dump($messages);
 			foreach ($messages as $key => $message) {
 				$context["messages"][] = $message->info();
 			}

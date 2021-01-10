@@ -16,14 +16,22 @@
 			<b>{{message.user.firstname}} {{message.user.lastname}}</b>
 			<small>{{message.created}}</small>
 			<br/>
+			<div class="message-line">
 			<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
-			{{message.message}}
+			<p>{{message.message}}</p>
+			</div>
 		</div>
 		<br/>
 		{% endfor %}
-		<form method="post" action="/forum/{{subject.title}}/message/ajouter">
-				<input id="message" type="text" name="message" size="15" required/></br/>
-				<input style="display: none" type="submit" hidden>
+		<form id="message-form" method="post" action="/forum/{{subject.title}}/message/ajouter">
+			<div class="message-container">
+				<b>{{user.firstname}} {{user.lastname}}</b>
+				<div class="message-line">
+					<img class="urlavatar" src="{{user.urlavatar}}"></img>
+					<input id="message" type="text" name="message" size="15" required/></br/>
+					<input class="button" type="submit" value="Envoyer">
+				</div>
+			</div>
 		</form>
 	</div>
 

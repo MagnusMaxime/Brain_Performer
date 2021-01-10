@@ -1,9 +1,74 @@
 .urlavatar {
-	width: 4%;
-	height: 4%;
+	width: 4vw;
+	height: 4vw;
 	border-radius: 50%;
+}
+.message-container {
+	padding-top: 2%;
 }
 
 .message {
-	vertical-align: baseline;
+	font-size: 1.5vw;
+	padding-left: 2%;
+}
+
+.message-line {
+	/* vertical-align: baseline; */
+	display: flex;
+  align-items:center;
+	padding: 0.5%;
+}
+
+.message-line p {
+	padding-left: 2%;
+}
+
+#message-form {
+	padding-left: 2%;
+}
+
+#message {
+	margin-left: 2%;
+	width: 80%;
+	height: 5%;
+	font-size: 1.5vw;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: lightblue;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1.5vw;
+  padding: 1%;
+  width: auto;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
