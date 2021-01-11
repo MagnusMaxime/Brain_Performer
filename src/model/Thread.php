@@ -16,7 +16,6 @@ class ThreadSubject extends SQLTable {
 		$req = $DB->prepare($query);
 		$req->execute(["title" => $title]);
 		$result = $req->fetch();
-		/* var_dump($result); */
 		$id = $result["id"];
 		error_log($id);
 		return new static($id);
@@ -33,12 +32,10 @@ class ThreadSubject extends SQLTable {
 		$req = $DB->prepare($query);
 		$req->execute();
 		$results = $req->fetchAll(PDO::FETCH_ASSOC);
-		$ids = $results[0];
+		$ids = $results;
 		$subjects = [];
-		foreach ($ids as $id => $value) {
-			/* echo 'id:'.$id; */
-			/* echo 'value:'.$value; */
-			$subjects[] = new static($value);
+		foreach ($ids as $value) {
+			$subjects[] = new static($value['id']);
 		}
 		return $subjects;
 	}
@@ -79,8 +76,6 @@ class ThreadSubject extends SQLTable {
 	 */
 	public function info() {
 		$row = $this->get_row();
-		/* var_dump($row); */
-		/* var_dump($row["user"]); */
 		$user = new User($row["user"]);
 		$user_row = $user->get_info();
 
@@ -115,7 +110,7 @@ class ThreadMessage extends SQLTable {
 		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`==:subject) ORDER BY `created` DESC";
 		/* error_log($query); */
 		$req = $DB->prepare($query);
-		$req->execute(["subject"=>$subject]);
+		$req->execute(["subject" => $subject]);
 		$ids = $req->fetchAll();
 		$objects = [];
 		foreach ($ids as $id) {

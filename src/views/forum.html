@@ -56,18 +56,10 @@
 	</div>
 </div>
 
+<button class="button" onclick="displayMoreContent()"></button>
+
 {% endblock content %}
 
 {% block script %}
-<script>
-	$('textarea').on('paste input', function () {
-    if ($(this).outerHeight() > this.scrollHeight){
-        $(this).height(1)
-    }
-    while ($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))){
-        $(this).height($(this).height() + 1)
-    }
-});
-</script>
-
+<script src="/assets/js/forum.js"></script>
 {% endblock script %}

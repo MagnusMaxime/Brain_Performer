@@ -5,25 +5,37 @@
 Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
 
     
-## Messagerie interne
+## Messagerie interne - Juan
 - [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
 - [ ] Contacter l'administrateur par messagerie interne
 
-## Moteur de recherche
+## Moteur de recherche - ?
 - [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) IMPORTANT
 
-## Ticket
+## Ticket - Marc
 - [ ] Signaler un incident en envoyant un ticket à l'administrateur (SAV)
 
-## Admin
+## Admin - ?
 - [ ] Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
 	- [ ] la page donne un tableau avec tous les utilisateurs listés par token
   - [ ] Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton
   - [ ] Ajouter le back-office de la messagerie interne
 
-## Forum
+## Forum - Marc
 - [ ] Ajouter page administration forum
 - [ ] Ajouter bouton modifier + supprimer message
+
+## Système de redirection d'url - (Alexandre?)
+Lorsqu'un utilisateur essaie de voir la page de forum il est redirigé vers la page de connexion.
+Cependant lorsqu'il réussit à se connecter celà le redirige vers la page d'accueil au lieu de le rediriger vers la page de forum.
+Ce serait bien d'automatiser les redirections pour les pages nécessitant d'être connecté.
+- [ ] redirection après connexion
+
+## Erreur imports css + webmanifest - (Alexandre?)
+- [ ] Correction des erreurs d'imports lors du chargement des pages webs.
+
+## Mise à jour du tableau de bord
+- [ ] Zakia a remarqué que notre tableau de bord n'était pas à jour et nous l'a reprocher dans le tableur des compétences
  
 ## Fait
 - [x] Supprimer des comptes dans l'interface
