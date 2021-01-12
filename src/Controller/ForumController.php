@@ -44,12 +44,14 @@ class ForumController extends ThreadController {
 				return "";
 			}
 			$context = [];
+			$title = urldecode($title);
 			$subject = ForumSubject::from_title($title);
 			$context["subject"] = $subject->info();
 			$context["messages"] = [];
 			$context["user"] = $_SESSION["user"];
-			$messages = ForumMessage::all(["subject" => $subject->id]);
-			foreach ($messages as $key => $message) {
+			$limit = 10;
+			$messages = ForumMessage::select($subject->id, $limit);
+			foreach ($messages as $message) {
 				$context["messages"][] = $message->info();
 			}
 			return $twig->render('forum-subject.html', $context);
@@ -90,15 +92,36 @@ class ForumController extends ThreadController {
 	/* Message */
 
 	/*
+	 * Charge plus de messages sur la page.
+	 * Renvoie ces messages sous forme de fichier json.
+	 */
+	static public function load_messages($title, $limit, $offset) {
+		$title = urldecode($title);
+		$subject = ForumSubject::from_title($title);
+		error_log($title." (".strval($subject->id)."): ".$offset." - ".$limit);
+		$messages = ForumMessage::select($subject->id, $limit, $offset);
+		$data = [];
+		foreach ($messages as $message) {
+			$data[] = $message->info();
+			}
+		$payload = json_encode($data, JSON_FORCE_OBJECT);
+		error_log($payload);
+		/* var_dump($payload); */
+		return $payload;
+	}
+
+	/*
 	 * Ajoute un message.
 	 */
 	static public function add_message($title) {
 		$user_id = $_SESSION["id"];
+		$title = urldecode($title);
 		$subject = ForumSubject::from_title($title);
 		$subject_id = $subject->id;
-		ForumMessage::add($user_id, $_POST["message"], $subject_id);
+		$message = ForumMessage::add($user_id, $_POST["message"], $subject_id);
+		/* var_dump($message); */
 		$title = urlencode($title);
-		header("Location: /forum/".$title);
+		header("Location: /forum/".$title.'/#'.$message->id);
 	}
 
 	/*

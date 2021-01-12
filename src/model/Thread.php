@@ -17,7 +17,6 @@ class ThreadSubject extends SQLTable {
 		$req->execute(["title" => $title]);
 		$result = $req->fetch();
 		$id = $result["id"];
-		error_log($id);
 		return new static($id);
 	}
 
@@ -103,6 +102,24 @@ class ThreadSubject extends SQLTable {
 class ThreadMessage extends SQLTable {
 
 	/*
+	 * Renvoie un tableau de n messages.
+	 */
+	static public function select($subject, $limit, $offset=0) {
+		global $DB;
+		$query = "SELECT `id` FROM `".static::get_name()."` WHERE (`subject`=:subject) ORDER BY `created` ASC LIMIT ".strval($limit)." OFFSET ".strval($offset);
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute(['subject' => $subject]);
+		$results = $req->fetchAll(PDO::FETCH_ASSOC);
+		$ids = $results;
+		$subjects = [];
+		foreach ($ids as $value) {
+			$subjects[] = new static($value['id']);
+		}
+		return $subjects;
+	}
+
+	/*
 	 * Renvoie le tableau des threads.
 	 */
 	static function messages($id) {
@@ -113,6 +130,7 @@ class ThreadMessage extends SQLTable {
 		$req->execute(["subject" => $subject]);
 		$ids = $req->fetchAll();
 		$objects = [];
+		var_dump($ids);
 		foreach ($ids as $id) {
 			$objects[] = new static($ids["id"]);
 		}
@@ -133,6 +151,15 @@ class ThreadMessage extends SQLTable {
 			"message" => $message,
 			"subject" => $subject_id
 		]);
+		# Find message id.
+		$query = "SELECT `id` FROM `".static::get_name()."` ORDER BY `id` DESC LIMIT 1";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute();
+		$results = $req->fetch();
+		$id = $results[0];
+		error_log('id: '.strval($id));
+		return new static($id);
 	}
 
 	/*

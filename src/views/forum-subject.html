@@ -11,18 +11,24 @@
 	<hr>
 
 	<div class="message-container">
-		{% for message in messages %}
-		<div class="message">
-			<b>{{message.user.firstname}} {{message.user.lastname}}</b>
-			<small>{{message.created}}</small>
-			<br/>
-			<div class="message-line">
-			<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
-			<p>{{message.message}}</p>
+
+		<div id="messages" class="messages">
+			{% for message in messages %}
+			<div id="{{message.id}}" class="message">
+				<b>{{message.user.firstname}} {{message.user.lastname}}</b>
+				<small>{{message.created}}</small><br>
+				<div class="message-line">
+				<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
+				<p>{{message.message}}</p>
+				</div>
 			</div>
+			{% endfor %}
 		</div>
-		<br/>
-		{% endfor %}
+
+		<center>
+			<button id="button-more" class="button-more">Voir plus de messages.</button>
+		</center>
+
 		<form id="message-form" method="post" action="/forum/{{subject.title}}/message/ajouter">
 			<div class="message-container">
 				<b>{{user.firstname}} {{user.lastname}}</b>
@@ -44,3 +50,7 @@
 	<br/><br/>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script src="/assets/js/forum-subject.js"></script>
+{% endblock script %}

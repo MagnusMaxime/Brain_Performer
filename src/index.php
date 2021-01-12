@@ -159,6 +159,7 @@ $router->post("/forum/sujet/ajouter", "Forum#add_subject");
 $router->post("/forum/sujet/actualiser", "Forum#update_subject");
 $router->post("/forum/sujet/supprimer", "Forum#delete_subject");
 $router->post("/forum/:title/message/ajouter", "Forum#add_message");
+$router->get("/forum/:title/message/charger/:offset/:title", "Forum#load_messages");
 $router->post("/forum/:title/message/actualiser", "Forum#update_message");
 $router->post("/forum/:title/message/supprimer", "Forum#delete_message");
 $router->get("/forum/:title","Forum#subject");
