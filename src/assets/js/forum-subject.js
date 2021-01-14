@@ -66,7 +66,6 @@ function loadMessages() {
 		url: url,
 		dataType: 'json',
 		success: function (data) {
-			console.log(typeof data)
 			console.log(data)
 			appendMessages(Object.values(data))
 		}
