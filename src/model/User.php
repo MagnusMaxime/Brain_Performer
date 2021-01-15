@@ -12,6 +12,11 @@ class User extends SQLTable {
 		"dev",
 	];
 
+	public static $urlavatars = [
+		"https://img.icons8.com/fluent/344/user-female.png",
+		"https://img.icons8.com/fluent/344/user-male.png",
+	];
+
 	/**
 	 * Récupère tout les utilisateurs.
 	 */
@@ -64,9 +69,9 @@ class User extends SQLTable {
 					"password"=>password_hash($data["password"], PASSWORD_DEFAULT),//https://www.php.net/manual/fr/function.password-hash.php
 					"language"=>"fr",//todo
 					"urlavatar"=>$data["urlavatar"],
-                    "grade"=>$data["grade"],
-                    "parent"=>$data["parent"],
-                    "public"=>$data["publicuser"]=="on" ? 1 : 0
+					"grade"=>$data["grade"],
+					"parent"=>$data["parent"],
+					"public"=>$data["publicuser"]=="on" ? 1 : 0
 			];
 
 			$req = $DB->prepare(
@@ -86,7 +91,7 @@ class User extends SQLTable {
 			error_log($sql);
 			$req = $DB->prepare($sql);
 			/* $req->execute(["mail" => $mail, "password" => password_hash($password, PASSWORD_DEFAULT)]); */
-            $req->execute(["mail"=>$mail]);
+			$req->execute(["mail" => $mail]);
 			$password_hash = $req->fetch()[0];
 			/* $user_exists = $req->rowCount(); */
 			/* error_log($user_exists); */
@@ -104,7 +109,7 @@ class User extends SQLTable {
 			$result = $req->execute([$mail]);
 			error_log($result);
 			$row_count = $req->rowCount();
-			if ($row_count<=0){
+			if ($row_count <= 0){
 				error_log($row_count);
 				//La connexion a échouée
 				//$
@@ -150,13 +155,15 @@ class User extends SQLTable {
 		$row = $this->get_row();
 		/* var_dump($row); */
 		$grade = $row["grade"] !== NULL ? $row["grade"] : 0;//todo parfois ya des NULL dans les grades
-
 		/* error_log($grade); */
-        $result=$row;//todo faire une copie
-        $result["grade"]=(int) $grade;
-        $result["grade_name"]=(self::$grades)[$grade];
-        $result["age"]=date_diff(date_create($result["birthdate"]) , date_create('now'))->y;
-        return $result;
+		if ($row['urlavatar'] == '') {
+			$row['urlavatar'] = self::$urlavatars[$row['sex']];
+		}
+		$result=$row;//todo faire une copie
+		$result["grade"]=(int) $grade;
+		$result["grade_name"]=(self::$grades)[$grade];
+		$result["age"]=date_diff(date_create($result["birthdate"]) , date_create('now'))->y;
+		return $result;
 	}
 
 	/*
