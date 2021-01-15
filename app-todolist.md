@@ -3,10 +3,14 @@
 
 # A faire
 Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
-
+Le bouton "voir plus de message" ne doit s'afficher que lorsqu'il y a + de 10 msgs
+En cas de réponse à un sujet sans avoir déplié les messages,
+en cliquant sur le bouton "envoyer" la page s'actualise et tous les messages sont
+affichés jusqu'à celui qu'on vient d'ajouter.
     
 ## Messagerie interne - Juan
-- [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là
+- [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là 
+  => reprendre la classe mère du forum et afficher au lieu des sujets une conversation avec un interlocuteur.
 - [ ] Contacter l'administrateur par messagerie interne
 
 ## Moteur de recherche - ?
@@ -35,7 +39,7 @@ Ce serait bien d'automatiser les redirections pour les pages nécessitant d'êtr
 - [ ] Correction des erreurs d'imports lors du chargement des pages webs.
 
 ## Mise à jour du tableau de bord
-- [ ] Zakia a remarqué que notre tableau de bord n'était pas à jour et nous l'a reprocher dans le tableur des compétences
+- [ ] Zakia a remarqué que notre tableau de bord n'était pas à jour et nous l'a reproché dans le tableur des compétences
  
 ## Fait
 - [x] Supprimer des comptes dans l'interface
