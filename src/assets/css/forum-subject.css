@@ -1,6 +1,6 @@
 .urlavatar {
-	width: 4vw;
-	height: 4vw;
+	width: 4vh;
+	height: 4vh;
 	border-radius: 50%;
 }
 .message-container {
@@ -8,7 +8,7 @@
 }
 
 .message {
-	font-size: 1.5vw;
+	font-size: 1.5vh;
 	padding-left: 2%;
 }
 
@@ -31,7 +31,7 @@
 	margin-left: 2%;
 	width: 80%;
 	height: 5%;
-	font-size: 1.5vw;
+	font-size: 1.5vh;
 }
 
 .button {
@@ -40,7 +40,7 @@
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 1.5vh;
   padding: 1%;
   width: auto;
   transition: all 0.5s;
@@ -76,7 +76,7 @@
 .button-more {
   /* les liens et item deviennent des blocs */
   /* suffit théoriquement à virer les puces de liste */
-  display: block;
+  /* display: block; */
 }
 
 /* styles des liens */
@@ -91,6 +91,7 @@
   -webkit-transition: all .3s; /* Chrome/Safari */
   -moz-transition: all .3s; /* Firefox (plus trop nécessaire) */
   transition: all .3s; /* syntaxe officielle */
+	display: none;
 }
 
 /* styles changeants au survol et focus */

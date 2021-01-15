@@ -16,6 +16,9 @@ class ThreadSubject extends SQLTable {
 		$req = $DB->prepare($query);
 		$req->execute(["title" => $title]);
 		$result = $req->fetch();
+		if (!$result) {
+			throw new \Exception;
+		}
 		$id = $result["id"];
 		return new static($id);
 	}

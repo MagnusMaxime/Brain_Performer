@@ -26,6 +26,27 @@ class SQLTable {
 		return strtolower($class_name);
 	}
 
+	/*
+	 * Compte le nombre de messages.
+	 */
+	static public function count($conditions = []) {
+		global $DB;
+		$conditions_query_array = [];
+		foreach($conditions as $key => $value) {
+			$conditions_query_array[] = "`".$key."`=:".$key;
+		}
+		$conditions_query = join(" AND ", $conditions_query_array);
+		if (!$conditions_query) {
+			$conditions_query = "1";
+		}
+		$query = "SELECT COUNT(1) FROM `".static::get_name()."` WHERE (".$conditions_query.")";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute($conditions);
+		$result = $req->fetchColumn();
+		return $result;
+	}
+
 	/**
 	 * Vérifie si un utilisateur existe dans la base de données SQL
 	 * étant donné un tableau de conditions.

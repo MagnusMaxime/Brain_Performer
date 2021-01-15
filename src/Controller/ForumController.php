@@ -45,11 +45,19 @@ class ForumController extends ThreadController {
 			}
 			$context = [];
 			$title = urldecode($title);
-			$subject = ForumSubject::from_title($title);
+			try {
+				$subject = ForumSubject::from_title($title);
+			} catch (\Exception $e) {
+				header('Location: /forum');
+			}
 			$context["subject"] = $subject->info();
 			$context["messages"] = [];
 			$context["user"] = $_SESSION["user"];
 			$limit = 10;
+			if (isset($_GET['limit']))
+				if ($_GET['limit'] == 'all')
+					$limit = 9999999999;
+			error_log($limit);
 			$messages = ForumMessage::select($subject->id, $limit);
 			foreach ($messages as $message) {
 				$context["messages"][] = $message->info();
@@ -90,6 +98,14 @@ class ForumController extends ThreadController {
 	}
 
 	/* Message */
+	/* static public function count_messages($title) { */
+	/* 	$title = urldecode($title); */
+	/* 	$title = urldecode($title); */
+	/* 	$subject = ForumSubject::from_title($title); */
+	/* 	error_log($title." (".strval($subject->id)."): ".$offset." - ".$limit); */
+	/* 	$count = ForumMessage::count($subject->id); */
+	/* 	return $count; */
+	/* } */
 
 	/*
 	 * Charge plus de messages sur la page.
@@ -100,12 +116,18 @@ class ForumController extends ThreadController {
 		$subject = ForumSubject::from_title($title);
 		error_log($title." (".strval($subject->id)."): ".$offset." - ".$limit);
 		$messages = ForumMessage::select($subject->id, $limit, $offset);
+		$count = ForumMessage::count(['subject' => $subject->id]);
+		error_log('count:'. strval($count));
+		/* var_dump($count); */
 		$data = [];
+		$data['messages'] = [];
+		$data['count'] = $count;
 		foreach ($messages as $message) {
-			$data[] = $message->info();
-			}
+			$data['messages'][] = $message->info();
+			/* $data[] = $message->info(); */
+		}
 		$payload = json_encode($data, JSON_FORCE_OBJECT);
-		error_log($payload);
+		/* error_log($payload); */
 		/* var_dump($payload); */
 		return $payload;
 	}
@@ -114,14 +136,16 @@ class ForumController extends ThreadController {
 	 * Ajoute un message.
 	 */
 	static public function add_message($title) {
+		var_dump($_POST);
 		$user_id = $_SESSION["id"];
 		$title = urldecode($title);
 		$subject = ForumSubject::from_title($title);
 		$subject_id = $subject->id;
 		$message = ForumMessage::add($user_id, $_POST["message"], $subject_id);
+		header('SUCCESS');
 		/* var_dump($message); */
-		$title = urlencode($title);
-		header("Location: /forum/".$title.'/#'.$message->id);
+		/* $title = urlencode($title); */
+		/* header("Location: /forum/".$title.'?limit=all#'.$message->id); */
 	}
 
 	/*
