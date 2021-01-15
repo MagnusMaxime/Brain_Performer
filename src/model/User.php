@@ -13,8 +13,8 @@ class User extends SQLTable {
 	];
 
 	public static $urlavatars = [
-		"https://img.icons8.com/fluent/344/user-female.png",
-		"https://img.icons8.com/fluent/344/user-male.png",
+		URLAVATAR_MALE,
+		URLAVATAR_FEMALE,
 	];
 
 	/**
