@@ -10,12 +10,15 @@
 {% endblock script %}
 
 {% block content %}
-
+<div class="criteres">
+    <div class="firstcrit">
 <label for="search-input">Rechercher :</label>
-<input type="text" name="search-input" maxlength="100" placeholder="Faites une recherche" id="search-input" value="">
+<input class="recherche" type="text" name="search-input" maxlength="100" placeholder="Faites une recherche" id="search-input" value="">
+    </div>
 
-<div> <!--La div des filtres-->
+<div class="secondcrit"> <!--La div des filtres-->
 <label for="statut-filter">Filtrer par rapport au statut :</label>
+    <div class="statut">
 <select name="statut-filter" id="statut-filter">
     <option value="-1">Pas de filtre selon le statut</option>
     <option value="0">filtrez les patients</option>
@@ -23,19 +26,24 @@
     <!--<option value="2">Gestionnaire</option>
     <option value="3">Administrateur</option>-->
 </select>
-
+    </div>
+</div>
+<div class="thirdcrit">
 <label for="sex-filter">Filtrer par rapport au sexe :</label>
+    <div class="sexe">
 <select name="sex-filter" id="sex-filter">
     <option value="-1">Pas de filtre selon le sexe</option>
     <option value="0">filtrez les hommes</option>
     <option value="1">filtrez les femmes</option>
 </select>
-<div>
+</div>
+</div>
+<div class="forthcrit">
     <span>Afficher les utilisateurs ayant un âge compris entre <input type="number" id="minage-filter" min="5" max="150" step="1" value=""> et <input type="number" id="maxage-filter" min="5" max="150" step="1" value=""></span>
 </div>
-
-
 </div>
+
+
 
 
 <table id="main-table">
