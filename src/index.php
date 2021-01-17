@@ -169,14 +169,16 @@ $router->get("/forum/:title/message/charger/:offset/:title", "Forum#load_message
 $router->post("/forum/message/modifier/:id", "Forum#update_message");
 $router->post("/forum/message/supprimer/:id", "Forum#delete_message");
 $router->get("/forum/:title","Forum#subject");
-$router->post("/ticket", "Ticket#index");
-$router->post("/ticket/sujet/ajouter", "Ticket#add_message");
-$router->post("/ticket/sujet/modifier", "Ticket#update_subject");
+
+$router->get("/ticket", "Ticket#index");
+$router->post("/ticket/sujet/ajouter", "Ticket#add_subject");
+$router->post("/ticket/sujet/modidfier", "Ticket#update_subject");
 $router->post("/ticket/sujet/supprimer", "Ticket#delete_subject");
 $router->post("/ticket/:title/message/ajouter", "Ticket#add_message");
+$router->get("/ticket/:title/message/charger/:offset/:title", "Ticket#load_messages");
 $router->post("/ticket/message/modifier/:id", "Ticket#update_message");
 $router->post("/ticket/message/supprimer/:id", "Ticket#delete_message");
-$router->post("/ticket/:title", "Ticket#subject");
+$router->get("/ticket/:title","Ticket#subject");
 
 $router->get("/rechercher", "Search#show");
 $router->get('/profil/:id', "User#publicDisplay");
