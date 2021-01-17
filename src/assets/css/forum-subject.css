@@ -108,7 +108,7 @@
 	opacity: 0;
 	background:transparent;
 	border:transparent;
-	font-size: 1vh;
+	font-size: 1.2vh;
 }
 
 .message:hover > .button-del {
@@ -121,9 +121,9 @@
 .button-del:focus {
 	/* display: none; */
 	/* visibility: hidden; */
-  color: #69D2E7;
-	font-size: 1.5vh;
-  color: #666;
+  color: #fa9000;
+	border: none;
+	font-size: 1.2vh;
   text-decoration: none; /* on vire le soulignement */
 
   /* on définit la transition pour les navigateurs */

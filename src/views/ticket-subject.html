@@ -2,25 +2,63 @@
 
 {% block style %}
 <link href="/assets/css/ticket-subject.css" rel="stylesheet">
+<link href="/assets/css/ticket.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 {% endblock style %}
 
 {% block content %}
+<div class="container">
+	<h1 id="title">{{subject.title}}</h1>
+	<hr>
+	<h3>Description:</h3>
+	<div style="margin: 2%">
+		<h4 id="description">{{subject.description}}</h4>
+	</div>
+	<p id="meta">Auteur: {{subject.user.firstname}} {{subject.user.lastname}} le {{subject.created}} et modifié le {{subject.updated}}</p>
+	<br/><br/>
 
-<h1>{{ticket.title}}<hr>{{ticket.description}}</h1>
+	<div class="message-container">
 
-<table>
-    <tr>
-        <th>Auteur</th>
-        <th>Message</th>
-        <th>Date création</th>
-    </tr>
-    {% for ticket-message in ticket-messages %}
-    <tr>
-        <th>{{ticket.user.firstname}} {{ticket.user.lastname}}</th>
-        <th>{{ticket.description}}</th>
-        <th>{{ticket.created}}</th>
-    </tr>
-    {% endfor %}
-</table>
+		<div id="messages" class="messages">
+			{% for message in messages %}
+			<div id="{{message.id}}" class="message">
+				<b>{{message.user.firstname}} {{message.user.lastname}}</b>
+				<small>{{message.created}}</small>
+				{% if message.user.id == user.id %}
+					<button id="button-del-{{message.id}}" class="button-del">
+						<i class="far fa-trash-alt"></i>
+					</button>
+				{% endif %}
+				<br>
+				<div class="message-line">
+					<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
+					<p>{{message.message}}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+		<center>
+			<button id="button-more" class="button-more">Voir plus de messages.</button>
+		</center>
+
+		<form id="message-form" method="post" action="/ticket/{{subject.title}}/message/ajouter">
+			<div class="message-container">
+				<b>{{user.firstname}} {{user.lastname}}</b>
+				<div class="message-line">
+					<img class="urlavatar" src="{{user.urlavatar}}"></img>
+					<input id="message" type="text" name="message" size="15" required/></br/>
+					<input id="button-add" class="button" value="Envoyer">
+				</div>
+			</div>
+		</form>
+		<hr id="hr" >
+	</div>
+</div>
 
 {% endblock content %}
+
+{% block script %}
+<script>const userId = {{user.id}}</script>
+<script src="/assets/js/ticket-subject.js"></script>
+{% endblock script %}

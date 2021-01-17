@@ -1,29 +1,65 @@
 {% extends "layout.html" %}
 
+{% block style %}
+<link href="/assets/css/ticket.css" rel="stylesheet">
+{% endblock style %}
+
 {% block content %}
 <div class="container">
-	<ul>
-		<table>
-			<tr>
-				<th>subject</th>
-				<th>Auteur</th>
-				<th>Vues</th>
-				<th>Dernier message</th>
-				<th>Date création</th>
-			</tr>
-			{% for subject in subjects %}
-			<tr>
-				<th>{{subject.title}}<hr>{{subject.description}}</th>
-				<th>{{subject.user.firstname}} {{subject.user.lastname}}</th>
-				<th>{{subject.views}}</th>
-				<th>{{subject.updated}}</th>
-				<th>{{subject.created}}</th>
-			</tr>
-			{% endfor %}
-		</table>
+	<h1>Ticket Brain Performer</h1>
+	<hr>
+	<h2>Discutez avec la communauté Brain Performer</h2>
 
-		<a href="/forum/ticket/ajouter"><input type="submit" class="valid" name="add-count" value="Ajouter un ticket"></a>
+	<!-- <table> -->
+			<!-- <tr> -->
+					<!-- <th>Sujet</th> -->
+					<!-- <th>Description</th> -->
+					<!-- <th>Auteur</th> -->
+					<!-- <th>Vues</th> -->
+					<!-- <th>Dernier message</th> -->
+					<!-- <th>Date création</th> -->
+			<!-- </tr> -->
 
-	</ul>
+	<div class="form-container">
+			<ul class="menu-vertical">
+
+				{% for subject in subjects %}
+				<!-- <tr> -->
+				<li class="mv-item"><a href="/ticket/{{subject.title}}">{{subject.title}}</a></li>
+					<!-- <th>{{subject.title}}</th> -->
+					<!-- <th>{{subject.description}}</th> -->
+					<!-- <th>{{subject.user.firstname}} {{subject.user.lastname}}</th> -->
+					<!-- <th>{{subject.views}}</th> -->
+					<!-- <th>{{subject.updated}}</th> -->
+					<!-- <th>{{subject.created}}</th> -->
+				<!-- </tr> -->
+
+				{% endfor %}
+			</ul>
+	</div>
+	<!-- </table> -->
+
+
+	<div class="form-container">
+		<form method="post" action="/ticket/sujet/ajouter">
+				<label>Titre du sujet :</label>
+				<input id="title" type="text" name="title" size="15" required/></br>
+				<hr>
+				<label>Descriptif du sujet :</label>
+				<textarea contenteditable id="description" type="text" name="description" size="15" required/></textarea></br>
+				<hr>
+				<label>Votre message :</label>
+				<input id="message" type="text" name="message" size="15" required/></br>
+				<hr>
+				<input type="submit" class="valid" value="Créer le sujet">
+		</form>
+	</div>
 </div>
+
+<button class="button" onclick="displayMoreContent()"></button>
+
 {% endblock content %}
+
+{% block script %}
+<script src="/assets/js/ticket.js"></script>
+{% endblock script %}

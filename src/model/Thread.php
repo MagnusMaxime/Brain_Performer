@@ -165,6 +165,14 @@ class ThreadMessage extends SQLTable {
 		return new static($id);
 	}
 
+	static public function delete($id) {
+		global $DB;
+		$query = "DELETE FROM `".static::get_name()."` WHERE `id`=:id";
+		error_log($query);
+		$req = $DB->prepare($query);
+		$req->execute(['id' => $id]);
+	}
+
 	/*
 	 * Retourne le tableau pour twig.
 	 */

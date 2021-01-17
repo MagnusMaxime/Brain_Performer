@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link href="/assets/css/forum-subject.css" rel="stylesheet">
-<link href="/assets/css/forum.css" rel="stylesheet">
+<link href="/assets/css/ticket-subject.css" rel="stylesheet">
+<link href="/assets/css/ticket.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 {% endblock style %}
 
@@ -24,9 +24,11 @@
 			<div id="{{message.id}}" class="message">
 				<b>{{message.user.firstname}} {{message.user.lastname}}</b>
 				<small>{{message.created}}</small>
-				<button id="button-del-{{message.id}}" class="button-del">
-					<i class="far fa-trash-alt"></i>
-				</button>
+				{% if message.user.id == user.id %}
+					<button id="button-del-{{message.id}}" class="button-del">
+						<i class="far fa-trash-alt"></i>
+					</button>
+				{% endif %}
 				<br>
 				<div class="message-line">
 					<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
@@ -57,5 +59,6 @@
 {% endblock content %}
 
 {% block script %}
+<script>const userId = {{user.id}}</script>
 <script src="/assets/js/forum-subject.js"></script>
 {% endblock script %}

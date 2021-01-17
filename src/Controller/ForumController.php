@@ -158,7 +158,8 @@ class ForumController extends ThreadController {
 	/*
 	 * Supprime un message.
 	 */
-	static public function delete_message() {
-
+	static public function delete_message($id) {
+		ForumMessage::delete($id);
+		header('SUCCESS');
 	}
 }
