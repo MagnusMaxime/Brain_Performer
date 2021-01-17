@@ -10,6 +10,20 @@ namespace App\Controller;
 
 class Controller
 {
+
+	static public function getUrl() {
+			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+				 $url = "https://";
+			else
+				 $url = "http://";
+
+			// Append the host(domain name, ip) to the URL.
+			$url.= $_SERVER['HTTP_HOST'];
+
+			// Append the requested resource location to the URL
+			$url.= $_SERVER['REQUEST_URI'];
+			return $url;
+	}
     /* protected $twig = $$GLOBALS['twig']; */
     /* global $twig; */
     /* static $twig = $GLOBALS["twig"]; */
@@ -25,7 +39,8 @@ class Controller
         //Retourne true s'il l'utilisateur n'est pas connecté, false sinon
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
-            header("Location: /connexion");//on le redirige à l'accueil
+						$_SESSION['next'] = self::getUrl();
+            header("Location: /connexion");
             return true;
         }
         return false;
@@ -36,6 +51,7 @@ class Controller
             return true;
         }
         if ($_SESSION["grade"]<=2) {
+						$_SESSION['next'] = self::getUrl();
             header("Location: /connexion");
             return true;
         }
@@ -49,6 +65,7 @@ class Controller
         }
         if ($_SESSION["grade"]!=1) {
             //l'utilisateur est connecté mais ce n'est pas un médecin
+						$_SESSION['next'] = self::getUrl();
             header("Location: /connexion");
             return true;
         }
@@ -58,11 +75,12 @@ class Controller
     static public function needToBeAdmin(){
         if (!isset($_SESSION['id'])){//on regarde si l'utilisateur n'est pas connecté
             //l'utilisateur essaye d'accéder à une page qui demande d'être connecté mais l'utilisateur n'est pas connecté
-            header("Location: /");//on le redirige à l'accueil
+						$_SESSION['next'] = self::getUrl();
+            header("Location: /connexion");
             return true;
         } else if ($_SESSION["grade"]<=1){
-            //l'utilisateur est connecté mais c'est un patien ou un médecin
-            header("Location: /");//on le redirige à l'accueil
+            //l'utilisateur est connecté mais c'est un patient ou un médecin
+            header("Location: /"); // on le redirige à l'accueil
             return true;
         }
         return false;
