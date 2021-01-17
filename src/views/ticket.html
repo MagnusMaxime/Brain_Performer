@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block style %}
-<link href="/assets/css/forum.css" rel="stylesheet">
+<link href="/assets/css/ticket.css" rel="stylesheet">
 {% endblock style %}
 
 {% block content %}
 <div class="container">
-	<h1>Forum Brain Performer</h1>
+	<h1>Ticket Brain Performer</h1>
 	<hr>
 	<h2>Discutez avec la communauté Brain Performer</h2>
 
@@ -25,7 +25,7 @@
 
 				{% for subject in subjects %}
 				<!-- <tr> -->
-				<li class="mv-item"><a href="/forum/{{subject.title}}">{{subject.title}}</a></li>
+				<li class="mv-item"><a href="/ticket/{{subject.title}}">{{subject.title}}</a></li>
 					<!-- <th>{{subject.title}}</th> -->
 					<!-- <th>{{subject.description}}</th> -->
 					<!-- <th>{{subject.user.firstname}} {{subject.user.lastname}}</th> -->
@@ -41,7 +41,7 @@
 
 
 	<div class="form-container">
-		<form method="post" action="/forum/sujet/ajouter">
+		<form method="post" action="/ticket/sujet/ajouter">
 				<label>Titre du sujet :</label>
 				<input id="title" type="text" name="title" size="15" required/></br>
 				<hr>
@@ -61,5 +61,5 @@
 {% endblock content %}
 
 {% block script %}
-<script src="/assets/js/forum.js"></script>
+<script src="/assets/js/ticket.js"></script>
 {% endblock script %}

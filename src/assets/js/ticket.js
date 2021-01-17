@@ -6,5 +6,3 @@ $('textarea').on('paste input', function () {
 			$(this).height($(this).height() + 1)
 	}
 });
-
-console.log('forum.js ouvre toi');
