@@ -24,9 +24,11 @@
 			<div id="{{message.id}}" class="message">
 				<b>{{message.user.firstname}} {{message.user.lastname}}</b>
 				<small>{{message.created}}</small>
-				<button id="button-del-{{message.id}}" class="button-del">
-					<i class="far fa-trash-alt"></i>
-				</button>
+				{% if message.user.id == user.id %}
+					<button id="button-del-{{message.id}}" class="button-del">
+						<i class="far fa-trash-alt"></i>
+					</button>
+				{% endif %}
 				<br>
 				<div class="message-line">
 					<img class="urlavatar" src="{{message.user.urlavatar}}"></img>
@@ -57,5 +59,6 @@
 {% endblock content %}
 
 {% block script %}
+<script>const userId = {{user.id}}</script>
 <script src="/assets/js/forum-subject.js"></script>
 {% endblock script %}
