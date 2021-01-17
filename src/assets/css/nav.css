@@ -66,7 +66,7 @@
 }
 
 #menu-demo2 li:hover ul{
-    max-height: 20em;
+    max-height: 40em;
     background: white;
 		box-shadow:
 			 0.1em 0.3em 1em rgba(0,0,0,0.3);
