@@ -16,7 +16,7 @@ class ConnectionController extends Controller
         global $twig;
         /* var_dump($_POST); */
 				if (!User::does_exist(["mail" => $_POST["mail"]])) {
-                return $twig->render('connection.html', ["title"=>"Connexion", "alert"=>"Cet email n'est pas reconnu."]);
+						return $twig->render('connection.html', ["title"=>"Connexion", "alert"=>"Cet email n'est pas reconnu."]);
 				}
 
 				if (!User::match_password($_POST["mail"], $_POST["password"])) {
@@ -25,7 +25,13 @@ class ConnectionController extends Controller
 
         $user = User::connect($_POST["mail"], $_POST["password"]);
 
-				header("Location: profil/" . strval($user->get_id()));
+				if (isset($_SESSION['next'])) {
+					$next = $_SESSION['next'];
+					unset($_SESSION['next']);
+					header("Location: ".$next);
+				} else {
+					header("Location: profil/" . strval($user->get_id()));
+				}
 
         /* if ($success){ */
         /*     return $twig->render('message.html', ["title"=>"Profil", "message"=>"Vous êtes connecté, bravo !"]); */
