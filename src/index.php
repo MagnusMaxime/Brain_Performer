@@ -197,7 +197,8 @@ $router->get('/patients', "Doctor#patients");
 
 # Admin
 $router->get('/admin', "Admin#index");
-$router->get('admin/token', "Admin#token");
+$router->get('admin/token', "Admin#manageTokens");
+$router->post('admin/token', "Admin#postTokens");
 $router->get('/admin/profils', "AdminUser#users");
 $router->get('/admin/profil/:id', "AdminUser#user");
 $router->post('/admin/profil/:id', "AdminUser#user");

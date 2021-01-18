@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script src="/assets/js/manageTokens.js"></script>
+<link rel="stylesheet" href="/assets/css/manageFaq.css"/><!--TODO faire le CSS-->
+<div id="bloc-page" class="main">
+
+    <div class="faq-section">
+        <h1>Liste des jetons</h1>
+        <form action="" method="post">
+        {% for question in faq %}
+        <div class="question" id="div{{question.id}}">
+
+            <input type="text" name="q{{question.id}}" id="q{{question.id}}" value="{{question.id}}" disabled required>
+
+            <input type="hidden" name="r{{question.id}}" id="r{{question.id}}" value="no" title="r{{question.id}}" >
+
+            <button type="button" onclick="deleteQuestion('{{question.id}}')">Supprimer</button>
+
+        </div>
+        {% endfor %}
+
+            <button type="submit">Sauvegarder</button>
+        </form>
+        <form action="" method="post">
+        <h2>Ajouter un jeton</h2>
+        <label for="q_add">Jeton :</label>
+        <input type="text" name="q_add" placeholder="Entrez un jeton" id="q_add" required>
+
+        <button type="submit">Ajouter le jeton</button>
+        </form>
+
+
+    </div>
+</div>
+
+{% endblock %}
