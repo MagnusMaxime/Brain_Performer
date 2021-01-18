@@ -1,0 +1,35 @@
+table
+{
+
+    width: 100%;
+    margin-bottom: 1%;
+    margin-top: 3%;
+}
+td,
+th {
+    border: 1.5px solid #A7DBD8;
+    max-width: 82px;
+
+}
+
+td {
+    text-align: center;
+
+}
+
+.valid
+{
+    display: block;
+    margin : auto;
+    margin-bottom: 1%;
+}
+
+
+.no-border
+{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    max-width: 95%;
+
+}
