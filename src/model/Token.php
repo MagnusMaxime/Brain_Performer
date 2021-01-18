@@ -3,7 +3,17 @@
 namespace App\Model;
 
 
+use PDO;
+
 class Token extends SQLTable {
+    public static function getAllToken(){
+        global $DB;
+        $query = "SELECT * FROM `token`";
+        $req = $DB->prepare($query);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
     public static function isDoctorToken($token){
         global $DB;
         $req = $DB->prepare("SELECT * FROM `token` WHERE `id` = :token");
@@ -33,6 +43,14 @@ class Token extends SQLTable {
         $doctor = $req->fetch();//on recup la première ligne des résultats
         $user = new User($doctor["id"]);
         return $user;
+    }
+
+    public static function addToken($id){
+        //ajoute la question et la réponse à la BDD
+        global $DB;
+        $req = $DB->prepare("INSERT INTO `token` (`id`) VALUES (:id);");
+        $result = $req->execute(["id"=>$id]);
+        return $result;
     }
 
 
