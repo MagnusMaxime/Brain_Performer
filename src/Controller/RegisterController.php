@@ -108,4 +108,27 @@ class RegisterController extends Controller
 
         header("Location: /profil/".$user->get_id());
 	}
+
+	static public function apiToken(){
+	    $result="";
+        if (Token::isDoctorToken($_GET["token"])){
+            //C'est un médecin
+            $result="médecin";
+        }else{
+            $doctor=Token::isPatientToken($_GET["token"]);
+            if ($doctor){
+                //Inscription d'un patient qui a pour médecin $doctor
+                $result="patient";
+
+            }else{
+                //le token ne correspond ni à un médecin ni à un patient
+                $result="";
+            }
+        }
+
+        header('Content-Type: application/json');
+        return json_encode($result);
+
+    }
+
 }
