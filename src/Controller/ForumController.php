@@ -71,8 +71,9 @@ class ForumController extends ThreadController {
 	 * Ajoute un sujet.
 	 */
 	static public function add_subject() {
-		$user_id = $_SESSION["id"];
-		ForumSubject::add($user_id, $_POST["title"], $_POST["description"]);
+		ForumSubject::add($_SESSION["id"], $_POST["title"], $_POST["description"]);
+		$subject = ForumSubject::from_title($_POST["title"]);
+		ForumMessage::add($_SESSION["id"], $_POST["message"], $subject->id);
 		$title = urlencode($_POST["title"]);
 		header("Location: /forum/".$title);
 	}
