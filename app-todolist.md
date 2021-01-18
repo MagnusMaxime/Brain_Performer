@@ -2,7 +2,7 @@
 
 
 # A faire
-Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
+**Meilleur affichage**: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
     
 ## Messagerie interne - Juan
 - [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là 
