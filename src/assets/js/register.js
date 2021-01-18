@@ -35,8 +35,37 @@ function manageToken(){
 }
 
 
+function makeRequest() {
+    var httpRequest;
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+        alert('Abandon :( Impossible de créer une instance de XMLHTTP');
+        return false;
+    }
+    httpRequest.onreadystatechange = function (ev) {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                var json_=JSON.parse(httpRequest.responseText);
+                console.log(json_);
+                if (json_===""){
+                    alert("Votre token n'est pas valide");
+                }
+            } else {
+                alert('Il y a eu un problème avec la requête.');
+            }
+        }
+    };
+    httpRequest.open('GET', '/api/token?token='+encodeURIComponent(document.querySelector("#token").value));
+    httpRequest.send();
+}
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
     // Your code to run since DOM is loaded and ready
     manageToken();
+    document.querySelector("#token").addEventListener("change", function (evt) {
+        makeRequest()
+    });
 });
 

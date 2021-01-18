@@ -210,5 +210,6 @@ $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete")
 
 # API
 $router->get("/api/search", "Search#api");
+$router->get("/api/token", "Register#apiToken");
 
 echo $router->run();
