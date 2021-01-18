@@ -71,10 +71,11 @@ class TicketController extends ThreadController {
 	 * Ajoute un sujet.
 	 */
 	static public function add_subject() {
-		$user_id = $_SESSION["id"];
-		TicketSubject::add($user_id, $_POST["title"], $_POST["description"]);
+		TicketSubject::add($_SESSION["id"], $_POST["title"], $_POST["description"]);
+		$subject = TicketSubject::from_title($_POST["title"]);
+		TicketMessage::add($_SESSION["id"], $_POST["message"], $subject->id);
 		$title = urlencode($_POST["title"]);
-		header("Location: /ticket/".$title);
+		header("Location: /forum/".$title);
 	}
 
 	/*

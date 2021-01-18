@@ -92,7 +92,7 @@ function appendMessages(messagesContent) {
 function loadMessages(limit=undefined) {
 	let offset = document.getElementById('messages').childElementCount
 	limit = limit || STEP
-	const url = `/ticket/${URI_TITLE}/message/charger/${limit}/${offset}`
+	const url = `/forum/${URI_TITLE}/message/charger/${limit}/${offset}`
 	console.log(url)
 	$.ajax({
 		type: 'GET',
@@ -117,7 +117,7 @@ function loadMessages(limit=undefined) {
  * ce message sur la page.
  */
 function postMessage() {
-	const url = `/ticket/${URI_TITLE}/message/ajouter/`
+	const url = `/forum/${URI_TITLE}/message/ajouter/`
 	const data = $("#message-form").serialize()
 	console.log(data)
 	$.ajax({
@@ -151,7 +151,7 @@ function deleteMessage(id) {
  */
 function postDeleteMessage(id) {
 	console.log(title)
-	const url = `/ticket/message/supprimer/${id}`
+	const url = `/forum/message/supprimer/${id}`
 	const data = {id}
 	console.log(data)
 	$.ajax({
@@ -239,7 +239,7 @@ function main() {
 	}
 
 	// Nettoie l'url
-	window.history.pushState("", "", `/ticket/${TITLE}`);
+	// window.history.pushState("", "", `/forum/${TITLE}`);
 
 	// préselectionne l'input pour envoyer des nouveaux messages.
 	message.select();
