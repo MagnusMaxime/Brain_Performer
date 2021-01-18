@@ -3,10 +3,6 @@
 
 # A faire
 Meilleur affichage: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
-Le bouton "voir plus de message" ne doit s'afficher que lorsqu'il y a + de 10 msgs
-En cas de réponse à un sujet sans avoir déplié les messages,
-en cliquant sur le bouton "envoyer" la page s'actualise et tous les messages sont
-affichés jusqu'à celui qu'on vient d'ajouter.
     
 ## Messagerie interne - Juan
 - [ ] Définir le besoin et le résultat attendu car je ne vois pas ce qu'il faut faire là 
@@ -14,10 +10,10 @@ affichés jusqu'à celui qu'on vient d'ajouter.
 - [ ] Contacter l'administrateur par messagerie interne
 
 ## Moteur de recherche - ?
-- [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) IMPORTANT
+- [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) **IMPORTANT**
 
 ## Ticket - Marc
-- [ ] Signaler un incident en envoyant un ticket à l'administrateur (SAV)
+- [x] Signaler un incident en envoyant un ticket à l'administrateur (SAV)
 
 ## Admin - ?
 - [ ] Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
@@ -25,15 +21,17 @@ affichés jusqu'à celui qu'on vient d'ajouter.
   - [ ] Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton
   - [ ] Ajouter le back-office de la messagerie interne
 
-## Forum - Marc
+## Forum / Ticket - Marc
+- [x] Ajouter un boutton supprimer message
+- [x] En cas de réponse à un sujet sans avoir déplié les messages, en cliquant sur le bouton "envoyer" la page s'actualise et tous les messages sont affichés jusqu'à celui qu'on vient d'ajouter.
 - [ ] Ajouter page administration forum
-- [ ] Ajouter bouton modifier + supprimer message
+- [ ] Ajouter bouton modifier message
 
-## Système de redirection d'url - (Alexandre?)
+## Système de redirection d'url - Marc
 Lorsqu'un utilisateur essaie de voir la page de forum il est redirigé vers la page de connexion.
 Cependant lorsqu'il réussit à se connecter celà le redirige vers la page d'accueil au lieu de le rediriger vers la page de forum.
 Ce serait bien d'automatiser les redirections pour les pages nécessitant d'être connecté.
-- [ ] redirection après connexion
+- [x] redirection après connexion
 
 ## Erreur imports css + webmanifest - (Alexandre?)
 - [ ] Correction des erreurs d'imports lors du chargement des pages webs.
