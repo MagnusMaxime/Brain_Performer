@@ -2,7 +2,6 @@
 
 
 namespace App\Controller;
-use App\Model\Faq;
 use App\Model\Token;
 use App\Model\User;
 
