@@ -51,8 +51,7 @@ class Controller
             return true;
         }
         if ($_SESSION["grade"]<=2) {
-						$_SESSION['next'] = self::getUrl();
-            header("Location: /connexion");
+            header("Location: /");
             return true;
         }
         return false;
@@ -64,9 +63,7 @@ class Controller
             return true;
         }
         if ($_SESSION["grade"]!=1) {
-            //l'utilisateur est connecté mais ce n'est pas un médecin
-						$_SESSION['next'] = self::getUrl();
-            header("Location: /connexion");
+            header("Location: /");
             return true;
         }
         return false;

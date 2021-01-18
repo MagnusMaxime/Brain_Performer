@@ -130,9 +130,11 @@ function postMessage() {
 	 	}
 	 });
 	message.value = ""
-	loadMessages(9999999999)
+	setTimeout(function() {
+		loadMessages(9999999999)
+		console.log('loading now')
+	}, 1000);
 	disableMoreBtn()
-	return false; // avoid to execute the actual submit of the form.
 }
 
 /*
@@ -141,8 +143,9 @@ function postMessage() {
 function deleteMessage(id) {
 	msg = document.getElementById(id)
 	$(msg).fadeOut(500, function(){
-		$(msg).css({"visibility":"hidden",display:'block'}).slideUp();
-});
+		$(msg).css({"visibility":"hidden",display:'block'}).slideUp()
+	})
+	msg.remove()
 }
 
 /*

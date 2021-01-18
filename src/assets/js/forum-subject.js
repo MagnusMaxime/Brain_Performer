@@ -138,11 +138,13 @@ function postMessage() {
 /*
  * Supprime un message tout en douceur.
  */
+
 function deleteMessage(id) {
 	msg = document.getElementById(id)
 	$(msg).fadeOut(500, function(){
-		$(msg).css({"visibility":"hidden",display:'block'}).slideUp();
-});
+		$(msg).css({"visibility":"hidden",display:'block'}).slideUp()
+	})
+	msg.remove()
 }
 
 /*
