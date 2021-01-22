@@ -12,26 +12,13 @@
 ## Moteur de recherche - ?
 - [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) **IMPORTANT**
 
-## Ticket - Marc
-- [x] Signaler un incident en envoyant un ticket à l'administrateur (SAV)
-
-## Admin - ?
-- [ ] Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
-	- [ ] la page donne un tableau avec tous les utilisateurs listés par token
-  - [ ] Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton
+## Admin - Alexandre
   - [ ] Ajouter le back-office de la messagerie interne
 
-## Forum / Ticket - Marc
-- [x] Ajouter un boutton supprimer message
-- [x] En cas de réponse à un sujet sans avoir déplié les messages, en cliquant sur le bouton "envoyer" la page s'actualise et tous les messages sont affichés jusqu'à celui qu'on vient d'ajouter.
-- [ ] Ajouter page administration forum
+## Forum/Ticket - Marc
+- [ ] Back office forum/ticket **avant la présentation client**
+- [ ] Rendre un ticket non accessible par tout le monde?
 - [ ] Ajouter bouton modifier message
-
-## Système de redirection d'url - Marc
-Lorsqu'un utilisateur essaie de voir la page de forum il est redirigé vers la page de connexion.
-Cependant lorsqu'il réussit à se connecter celà le redirige vers la page d'accueil au lieu de le rediriger vers la page de forum.
-Ce serait bien d'automatiser les redirections pour les pages nécessitant d'être connecté.
-- [x] redirection après connexion
 
 ## Erreur imports css + webmanifest - (Alexandre?)
 - [ ] Correction des erreurs d'imports lors du chargement des pages webs.
@@ -48,3 +35,7 @@ Ce serait bien d'automatiser les redirections pour les pages nécessitant d'êtr
 - [x] Retrouver un utilisateur par une recherche multicritère URGENT
 - [x] Dans l'interface médecin faut faire une page où le médecin peut voir un tableau avec tout ses patients
 - [x] faire la recherche multi criteres sur les compte publics
+- [x] redirection après connexion
+- [x] Faut aussi ajouter dans le tableau de bord admin une page pour ajouter des tokens de médecin
+- [x] la page donne un tableau avec tous les utilisateurs listés par token
+- [x] Une page du back office permet de lister tout les token en circualtion et d'en ajouter (générer aléatoirement) par bouton

@@ -208,6 +208,8 @@ $router->get("/admin/gestion-utilisateurs", "UserListAdmin#get");
 $router->post('/admin/gestion-utilisateurs-ajouter', "UserListAdmin#postadd");
 $router->post('/admin/gestion-utilisateurs-actualiser/:id', "UserListAdmin#postupdate");
 $router->get('admin/gestion-utilisateurs/supprimer/:id', "UserListAdmin#delete");
+# Back office forum + ticket + messagerie interne
+$router->get('admin/forum', "Admin#manageTokens");
 
 # API
 $router->get("/api/search", "Search#api");
