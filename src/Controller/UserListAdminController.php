@@ -112,4 +112,3 @@ class UserListAdminController extends Controller
             $_POST['language'], $_POST['password'], $_POST['grade'], $_POST['public']));
     }
 }
-
