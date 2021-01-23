@@ -36,7 +36,7 @@ function update(){
             html_element.hidden=html_element.hidden || (sex_filter!=user.sex)
         }
         if(search_input!=""){
-            var fullName = ((user.sex=="0" ? "M. " : "Mme. ") + user.firstname+" "+user.lastname).toLowerCase()
+            var fullName = (user.firstname+" "+user.lastname).toLowerCase()
             if (fullName.includes(search_input)){
                 //la recherche correspond au nom du l'utilisateur
             }else{
