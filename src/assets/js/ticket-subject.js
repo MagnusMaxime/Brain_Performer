@@ -118,7 +118,11 @@ function loadMessages(limit=undefined) {
  */
 function postMessage() {
 	const url = `/ticket/${URI_TITLE}/message/ajouter/`
-	const data = $("#message-form").serialize()
+	const form = $("#message-form")
+	const data = form.serialize()
+	if (form.serializeArray()[0].value == "") {
+		return false
+	}
 	console.log(data)
 	$.ajax({
 		type: "POST",
