@@ -1,6 +1,9 @@
 #!/usr/local/marc/markdown.py
 
-
+# Urgent pour le cahier des charges :
+- [ ] Afficher ses données psychotechniques 
+- [ ] Communiquer entre passerelle et serveur
+    - Interpréter des données provenant de la passerelle existante vers le serveur
 # A faire
 **Meilleur affichage**: [Todolist](https://websiteofmarcpartensky.herokuapp.com/article/app-todolist)
     
