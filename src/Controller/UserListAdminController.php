@@ -48,7 +48,7 @@ class UserListAdminController extends Controller
         else
         {
             var_dump($_POST);
-            echo "ëtes-vous certain d'être un administrateur ?";
+            echo "êtes-vous certain d'être un administrateur ?";
                     //header("Location: /connexion");
         }
 

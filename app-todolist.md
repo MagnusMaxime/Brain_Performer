@@ -13,9 +13,9 @@
 - [ ] Retourner un résultat de recherche sous forme de graphiques (statistiques) **IMPORTANT**
 
 ## Admin - Alexandre
-  - [ ] Ajouter le back-office de la messagerie interne
+- [ ] Ajouter le back-office de la messagerie interne
 
-## Forum/Ticket - Marc
+## Forum / Ticket - Marc
 - [ ] Back office forum/ticket **avant la présentation client**
 - [ ] Rendre un ticket non accessible par tout le monde?
 - [ ] Ajouter bouton modifier message
