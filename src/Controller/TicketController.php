@@ -34,7 +34,6 @@ class TicketController extends ThreadController {
 			return $twig->render('ticket.html', $context);
 	}
 
-
 	/*
 	 * Permet d'afficher des messages pour un sujet du ticket.
 	 */

@@ -118,7 +118,11 @@ function loadMessages(limit=undefined) {
  */
 function postMessage() {
 	const url = `/forum/${URI_TITLE}/message/ajouter/`
-	const data = $("#message-form").serialize()
+	const form = $("#message-form")
+	const data = form.serialize()
+	if (form.serializeArray()[0].value == "") {
+		return false
+	}
 	console.log(data)
 	$.ajax({
 		type: "POST",
@@ -132,7 +136,7 @@ function postMessage() {
 	message.value = ""
 	loadMessages(9999999999)
 	disableMoreBtn()
-	return false; // avoid to execute the actual submit of the form.
+	return false // avoid to execute the actual submit of the form.
 }
 
 /*
@@ -164,7 +168,7 @@ function postDeleteMessage(id) {
 		success: function(data) {
 			console.log(`Deleted message ${id} successfully.`)
 	 	}
-	 });
+	 })
 	deleteMessage(id)
 }
 
@@ -241,7 +245,7 @@ function main() {
 	}
 
 	// Nettoie l'url
-	// window.history.pushState("", "", `/forum/${TITLE}`);
+	// window.history.pushState("", "", `/forum/${TITLE}`)
 
 	// préselectionne l'input pour envoyer des nouveaux messages.
 	message.select();
