@@ -41,6 +41,7 @@ class UserListAdminController extends Controller
                 'parent' => $_SESSION['id'],
                 'public' => $_POST['public']
             );
+
             UserListAdmin::AddAccount($info_add);
             //var_dump($info_add);
             header("Location: /admin/gestion-utilisateurs");
@@ -48,7 +49,7 @@ class UserListAdminController extends Controller
         else
         {
             var_dump($_POST);
-            echo "ëtes-vous certain d'être un administrateur ?";
+            echo "Êtes-vous certain d'être un administrateur ?";
                     //header("Location: /connexion");
         }
 
@@ -63,14 +64,19 @@ class UserListAdminController extends Controller
             'mail' => $_POST['mail'],
             'birthdate' => $_POST['birthdate'],
             'language' => $_POST['language'],
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+            //'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'token' => $_POST['token'],
             'urlavatar' => $_POST['urlavatar'],
             'grade' => $_POST['grade'],
             'public' => $_POST['public'],
             'id' => $id
         );
-        var_dump($update_user);
+        if ($_POST['password']!=""){
+            $update_user["password"]=password_hash($_POST['password'], PASSWORD_DEFAULT);
+        }else{
+            $update_user["password"]="";
+        }
+        //var_dump($update_user);
         UserListAdmin::ModifieAccount($update_user);
         header("Location: /admin/gestion-utilisateurs");
 

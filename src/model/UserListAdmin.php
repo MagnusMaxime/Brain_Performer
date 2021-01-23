@@ -30,9 +30,15 @@ class UserListAdmin
     public static function ModifieAccount($user_mod)
     {
         global $DB;
-        $req = $DB->prepare('UPDATE user SET firstname = :firstname, lastname = :lastname, sex = :sex,
+        if ($user_mod["password"]!="") {
+            $req = $DB->prepare('UPDATE user SET firstname = :firstname, lastname = :lastname, sex = :sex,
             mail = :mail, birthdate = :birthdate, language = :language, password = :password, token = :token, 
             urlavatar = :urlavatar, grade = :grade, public = :public WHERE id = :id');
+        } else{
+            $req = $DB->prepare('UPDATE user SET firstname = :firstname, lastname = :lastname, sex = :sex,
+            mail = :mail, birthdate = :birthdate, language = :language, token = :token, 
+            urlavatar = :urlavatar, grade = :grade, public = :public WHERE id = :id');
+        }
         $req->execute($user_mod);
 
     }
