@@ -14,6 +14,9 @@ class UserListAdminController extends Controller
 
     public function get()
     {
+        if (self::needToBeAdmin()) {
+            return "";
+        }
         global $twig;
         return $twig->render('userListAdmin.html', ["title" => "Gérer les utilisateurs",
             'users' => User::getUsers()]);
@@ -21,6 +24,9 @@ class UserListAdminController extends Controller
 
     public function postadd()
     {
+        if (self::needToBeAdmin()) {
+            return "";
+        }
         global $twig;
         if (self::addrequired())
         {
@@ -44,7 +50,8 @@ class UserListAdminController extends Controller
 
             UserListAdmin::AddAccount($info_add);
             //var_dump($info_add);
-            header("Location: /admin/gestion-utilisateurs");
+            //header("Location: /admin/gestion-utilisateurs");
+            return $this->get();
         }
         else
         {
@@ -57,6 +64,9 @@ class UserListAdminController extends Controller
 
     public function postupdate($id) //on modifie les champs avec les infos récupérés
     {
+        if (self::needToBeAdmin()) {
+            return "";
+        }
         $update_user = array(
             'firstname' => $_POST['firstname'],
             'lastname' => $_POST['lastname'],
@@ -78,12 +88,16 @@ class UserListAdminController extends Controller
         }
         //var_dump($update_user);
         UserListAdmin::ModifieAccount($update_user);
-        header("Location: /admin/gestion-utilisateurs");
+        return $this->get();
+
 
     }
 
     static public function delete($id)
     {
+        if (self::needToBeAdmin()) {
+            return "";
+        }
         echo "je suis là";
         UserListAdmin::RemoveAccount($id);
         header("Location: /admin/gestion-utilisateurs");
@@ -91,6 +105,9 @@ class UserListAdminController extends Controller
 
     static public function addrequired()
     {
+        if (self::needToBeAdmin()) {
+            return "";
+        }
         return (isset($_POST['firstname'], $_POST['lastname'], $_POST['sex'], $_POST['mail'], $_POST['birthdate'],
             $_POST['language'], $_POST['password'], $_POST['grade'], $_POST['public']));
     }
