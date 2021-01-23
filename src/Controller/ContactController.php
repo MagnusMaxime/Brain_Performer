@@ -22,6 +22,7 @@ class ContactController extends Controller
             //Le Recaptcha n'a pas été validé, c'est un bot
             return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"reCAPTCHA non validé"]);
         }
+        echo "<!--";
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -47,9 +48,11 @@ class ContactController extends Controller
             $mail->Body    = $_POST["message-mail"];
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
+            echo "-->";
             return $twig->render('message.html', ["title"=>"Mail envoyé","message"=>"Le mail a été envoyé à ".CONTACT_MAIL]);
 
         } catch (Exception $e) {
+            echo "-->";
             return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"Erreur dans l'envoi du mail ".$mail->ErrorInfo]);
 
         }
