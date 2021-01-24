@@ -29,7 +29,9 @@ class TicketController extends ThreadController {
 			$context = ["subjects" => []];
 			$subjects = TicketSubject::select_recent($subjects_number);
 			foreach ($subjects as $subject) {
-				$context["subjects"][] = $subject->info();
+				$info = $subject->info();
+				if ($_SESSION['grade'] >= 2 || $_SESSION['id'] == $info['user']['id'])
+					$context["subjects"][] = $info;
 			}
 			return $twig->render('ticket.html', $context);
 	}
@@ -50,6 +52,10 @@ class TicketController extends ThreadController {
 				header('Location: /ticket');
 			}
 			$context["subject"] = $subject->info();
+			if ($_SESSION['grade'] < 2)
+				error_log($context['subject']['user']['id']);
+				if ($_SESSION['id'] != $context['subject']['user']['id'])
+					header('Location: /ticket');
 			$context["messages"] = [];
 			$context["user"] = $_SESSION["user"];
 			$limit = 10;
@@ -74,7 +80,7 @@ class TicketController extends ThreadController {
 		$subject = TicketSubject::from_title($_POST["title"]);
 		TicketMessage::add($_SESSION["id"], $_POST["message"], $subject->id);
 		$title = urlencode($_POST["title"]);
-		header("Location: /forum/".$title);
+		header("Location: /ticket/".$title);
 	}
 
 	/*
