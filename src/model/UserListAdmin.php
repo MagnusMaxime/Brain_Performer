@@ -40,7 +40,7 @@ class UserListAdmin
             urlavatar = :urlavatar, grade = :grade, `public` = :public WHERE id = :id');
             unset($user_mod["password"]);
         }
-        
+
 
         $req->execute($user_mod);
 
