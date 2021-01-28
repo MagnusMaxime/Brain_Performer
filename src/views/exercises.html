@@ -6,60 +6,32 @@
 
 {% block content %}
 	<div id="pageex">
-		<div id="sidebarex">
-
-			<div class="articlesex">
-
-				<div class="ARex"> <a href = "#"></a>
-					<h1 class="titre">Article récent 1</h1>
-					<div class = "insideex"></div>
-						<div class="boiteex"></div>
-				</div>
-				<div class="ARex"> <a href = "#"></a>
-					<h1 class="titre">Article récent 2</h1>
-					<div class = "insideex"></div>
-						<div class="boiteex"></div>
-				</div>
-				<div class="ARex"> <a href = "#"></a>
-					<h1 class="titre">Article récent 3</h1>
-					<div class = "insideex"></div>
-						<div class="boiteex"></div>
-				</div>
-				
-			</div>
-		</div>
 
 		<section class="centre">
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 1 - 85%</h1>
+			{% if exercises is empty %}
+			<h1>Vous n'avez pas réalisé d'exercices pour l'instant</h1>
+			{% endif %}
+
+			{% for exercise in exercises %}
+
+			<div class="exercices">
+				<a href ="/exercice/{{exercise.id}}">
+				<h1 class="titreexercices">Exercice  - {{exercise.grade}}%</h1>
 				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-			</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 2 - 67%</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div></div>
+					<div class="blockex">
+						<p>Réalisé le {{exercise.date}}</p>
+						<p>Durée : {{exercise.duration}} sec</p>
 					</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 3 - 18%</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div></div>
+					<div class="blockex">
+						<p>{{exercise.description}}</p>
+					</div>
 				</div>
-			<div class="exercices"><a href ="#"></a>
-				<h1 class="titreexercices">Exercice 4 - 2%</h1>
-				<div class="blocks">
-					<div class="blockex"></div>
-					<div class="blockex"></div>
-				</div>
-				</div>
+				</a>
+			</div>
+
+			{% endfor %}
+
 		</section>
 	</div>
-
-
-		</section>
 
 {% endblock content %}
