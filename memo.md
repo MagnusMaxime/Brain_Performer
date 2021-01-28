@@ -11,3 +11,7 @@ Host : freedb.tech
 Compte Admin :
 mail : contact.brainperformer@gmail.com
 mdp : admin
+
+Compte Docteur :
+docteur.docteur@gmail.com
+docteur

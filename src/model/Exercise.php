@@ -14,8 +14,21 @@ class Exercise extends SQLTable {
         }
         $data = $req->fetchAll();
         return $data[0];
-
     }
+
+    public static function getExerciseOfUser($idUser){
+        global $DB;
+        $req = $DB->prepare("SELECT * FROM `exercice` WHERE `owner` = :id");
+        $results = $req->execute(["id"=>$idUser]);
+        if (!$results){ //Il y a eu un souci dans la requête de la BDD
+            return false;
+        }
+        $data = $req->fetchAll();
+        return $data;
+    }
+
+
+
 
     public static function addFaq($question, $answer){
         //ajoute la question et la réponse à la BDD
