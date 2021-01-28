@@ -62,6 +62,7 @@ require_once("./model/UserListAdmin.php");
 require_once('./model/Thread.php');
 require_once('./model/Ticket.php');
 require_once("./model/Forum.php");
+require_once("./model/Exercise.php");
 
 /* Controllers */
 require_once('./Controller/Controller.php');
@@ -154,6 +155,9 @@ $router->post("/connexion", "Connection#post");
 $router->get("/mot-de-passe-oublie", "Connection#forgottenPassword");
 $router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#show");
+$router->get("/exercice/:id", "Exercise#one");
+
+
 $router->get("/contact", "Contact#show");
 $router->post("/contact", "Contact#post");
 $router->get("/inscription", "Register#get");
