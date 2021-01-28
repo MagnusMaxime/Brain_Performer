@@ -16,17 +16,18 @@
 
 			<div class="exercices">
 				<a href ="/exercice/{{exercise.id}}">
-				<h1 class="titreexercices">Exercice  - {{exercise.grade}}%</h1>
+				<h1 class="titreexercices">Exercice [{{exercise.name}}]  - {{exercise.grade}}%</h1>
+				</a>
 				<div class="blocks">
 					<div class="blockex">
 						<p>Réalisé le {{exercise.date}}</p>
 						<p>Durée : {{exercise.duration}} sec</p>
 					</div>
 					<div class="blockex">
-						<p>{{exercise.description}}</p>
+						<p>Description : {{exercise.description}}</p>
 					</div>
 				</div>
-				</a>
+
 			</div>
 
 			{% endfor %}

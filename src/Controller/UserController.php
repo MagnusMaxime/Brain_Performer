@@ -56,7 +56,7 @@ class UserController extends Controller
 			global $twig;
 			$user_info=$user->get_info();
 			$twig_array = $user_info;
-			$twig_array["USER"]=$user_info; //isset($_SESSION['user']) ? $_SESSION['user'] : false;
+			$twig_array["USERI"]=$user_info; //isset($_SESSION['user']) ? $_SESSION['user'] : false;
 			//var_dump(isset($_SESSION['user']) ? $_SESSION['user'] : false);
 			return $twig->render('user.html', $twig_array);
     }

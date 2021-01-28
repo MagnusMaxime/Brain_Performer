@@ -42,7 +42,7 @@
 
 .insideex
 {
-	background-color: #045a68;
+	background-color: #3ed1f5;
 	height: 40%;
 	margin-bottom:  0%;
 }
@@ -66,7 +66,6 @@
 {
 	border:double 6px #A7DBDB;
 
-	height: 47.15%;
 	width: 45%;
 	margin-top: 0%;
 	margin-right: 1%;
@@ -86,15 +85,14 @@
 {
 	display: flex;
 	flex-direction: row;
-	height: 200px;
-	margin-top: 15%;
+	height: auto;
+
 
 }
 .blockex
 {
 	width:40%;
-	height: 70%;
-	background-color: #045a68;
+	background-color: #3ed1f5;
 	margin-left: auto;
 	margin-right: auto;
 }

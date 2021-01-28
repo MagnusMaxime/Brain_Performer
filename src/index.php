@@ -155,6 +155,8 @@ $router->post("/connexion", "Connection#post");
 $router->get("/mot-de-passe-oublie", "Connection#forgottenPassword");
 $router->get("/deconnexion", "Deconnection#show");
 $router->get("/exercices", "Exercise#user");
+$router->get("/exercices/:id", "Exercise#showUserExercises");
+
 $router->get("/exercice/:id", "Exercise#one");
 
 

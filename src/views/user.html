@@ -11,29 +11,25 @@
 		<div id="box">
 			<div class="card">
 
-				{% if USER.urlavatar %}
-				<!-- Si l'utilisateur a un avatar -->
-				<img src="{{USER.urlavatar}}" alt="{{USER.firstname}}" style="width:100%">
-				{% else %}
-				<!-- Si l'utilisateur n'a pas d'avatar -->
-				<img src="{{USER.sex ? AVATAR_FEMALE_PLACEHOLDER : AVATAR_MALE_PLACEHOLDER}}" alt="avatar de {{USER.firstname}}" style="width:100%">
-				{% endif %}
+				<img src="{{USERI.urlavatar}}" alt="{{USERI.firstname}}" style="width:100%">
 
 
-				<h1>{{USER.sex ? "Madame" : "Monsieur"}} {{USER.firstname}} {{USER.lastname | upper}}</h1>
+				<h1>{{USERI.sex ? "Madame" : "Monsieur"}} {{USERI.firstname}} {{USERI.lastname | upper}}</h1>
 
-				<p>Age : {{USER.age}} ans</p>
-				<p>Date de naissance : {{USER.birthdate}}</p>
-				<p>Compte de {{USER.grade_name}} {{USER.public ? "public" : "privé"}}</p>
+				<p>Age : {{USERI.age}} ans</p>
+				<p>Date de naissance : {{USERI.birthdate}}</p>
+				<p>Compte de {{USERI.grade_name}} {{USERI.public ? "public" : "privé"}}</p>
 
 
 				<p>Mail associé :
-					<span class="mail"> {{USER.mail}}</span>
+					<span class="mail"> {{USERI.mail}}</span>
 				</p>
-
+				{% if USERI.grade == 0 %}
+				<button onclick="window.location.href = '/exercices/{{USERI.id}};'">Voir les exercices</button>
+				{% endif %}
 				<footer>
-					<p>Crée le {{USER.created}}</p>
-					<p>Modifié le {{USER.updated}}</p>
+					<p>Crée le {{USERI.created}}</p>
+					<p>Modifié le {{USERI.updated}}</p>
 				</footer>
 			</div>
 		</div>

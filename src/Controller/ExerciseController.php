@@ -50,11 +50,30 @@ class ExerciseController extends Controller
             //l'utilisateur est pas connecté et a besoin d'être connecté
             return "";
         }
+        return self::showUserExercises($_SESSION["id"]);
+    }
+    static public function showUserExercises($id){
+        global $twig;
+        $user = new User($id);
+        $user_info=$user->get_info();
+        if ($user_info["public"]=="0"){
+            //l'exercice est privé
+            if (self::needToBeConnected()){//l'utilisateur est pas connecté et a besoin d'être connecté
+                return "";
+            }
+            if ($id!=$_SESSION["id"]){
+                if ($user_info["parent"]!=$_SESSION["id"]){
+                    //ce n'est pas le médecin du patient, on bloque
+                    header("Location: /");
+                    return "";
+                }
+            }
+        }
+
         $twig_array=[];
-        $twig_array["exercises"]=Exercise::getExerciseOfUser($_SESSION["id"]);
-        $twig_array["title"]="Mes exercices";
+        $twig_array["exercises"]=Exercise::getExerciseOfUser($id);
+        $twig_array["title"]="Exercices";
         return $twig->render('exercises.html', $twig_array);
     }
-
 
 }
