@@ -17,14 +17,15 @@ class ExerciseController extends Controller
     static public function one($id){
         global $twig;
         $data=Exercise::getExercise($id);
+        $user = new User($data["owner"]);
+        $user_info=$user->get_info();
         if ($data["public"]=="0"){
             //l'exercice est privé
             if (self::needToBeConnected()){//l'utilisateur est pas connecté et a besoin d'être connecté
                 return "";
             }
             if ($data["owner"]!=$_SESSION["id"]){
-                $user = new User($data["owner"]);
-                $user_info=$user->get_info();
+
                 if ($user_info["parent"]!=$_SESSION["id"]){
                     //ce n'est pas le médecin du patient, on bloque
                     header("Location: /");
@@ -38,6 +39,7 @@ class ExerciseController extends Controller
             return "";
         }
         $data["title"]="Mon exercice";
+        $data["owner_name"]=$user_info["firstname"]." ".$user_info["lastname"];
         //var_dump($data);
         return $twig->render('exercise.html', $data);
 
@@ -72,6 +74,7 @@ class ExerciseController extends Controller
 
         $twig_array=[];
         $twig_array["exercises"]=Exercise::getExerciseOfUser($id);
+
         $twig_array["title"]="Exercices";
         return $twig->render('exercises.html', $twig_array);
     }

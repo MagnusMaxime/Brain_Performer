@@ -4,6 +4,8 @@
 	height: 100%;
 	display:flex;
 	flex-direction: row;
+	text-align: center;
+	align-content: center;
 }
 #sidebarex{
      width:20%;
@@ -25,11 +27,7 @@
 	margin-top: 25%;
 	
 }
-.ARex:hover
-{
-	color :#A7DBDB;
-	border-bottom: #760001 3px solid;
-}
+
 .articlesex
 {
 
@@ -73,14 +71,7 @@
 
 	text-align: center;
 }
-.exercices:hover
-{
-	color :#A7DBDB;
-	box-shadow: 1px 1px 1px 1px inset #A7DBDB;
 
-	text-decoration: underline;
-
-}
 .blocks
 {
 	display: flex;
