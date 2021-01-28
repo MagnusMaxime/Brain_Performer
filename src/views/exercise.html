@@ -19,9 +19,26 @@
 				<p>Description : {{description}}</p>
 				<p>Réalisé le {{created}} par {{owner_name}}</p>
 				<canvas id="myChart" width="400" height="200"></canvas>
-			</div>
 
+
+
+			</div>
+			<table>
+				<tr>
+					<td>Temps en dizaine de seconde</td>
+					<td>Battement par minute</td>
+				</tr>
+				{% for i in table2 %}
+				<tr>
+					<td>{{i.x}}</td>
+					<td>{{i.y}}</td>
+				</tr>
+				{% endfor %}
+			</table>
 		</section>
+
+
+
 
 	</div>
 

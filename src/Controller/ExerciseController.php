@@ -40,7 +40,12 @@ class ExerciseController extends Controller
         }
         $data["title"]="Mon exercice";
         $data["owner_name"]=$user_info["firstname"]." ".$user_info["lastname"];
-        //var_dump($data);
+        $data["table1"]=[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [108, 110, 112, 114, 118, 120, 124, 118, 121, 124]];
+        $data["table2"]=[];
+        foreach ($data["table1"][0] as $k=>$v){
+            $data["table2"][]=["x"=>$data["table1"][0][$k],"y"=>$data["table1"][1][$k]];
+        }
         return $twig->render('exercise.html', $data);
 
 
@@ -76,6 +81,7 @@ class ExerciseController extends Controller
         $twig_array["exercises"]=Exercise::getExerciseOfUser($id);
 
         $twig_array["title"]="Exercices";
+
         return $twig->render('exercises.html', $twig_array);
     }
 

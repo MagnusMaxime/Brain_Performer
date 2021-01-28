@@ -31,7 +31,6 @@
 .articlesex
 {
 
-	width: 75%;
 	padding: 10%;
 	display: flex;
 	flex-direction: column;
@@ -41,7 +40,6 @@
 .insideex
 {
 	background-color: #3ed1f5;
-	height: 40%;
 	margin-bottom:  0%;
 }
 .titre
