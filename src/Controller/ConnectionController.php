@@ -30,7 +30,7 @@ class ConnectionController extends Controller
 					unset($_SESSION['next']);
 					header("Location: ".$next);
 				} else {
-					header("Location: profil/" . strval($user->get_id()));
+					header("Location: /moncompte");
 				}
 
         /* if ($success){ */
