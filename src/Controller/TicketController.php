@@ -46,16 +46,24 @@ class TicketController extends ThreadController {
 			}
 			$context = [];
 			$title = urldecode($title);
+			error_log('requested: '.$title);
 			try {
 				$subject = TicketSubject::from_title($title);
 			} catch (\Exception $e) {
 				header('Location: /ticket');
 			}
 			$context["subject"] = $subject->info();
-			if ($_SESSION['grade'] < 2)
+			if ($_SESSION['grade'] < 2) {
+				error_log('grade refused: '.$_SESSION['grade']);
+				error_log('subject: '.$context['subject']);
 				error_log($context['subject']['user']['id']);
-				if ($_SESSION['id'] != $context['subject']['user']['id'])
+				if ($_SESSION['id'] != $context['subject']['user']['id']) {
+					error_log('connexion refused');
 					header('Location: /ticket');
+				}
+			} else {
+				error_log('grade accepted: '.$_SESSION['grade']);
+			}
 			$context["messages"] = [];
 			$context["user"] = $_SESSION["user"];
 			$limit = 10;
