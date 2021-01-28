@@ -1,0 +1,130 @@
+.user{
+    align-content: center;
+
+}
+
+body{
+    text-align: center;
+    align-content: center;
+}
+.textprofil{
+    padding: 2%;
+    margin: 2%;
+    border:double 9px #A7DBD8;
+
+    margin-bottom: 3.7%;
+}
+
+.user .card
+{
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: double 5px #A7DBDB;
+    display: block;
+
+    margin-bottom: 5%;
+}
+
+.user .title
+{
+    color: grey;
+    font-size: 18px;
+}
+
+.user .mail
+{
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    color: blue;
+    width: 100%;
+}
+
+.user a
+{
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+.user .mail:hover, a:hover
+{
+    opacity: 0.7;
+}
+
+.blockex
+{
+    width:40%;
+    height: 70%;
+    background-color: #045a68;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.exercices
+
+{
+    border: solid 3px #A7DBDB;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    height: 47.15%;
+    width: 45%;
+    margin-top: 0%;
+    margin-right: 1%;
+    margin-left: 2.4%;
+    margin-bottom: 2.4%;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.blocks
+{
+
+    height: 100px;
+    margin-top: 15%;
+
+}
+.centre
+{
+    left: 10%;
+    margin-left:2px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#eff
+{
+    border: solid 3px #A7DBDB;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.user{
+    display: flex;
+    flex-direction: row;
+
+}
+
+img.avatar{
+    height: 100px;
+    width: auto;
+}
+
+div.user{
+    text-align: center;
+    align-content: center;
+    margin-left: 39%;
+}

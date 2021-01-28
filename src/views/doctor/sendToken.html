@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="/assets/css/" /><!--TODO : Faire le CSS-->
+<link rel="stylesheet" type="text/css" href="/assets/css/manageFaq.css" /><!--TODO : Faire le CSS-->
 <!--<script src="/assets/js/sendToken.js"></script>-->
-<div class="signin">
+<div id="bloc-page" class="main">
+
+    <div class="faq-section">
+
     <form action="" method="post">
+        <h1>Ajouter un patient</h1>
+        <br>
         <label for="mail">Entrez l'adresse mail de votre patient :</label>
         <input type="email" name="mail" maxlength="50" placeholder="email" id="mail" value="{{mail}}" required>
+        <br>
+        <br>
         <button type="submit" class="signupbtn">Envoyer un lien d'inscription</button>
 
     </form>
-
+        <br>
 </div>
+</div>
+<br>
+<br>
 {% endblock %}
