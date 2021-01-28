@@ -1,16 +1,32 @@
-.user .card 
+.user{
+  margin-left:5%;
+  margin-bottom: 3%;
+
+}
+.textprofil{
+  padding: 2%;
+  margin: 2%;
+  border:double 9px #A7DBD8;
+  margin-left: 5%;
+  margin-top:4.4%;
+  margin-bottom: 3.7%;
+}
+.pageprofil{
+  display: flex;
+  flex-direction: row;
+}
+.user .card
 {
   padding: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  max-width: 400px;
+  width: 100%;
   text-align: center;
-  border: solid 6px #A7DBDB;
+  border: double 5px #A7DBDB;
   display: block;
-  margin-left: 10%;
+
   margin-top:32%;
   margin-bottom: 5%;
-  width: 350px;
-
 }
 
 .user .title
