@@ -5,12 +5,13 @@
 {% block content %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<div id="pagecontact">
+		<!--
 		<section class="gauche">
 			<div class="cadre">
 				<h1>Contactez un administrateur par messagerie interne</h1>
 					<form action="" method="post">
 		<label for = "ask"> Dîtes-nous tout:</label><br>
-		<textarea cols="60" rows="17" name="message" id="ask"></textarea><!--NE PAS CHANGER LE NAME DU TEXTAREA-->
+		<textarea cols="60" rows="17" name="message" id="ask"></textarea>
 
 	<div class = "buttons">
 		<button type="submit" class ="button">Envoyer</button>
@@ -19,7 +20,7 @@
 					</form>
 			</div>
 		</section>
-
+		-->
 		<section class="droite">
 			<div class="cadre">
 				<h1>Contactez un administrateur par courrier électronique</h1>
@@ -32,16 +33,18 @@
 						<a href="mailto:{{mail}}">
 							<div class ="mailto">Contactez-nous !</div>
 						</a>
+
 					</div>
+					
 					<form action="" method="post">
 
 						<label for="name-mail">Votre nom :</label>
 						<input type="text" name="name-mail" maxlength="100" placeholder="Votre nom" id="name-mail" required>
-
+						<br>
 
 						<label for="topic-message">Objet de votre message :</label>
 						<input type="text" name="topic-message" maxlength="100" placeholder="Objet du message" id="topic-message" required>
-
+						<br>
 
 						<label for = "message-mail">Votre message :</label><br>
 						<textarea name="message-mail" id="message-mail" required></textarea>
