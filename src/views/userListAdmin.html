@@ -83,8 +83,10 @@
     <form method="post" action="/admin/gestion-utilisateurs-actualiser/{{user.id}}">
         <tr>
             <td>{{user.id}}</td>
-            <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" id="ban" name="Bannir" value="Supprimer" required/></a></td>
-            <td><input class="valid" type="submit" value="Valider" required></td>
+            <td><a href="/admin/gestion-utilisateurs/supprimer/{{user.id}}"><input type="button" class="button" id="ban"
+                                                                                   name="Bannir" value="Supprimer"
+                                                                                   required/></a></td>
+            <td><input class="button" type="submit" value="Valider" required></td>
             <td><input class=no-border type="text" name="password" value="" size="10"></td>
             <td><input class=no-border type="text" name="firstname" value={{user.firstname}} size="15" required/></td>
             <td><input class=no-border type="text" name="lastname" value={{user.lastname}} size="20"required/></td>

@@ -12,3 +12,17 @@
     text-align:center;
     box-shadow: 6px 6px 0px #045a68;
 }
+
+.button {
+    border-radius: 4px;
+    background-color: #69D2E7;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.5vh;
+    padding: 1%;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
