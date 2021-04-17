@@ -6,22 +6,6 @@ Ce readme est disponible sous forme de page web:
 * thème clair: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer
 * thème sombre: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer?layout=jasonm23-dark
   
-## Instructions newbie-friendly pour commencer le développement du projet  
-Ces instructions donnent une vue d'ensemble des étapes pour développer ce projet,  
-il ne s'agit pas d'un tutoriel, donc si vous ne comprenez pas bien les instructions,  
-aller voir des tutoriels complets. **_Hopopop au travail!_**  
-  
-### D'abord qu'est-ce que quoi?  
-  
- * git :  programme de gestion de version  
- * github : site web le plus connu pour partager du code et qui repose sur git  
- * github desktop: application graphique pour gérer github  
- * visual studio code: éditeur de code le plus connu  
- * terminal / ligne de commande : application pour taper des commandes pour controler son ordinateur   
- * mamp/wamp/lamp : application permettant d'exécuter php  
- * Composer : permet d'installer simplement des modules PHP  
- * twig : Moteur de template pour PHP, doit être installer avec Composer  
-  
 ### Prérequis  
   #### Installation de logiciels
  * Installer [github desktop](https://desktop.github.com/)  
@@ -36,8 +20,6 @@ aller voir des tutoriels complets. **_Hopopop au travail!_**
 	 * Composer
 	 * Structure [MVC](https://www.youtube.com/watch?v=a3NZtp3FJEE&feature=emb_logo)
 	 * twig
-
-	
   
 ### Sur github desktop  
 * Se connecter à son compte github: [ aide ]( https://docs.github.com/en/free-pro-team@latest/desktop/installing-and-configuring-github-desktop/setting-up-github-desktop)  
@@ -67,7 +49,6 @@ composer install
   
   
 ## Tutoriels recommandés  
-* [le web c'est quoi, au juste?](https://openclassrooms.com/fr/courses/1946386-comprendre-le-web)  
 * [html/css](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3)  
 * [php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
 * [git et github](https://openclassrooms.com/fr/courses/5641721-utilisez-git-et-github-pour-vos-projets-de-developpement)  
@@ -75,14 +56,8 @@ composer install
 * [foutre du sql dans php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
 * [un peu de javascript ne fera pas de mal](https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725486-tp-un-formulaire-interactif)  
 * [jquery pour les gens plus chauds](https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery)  
-  
-### Bonus  
-* [c'est quoi un terminal?](https://openclassrooms.com/fr/courses/4614926/next-page-to-do)  
-* ~~[je pue la merde en css, à moi bootstrap](https://getbootstrap.com/)  
-</br>[exemples](https://getbootstrap.com/docs/4.0/components/buttons/)~~  
-* **[flemme de lire, je préfère ytb](https://www.youtube.com/user/grafikarttv)**  
-  
-## Hébergement gratos  
+
+## Hébergement
 Le projet possède 2 branches: main et heroku
 La branche main est la branche principale sur laquelle on travail et est donc instable. Une fois que celle-ci devient stable on peut la fusionner ('merge') avec la branche heroku.
 Une fois cette fusion effectuée, le site sur heroku sera automatiquement mis à jour lorsque github reçoit une mise à jour sur la branche heroku.
