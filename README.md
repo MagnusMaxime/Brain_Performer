@@ -34,20 +34,17 @@ Ce readme est disponible sous forme de page web:
 ```bash  
 composer install  
 ```  
-  
+
 ### Lancer le site sur sa machine  
 * trouver le projet du site avec mamp  
 * lancer mamp  
 * ouvrir son navigateur à l'url mamp indiqué surement "http://localhost:8888/web/index.php"  
-  
-**GG**  
-  
+
 ## Gérer le développement à plusieurs sur github desktop  
 * Pull: récupère des modifications sur github  
 * Commit: ajoute une modification locale dans son historique git  
 * Push: envoie ses modifications sur github pour les partager aux autres  
-  
-  
+ 
 ## Tutoriels recommandés  
 * [html/css](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3)  
 * [php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
