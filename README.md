@@ -1,19 +1,15 @@
 #!/usr/local/marc/markdown.py
 
-# Healing Path  
-Your brain is the key!  
-Ce readme est disponible sous forme de page web:
-* thème clair: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer
-* thème sombre: https://websiteofmarcpartensky.herokuapp.com/article/readme-brain-performer?layout=jasonm23-dark
-  
-### Prérequis  
-  #### Installation de logiciels
+### Prérequis
+
+#### Les logiciels
  * Installer [github desktop](https://desktop.github.com/)  
  * Installer un éditeur de code comme [Visual Studio Code](https://code.visualstudio.com/) ou [IntelliJ Pro](https://www.jetbrains.com/fr-fr/idea/download/) (La version Pro est gratuite en utilisant ton mail isep lors de l'inscription)
  * Si nécessaire installer [git](https://git-scm.com/download/)  
  * Installer [mamp ou wamp ou lamp](https://www.mamp.info/en/windows/)  
  * Installer [Cmder](https://cmder.net/) 
-  #### Connaître les bases des bases pour comprendre le projet
+
+#### Les bases
   On met ici le strict minimum
   * Savoir les bases de PHP
  * Regarder les tutos de [Graphikart](https://www.youtube.com/c/grafikart/playlists) :
