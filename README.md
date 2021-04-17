@@ -45,15 +45,11 @@ composer install
 * [html/css](https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3)  
 * [php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
 * [git et github](https://openclassrooms.com/fr/courses/5641721-utilisez-git-et-github-pour-vos-projets-de-developpement)  
-  
-* [foutre du sql dans php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
-* [un peu de javascript ne fera pas de mal](https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725486-tp-un-formulaire-interactif)  
-* [jquery pour les gens plus chauds](https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery)  
+* [sql dans php](https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql)  
+* [javascript](https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725486-tp-un-formulaire-interactif)  
+* [jquery](https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery)  
 
 ## Hébergement
 Le projet possède 2 branches: main et heroku
 La branche main est la branche principale sur laquelle on travail et est donc instable. Une fois que celle-ci devient stable on peut la fusionner ('merge') avec la branche heroku.
 Une fois cette fusion effectuée, le site sur heroku sera automatiquement mis à jour lorsque github reçoit une mise à jour sur la branche heroku.
-
-## Structure du projet
-...
