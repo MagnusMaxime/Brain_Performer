@@ -1,5 +1,5 @@
 # Brain Performer
-Site web: [https://healing-path.fr](https://healing-path.fr]
+Site web: [https://healing-path.fr](https://healing-path.fr)
 
 ## Prérequis
 
