@@ -7,11 +7,12 @@ services:
   healingpath:
     image: marcpartensky/brainperformer
     restart: unless-stopped
+    # user: healingpath
     build:
       context: .
     env_file: .env
     ports:
-      - "8000:80"
+      - "8000:80" # horrible stuff right here
     networks:
       - healingpath
     depends_on:
@@ -20,6 +21,7 @@ services:
   healingpath_db:
     image: mysql
     restart: unless-stopped
+    # user: healingpath
     env_file: .env
     volumes:
       - /srv/healingpath/db:/var/lib/mysql
