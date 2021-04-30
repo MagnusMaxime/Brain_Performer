@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+  healingpath:
+
+services:
+  healingpath:
+    image: marcpartensky/brainperformer
+    restart: unless-stopped
+    build:
+      context: .
+    env_file: .env
+    ports:
+      - "8000:80"
+    networks:
+      - healingpath
+    depends_on:
+      - healingpath_db
+
+  healingpath_db:
+    image: mysql
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - /srv/healingpath/db:/var/lib/mysql
+    networks:
+      - healingpath

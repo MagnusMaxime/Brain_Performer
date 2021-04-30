@@ -1,15 +1,15 @@
 FROM php:8.0.1
 FROM composer:2.0 as composer
 
-COPY . .
-WORKDIR .
+COPY . /app
+WORKDIR /app
 RUN composer install
 
-RUN cd src
+# RUN cd src
 EXPOSE 80
-EXPOSE 8000
+WORKDIR /app/src
 
-ENTRYPOINT ["php", "-S", "localhost:8000", "./router.php"]
+ENTRYPOINT ["php", "-S", "0.0.0.0:80", "/app/src/router.php"]
 
 # RUN apt-get update && apt-get install
 # RUN docker-php-ext-install pdo_mysql

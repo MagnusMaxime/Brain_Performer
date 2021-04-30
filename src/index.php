@@ -7,10 +7,10 @@ namespace App;
 use PDO;
 
 define("RECAPTCHA_SECRET_KEY", "6LfaqQcaAAAAACjDJ6ioUZ9aBQnPKVSLD7UXnv-e");
-define('DB_NAME', 'freedbtech_brainperformer');
-define('DB_USER', 'freedbtech_brainperformer');
-define('DB_PASSWORD', "uKTCaSPWVi");//'5fcWqsJurHN5qhr');
-define('DB_HOST', 'freedb.tech');//Port : 3306
+define('DB_NAME', 'brainperformer');
+define('DB_USER', 'brainperformer');
+define('DB_PASSWORD', 'brainperformer');//'5fcWqsJurHN5qhr');
+define('DB_HOST', 'healingpath_db');//Port : 3306
 
 define("MAIL",'contact.brainperformer@gmail.com');
 define('MAIL_PASSWORD', 'brainperformer');
