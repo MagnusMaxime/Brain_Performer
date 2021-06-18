@@ -1,0 +1,12 @@
+export DB_NAME=freedbtech_brainperformer
+export DB_USER=freedbtech_brainperformer
+export DB_PASSWORD=uKTCaSPWVi
+export DB_HOST=freedb.tech
+export RECAPTCHA_SECRET_KEY=6LfaqQcaAAAAACjDJ6ioUZ9aBQnPKVSLD7UXnv-e
+export MAIL=contact.brainperformer@gmail.com
+export MAIL_PASSWORD=contact.brainperformer@gmail.com
+export MYSQL_DATABASE=brainperformer
+export MYSQL_USER=brainperformer
+export MYSQL_PASSWORD=brainperformer
+export MYSQL_ROOT_HOST=healingpath_db
+export MYSQL_RANDOM_ROOT_PASSWORD=1

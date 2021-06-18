@@ -1,19 +1,18 @@
 <?php
 
-
-
 namespace App;
 
 use PDO;
 
-$CAPTCHA_KEY = $_ENV["RECAPTCHA_SECRET_KEY"];
-$DB_HOST = $_ENV["DB_HOST"];
-$DB_PORT = $_ENV["DB_PORT"];
-$DB_NAME = $_ENV["DB_NAME"];
-$DB_USER = $_ENV["DB_USER"];
-$DB_PASSWORD = $_ENV["DB_PASSWORD"];
-$MAIL = $_ENV["MAIL"];
-$MAIL_PASSWORD = $_ENV["MAIL_PASSWORD"];
+$CAPTCHA_KEY = getenv('RECAPTCHA_SECRET_KEY');
+/* $DB_HOST = $_SERVER['DB_HOST']; */
+$DB_HOST = getenv('DB_HOST');
+$DB_PORT = getenv('DB_PORT');
+$DB_NAME = getenv('DB_NAME');
+$DB_USER = getenv('DB_USER');
+$DB_PASSWORD = getenv('DB_PASSWORD');
+$MAIL = getenv('MAIL');
+$MAIL_PASSWORD = getenv('MAIL_PASSWORD');
 $CONTACT_MAIL = $MAIL;
 
 define("URLAVATAR_MALE", "https://img.icons8.com/fluent/344/user-male.png");
