@@ -6,10 +6,11 @@
 
 {% block content %}
 <div class="container">
-	<p id="results">{{results}}</p>
+	<button class="button" id="toggleLed">Changer la couleur de la LED</button>
+	<p id="response"></p>
 </div>
 {% endblock content %}
 
 {% block script %}
-<script src="/assets/js/results.js"></script>
+<script src="/assets/js/led.js"></script>
 {% endblock script %}
