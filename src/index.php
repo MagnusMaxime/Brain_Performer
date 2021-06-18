@@ -83,6 +83,8 @@ require_once("./Controller/SearchController.php");
 require_once('./Controller/ThreadController.php');
 require_once('./Controller/ForumController.php');
 require_once("./Controller/TicketController.php");
+require_once("./Controller/RegisterController.php");
+
 
 require_once('./Router/Router.php');
 
@@ -220,5 +222,9 @@ $router->get('admin/forum', "Admin#manageTokens");
 # API
 $router->get("/api/search", "Search#api");
 $router->get("/api/token", "Register#apiToken");
+
+
+# Bluetooth
+$router->get("/resultats","Results#show");
 
 echo $router->run();

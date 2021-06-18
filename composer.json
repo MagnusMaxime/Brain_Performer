@@ -2,7 +2,8 @@
   "require" : {
     "twig/twig": "^3.0",
     "ext-pdo": "*",
-    "phpmailer/phpmailer": "^6.2"
+    "phpmailer/phpmailer": "^6.2",
+    "ext-curl": "*"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
