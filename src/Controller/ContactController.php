@@ -21,7 +21,7 @@ class ContactController extends Controller
         global $twig;
         if (!Controller::checkRecaptcha($_POST["g-recaptcha-response"])){
             //Le Recaptcha n'a pas été validé, c'est un bot
-            return $twig->render('contact.html', ["title"=>"Contact","mail"=>CONTACT_MAIL, "alert"=>"reCAPTCHA non validé"]);
+            return $twig->render('contact.html', ["title"=>"Contact","mail"=>$CONTACT_MAIL, "alert"=>"reCAPTCHA non validé"]);
         }
         echo "<!--";
         $mail = new PHPMailer(true);
@@ -31,8 +31,8 @@ class ContactController extends Controller
             $mail->isSMTP();     // Send using SMTP
             $mail->Host       = 'smtp.gmail.com'; // Set the SMTP server to send through
             $mail->SMTPAuth   = true;   // Enable SMTP authentication
-            $mail->Username   = MAIL;     // SMTP username
-            $mail->Password   = MAIL_PASSWORD;  // SMTP password
+            $mail->Username   = $MAIL;     // SMTP username
+            $mail->Password   = $MAIL_PASSWORD;  // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = 587;   // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             // From email address and name
