@@ -1,21 +1,19 @@
 <?php
 
-
-
 namespace App;
 
 use PDO;
 
-define("RECAPTCHA_SECRET_KEY", "6LfaqQcaAAAAACjDJ6ioUZ9aBQnPKVSLD7UXnv-e");
-define('DB_NAME', 'brainperformer');
-define('DB_USER', 'brainperformer');
-define('DB_PASSWORD', 'brainperformer');//'5fcWqsJurHN5qhr');
-define('DB_HOST', 'healingpath_db');//Port : 3306
-
-define("MAIL",'contact.brainperformer@gmail.com');
-define('MAIL_PASSWORD', 'brainperformer');
-
-define("CONTACT_MAIL", "contact.brainperformer@gmail.com");//mail de contact pour brainperformer
+$CAPTCHA_KEY = getenv('RECAPTCHA_SECRET_KEY');
+/* $DB_HOST = $_SERVER['DB_HOST']; */
+$DB_HOST = getenv('DB_HOST');
+$DB_PORT = getenv('DB_PORT');
+$DB_NAME = getenv('DB_NAME');
+$DB_USER = getenv('DB_USER');
+$DB_PASSWORD = getenv('DB_PASSWORD');
+$MAIL = getenv('MAIL');
+$MAIL_PASSWORD = getenv('MAIL_PASSWORD');
+$CONTACT_MAIL = $MAIL;
 
 define("URLAVATAR_MALE", "https://img.icons8.com/fluent/344/user-male.png");
 define("URLAVATAR_FEMALE", "https://img.icons8.com/fluent/344/user-female.png");
@@ -130,7 +128,7 @@ if (isset($_GET["url"])){
 }
 
 try {
-	$DB = new PDO('mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+	$DB = new PDO('mysql:host='.$DB_HOST.';port='.$DB_PORT.';dbname='.$DB_NAME.';charset=utf8', $DB_USER, $DB_PASSWORD);
 } catch (\Exception $e){
 	$DB = False;
     /* die('Erreur : ' . $e->getMessage()); */
