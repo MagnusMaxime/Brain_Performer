@@ -1,6 +1,6 @@
 // Globales
 const URI_TITLE = document.location.pathname.split('/')[2]
-const TITLE =  decodeURI(URI_TITLE)
+const TITLE = decodeURI(URI_TITLE)
 const STEP = 10
 
 // Récupération des éléments html utiles
@@ -27,8 +27,8 @@ function appendMessages(messagesContent) {
 
 		b = document.createElement("b")
 		b.appendChild(document.createTextNode(
-				messageContent["user"]["firstname"]+" "+
-				messageContent["user"]["lastname"]
+			messageContent["user"]["firstname"] + " " +
+			messageContent["user"]["lastname"]
 		))
 		message.appendChild(b)
 
@@ -69,9 +69,9 @@ function appendMessages(messagesContent) {
 		message.append(line)
 		messages.appendChild(message);
 
-		setTimeout(function(message, id) {
-			$(message).delay(500).animate({ opacity: 1, display: 'block'}, 700)
-		}, n*100, message, messageContent['id'])
+		setTimeout(function (message, id) {
+			$(message).delay(500).animate({opacity: 1, display: 'block'}, 700)
+		}, n * 100, message, messageContent['id'])
 
 		if (userId == messageContent["user"]["id"]) {
 			addEventListenerOnButtonDeleteMessage(
@@ -89,7 +89,7 @@ function appendMessages(messagesContent) {
 /*
  * Envoie une requête ajax pour charger plus de messages.
  */
-function loadMessages(limit=undefined) {
+function loadMessages(limit = undefined) {
 	let offset = document.getElementById('messages').childElementCount
 	limit = limit || STEP
 	const url = `/ticket/${URI_TITLE}/message/charger/${limit}/${offset}`
@@ -123,12 +123,12 @@ function postMessage() {
 		url: url,
 		data: data,
 		// dataType: 'json',
-		success: function(data) {
+		success: function (data) {
 			console.log(`Posted ${data} successfully.`)
-	 	}
-	 });
+		}
+	});
 	message.value = ""
-	setTimeout(function() {
+	setTimeout(function () {
 		loadMessages(9999999999)
 		console.log('loading now')
 	}, 1000);
@@ -140,8 +140,8 @@ function postMessage() {
  */
 function deleteMessage(id) {
 	msg = document.getElementById(id)
-	$(msg).fadeOut(500, function(){
-		$(msg).css({"visibility":"hidden",display:'block'}).slideUp()
+	$(msg).fadeOut(500, function () {
+		$(msg).css({"visibility": "hidden", display: 'block'}).slideUp()
 	})
 	msg.remove()
 }
@@ -160,10 +160,10 @@ function postDeleteMessage(id) {
 		url: url,
 		data: data,
 		// dataType: 'json',
-		success: function(data) {
+		success: function (data) {
 			console.log(`Deleted message ${id} successfully.`)
-	 	}
-	 });
+		}
+	});
 	deleteMessage(id)
 }
 
@@ -221,9 +221,9 @@ function addEventListenersOnButtonsDeleteMessage() {
 function main() {
 
 	// Ajouts des event listeners
-	moreBtn.addEventListener('click', function() {loadMessages()})
+	moreBtn.addEventListener('click', function () {loadMessages()})
 	addBtn.addEventListener('click', postMessage)
-	message.addEventListener('keydown', function(event) {
+	message.addEventListener('keydown', function (event) {
 		const keycode = (event.keyCode ? event.keyCode : event.which)
 		if (keycode == 13) {
 			postMessage()
