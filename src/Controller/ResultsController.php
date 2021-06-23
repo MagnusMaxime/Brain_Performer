@@ -7,22 +7,27 @@ class ResultsController extends Controller
 {
     static public function show(){
         global $twig;
+				$img_on = "https://cdn.discordapp.com/attachments/834078282924163106/856908948338507786/unknown.png";
+				$img_off = "https://cdn.discordapp.com/attachments/834078282924163106/856908983134060574/unknown.png";
 				$output = shell_exec('curl -L "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=AG4E"');
 				$arr = str_split($output, 33);
-				$a = "1AG4E13010002789";
-				$b = "1AG4E13010000789";
-				$result = "nothing";
+				$pattern_on = "1AG4E13010002789";
+				$pattern_off = "1AG4E13010000789";
+				$detected = false;
+				$result = false;
 				for($i=count($arr)-1; $i>0; $i--) {
-					if ($arr[$i] == $a) {
-						$result = "on";
+					if (str_starts_with($arr[$i], $pattern_on)) {
+						$detected = true;
+						$result = true;
 						break;
 					}
-					if ($arr[$i] == $b) {
-						$result = "off";
+					if (str_starts_with($arr[$i], $pattern_off)) {
+						$detected = true;
+						$result = false;
 						break;
 					}
 				}
-        return $twig->render('results.html', ['results' => $output]);
+        return $twig->render('results.html', ['results' => $output, 'img_on' => $img_on, 'img_off'=>$img_off, 'result' => $result, 'detected' => $detected]);
     }
 
     static public function led(){

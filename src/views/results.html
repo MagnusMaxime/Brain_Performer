@@ -6,7 +6,21 @@
 
 {% block content %}
 <div class="container">
-	<p id="results">{{results}}</p>
+	<center>
+		{% if detected %}
+		{% if result %}
+		<p>Lamp is on</p>
+		<img width="100px" height="100px" src="{{img_on}}">
+		{% else %}
+		<p>Lamp is off</p>
+		<img width="100px" height="100px" src="{{img_off}}">
+		{% endif %}
+		{% else %}
+		<p> No state detected.</p>
+		{% endif %}
+	</center>
+	<hr>
+	<!-- <small id="results">{{results}}</small> -->
 </div>
 {% endblock content %}
 
