@@ -3,6 +3,7 @@ const response = document.getElementById('response');
 
 btnLed.addEventListener('click', changeLedColor);
 
+
 /*
  * Change la couleur de la LED
  */
