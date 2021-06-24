@@ -8,15 +8,9 @@
 <div class="container">
 	<center>
 		{% if detected %}
-		{% if result %}
-		<p>Lamp is on</p>
-		<img width="100px" height="100px" src="{{img_on}}">
+		<img id="led" width="100px" height="100px" src="{{img_off}}">
 		{% else %}
-		<p>Lamp is off</p>
-		<img width="100px" height="100px" src="{{img_off}}">
-		{% endif %}
-		{% else %}
-		<p> No state detected.</p>
+		<p> Aucun changement d'état détecté.</p>
 		{% endif %}
 	</center>
 	<hr>
@@ -25,5 +19,9 @@
 {% endblock content %}
 
 {% block script %}
+<script>
+	img_on = "{{img_on}}"
+	img_off = "{{img_off}}"
+</script>
 <script src="/assets/js/results.js"></script>
 {% endblock script %}

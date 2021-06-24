@@ -1,22 +1,17 @@
-const btnResults = document.getElementById('btnResults');
-btnResults.addEventListener('click', loadResults);
-var resultsURL = "http://projets-tomcat.isep.fr:8080/appService/?ACTION=GETLOG&TEAM=0000";
+led = document.getElementById("led");
+led.addEventListener('click', changeLedColor);
 
 /*
- * Affiche les résultats de la carte
+ * Change la couleur de la LED
  */
-function loadResults() {
-	$.ajax({
-		type: "GET",
-		url: resultsURL,
-		// dataType: 'json',
-		success: function () {
-			console.log("sent results successfully");
-			$('#results')
-		},
-		error: function () {
-			console.log("failed to send results");
-		}
+function changeLedColor() {
+	console.log("button clicked");
+	$.get('/toggle-led', (data) => {
+		console.log("led changed successfully");
+		led.src = img_on;
+		setTimeout(() => {
+			led.src = img_off;
+		}, 1000);
 	});
 }
 
