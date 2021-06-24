@@ -32,7 +32,20 @@ class ResultsController extends Controller
 
     static public function led(){
         global $twig;
-        return $twig->render('led.html');
+
+				$output = shell_exec('curl -L "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=AG4E"');
+				$arr = str_split($output, 33);
+				$pattern_on = "1AG4E13010002789";
+				$pattern_off = "1AG4E13010000789";
+				for($i=count($arr)-1; $i>0; $i--) {
+					if (str_starts_with($arr[$i], $pattern_on)) {
+						return "on";
+					}
+					if (str_starts_with($arr[$i], $pattern_off)) {
+						return "off";
+					}
+				}
+				return "none";
     }
 
     static public function toggleLed(){
