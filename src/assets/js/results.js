@@ -27,3 +27,9 @@ function refreshLedState() {
 		}
 	});
 }
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+setInterval(refreshLedState, 1000);
